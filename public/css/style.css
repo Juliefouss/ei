@@ -250,6 +250,7 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 2px;
+
 }
 
 .category-box {
@@ -660,6 +661,7 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
 @media (max-width: 480px) {
   .top-header .logo {
     padding: 10px;
+
   }
 }
 @media (max-width: 768px) {
@@ -1952,7 +1954,7 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
   background-color: #fff;
   border: 1px solid #dedede;
   padding: 30px;
-  margin: 100px 0;
+  margin: 50px 0;
 }
 .account .block .logo {
   display: inline-block;
