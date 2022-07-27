@@ -2339,7 +2339,15 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
   font-size: 20px;
   color: #555;
 }
-.grey {
-  background-color: #d8d4d1;
+.home {
+  background-color: #121315;
+}
+
+.about{
+  background-color: #cdc9c6;
+}
+
+.white{
+  color: #ffffff;
 }
 /*# sourceMappingURL=style.css.map */
