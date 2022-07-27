@@ -11,12 +11,12 @@ class SecurityController extends AbstractController
 {
     /** @Route("/register", name="register") */
     public function register():Response {
-      return $this->render('pages/register.html.twig');
+      return $this->render('security/register.html.twig');
     }
 
     /** @Route("/login", name="login") */
     public function login() : Response {
-      return  $this->render('pages/login.html.twig');
+      return  $this->render('security/login.html.twig');
     }
 
 }
