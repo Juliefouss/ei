@@ -24,6 +24,24 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string')]
     private $password;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $name;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $firstname;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $username;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $job;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $specialization;
+
+    #[ORM\Column(type: 'integer')]
+    private $inami_number;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -92,5 +110,77 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getFirstname(): ?string
+    {
+        return $this->firstname;
+    }
+
+    public function setFirstname(string $firstname): self
+    {
+        $this->firstname = $firstname;
+
+        return $this;
+    }
+
+    public function getUsername(): ?string
+    {
+        return $this->username;
+    }
+
+    public function setUsername(string $username): self
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
+    public function getJob(): ?string
+    {
+        return $this->job;
+    }
+
+    public function setJob(string $job): self
+    {
+        $this->job = $job;
+
+        return $this;
+    }
+
+    public function getSpecialization(): ?string
+    {
+        return $this->specialization;
+    }
+
+    public function setSpecialization(string $specialization): self
+    {
+        $this->specialization = $specialization;
+
+        return $this;
+    }
+
+    public function getInamiNumber(): ?int
+    {
+        return $this->inami_number;
+    }
+
+    public function setInamiNumber(int $inami_number): self
+    {
+        $this->inami_number = $inami_number;
+
+        return $this;
     }
 }
