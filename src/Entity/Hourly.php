@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\TimesRepository;
+use App\Repository\HourlyRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: TimesRepository::class)]
-class Times
+#[ORM\Entity(repositoryClass: HourlyRepository::class)]
+class Hourly
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -16,8 +16,11 @@ class Times
     #[ORM\Column(type: 'datetime')]
     private $date;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: 'string', length: 255)]
     private $hour;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $hospital;
 
     #[ORM\Column(type: 'string', length: 255)]
     private $service;
@@ -39,14 +42,26 @@ class Times
         return $this;
     }
 
-    public function getHour(): ?int
+    public function getHour(): ?string
     {
         return $this->hour;
     }
 
-    public function setHour(int $hour): self
+    public function setHour(string $hour): self
     {
         $this->hour = $hour;
+
+        return $this;
+    }
+
+    public function getHospital(): ?string
+    {
+        return $this->hospital;
+    }
+
+    public function setHospital(string $hospital): self
+    {
+        $this->hospital = $hospital;
 
         return $this;
     }
@@ -62,4 +77,11 @@ class Times
 
         return $this;
     }
+
+
+    public function __toString()
+    {
+        return $this->date;
+    }
+
 }

@@ -1,0 +1,21 @@
+
+
+{% block content %}
+    <div class="col-md-4">
+        <div class="product-item background-white">
+            <h3 class="title text-center">{{ hourly.hospital }}</h3>
+            <div class="product-content">
+                <p>Date: {{ hourly.date|date("d/m/Y", "Europe/Paris") }}</p>
+                <p> Horaire: {{ hourly.hour }}</p>
+                <p>Service: {{ hourly.service }}</p>
+                {% if is_granted("ROLE_ADMIN") %}
+                    <p>modifier</p>
+                    <p>supprimer</p>
+                {% elseif is_granted("ROLE_USER") %}
+                <p>Postuler</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

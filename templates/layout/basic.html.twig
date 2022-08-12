@@ -32,6 +32,9 @@
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href={{ asset("css/style.css")}}>
 
+   <!--Librairie Font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 
 {% endblock %}
@@ -86,11 +89,22 @@
                         <a href="{{ url('register') }}">Inscription</a>
                     </li>
 
-                    <!-- Connexion -->
+                    <!-- Connexion ou déconnexion  -->
+                    {% if app.user %}
+                        <li class="dropdown">
+                            {% if is_granted("ROLE_ADMIN") %}
+                            <a  href="{{ url('admin-home') }}"><i class="fa-solid fa-user"></i></a>
+                            {% elseif is_granted("ROLE_USER") %}
+                            <a  href="{{ url('user-home') }}"><i class="fa-solid fa-user"></i></a>
+                            {% endif %}
+                            <a  href="{{ url('app_logout') }}"><i class="fa-solid fa-right-from-bracket"></i></a>
+                        </li>
 
+                    {% else %}
                     <li class="dropdown ">
                         <a href="{{ url('app_login') }}">Connexion</a>
                     </li>
+                    {% endif %}
 
 
                 </ul><!-- / .nav .navbar-nav -->

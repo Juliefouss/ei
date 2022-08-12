@@ -31,6 +31,9 @@ class Apply
     #[ORM\Column(type: 'string', length: 255)]
     private $text;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $hospital;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -104,6 +107,18 @@ class Apply
     public function setText(string $text): self
     {
         $this->text = $text;
+
+        return $this;
+    }
+
+    public function getHospital(): ?string
+    {
+        return $this->hospital;
+    }
+
+    public function setHospital(string $hospital): self
+    {
+        $this->hospital = $hospital;
 
         return $this;
     }

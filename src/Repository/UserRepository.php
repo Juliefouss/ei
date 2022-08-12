@@ -56,6 +56,19 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->add($user, true);
     }
 
+
+    /* Pour retrouver une aire de jeux via son id*/
+    /**
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function findById($id): User
+    {
+        $qb = $this->createQueryBuilder('a')
+            ->where('a.id=:id')
+            ->setParameter('id', $id);
+        return $qb->getQuery()->getOneOrNullResult();
+    }
+
 //    /**
 //     * @return User[] Returns an array of User objects
 //     */

@@ -1,65 +1,21 @@
 {% extends 'layout/basic.html.twig' %}
 
 {% block content %}
-    <section class="page-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="content">
-                        <h1 class="page-name">Contact Us</h1>
-                        <ol class="breadcrumb">
-                            <li><a href={{ url('home') }}>Home</a></li>
-                            <li class="active">Contact Us</li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
 
     <section class="page-wrapper dark">
         <div class="contact-section">
             <div class="container">
                 <div class="row">
+                    <div class="title text-center white">
+                        <h2>Contact</h2>
+                    </div>
                     <!-- Contact Form -->
-                    <div class="contact-form col-md-6 background-white" >
-                        <h4 class="title text-center">Message</h4>
+                    <div class="contact-form col-md-12 background-white" >
 
                                 {{ form(contactMessageForm) }}
                     </div>
 
                     <!-- ./End Contact Form -->
-
-                    <!-- Contact Details -->
-                    <div class="contact-details col-md-6 background-white " >
-                        <h4 class="title text-center">Coordonnées</h4>
-                        <div class="google-map">
-                            <div id="map"></div>
-                        </div>
-                        <ul class="contact-short-info" >
-                            <li>
-                                <i class="tf-ion-ios-home"></i>
-                                <span>Une adresse </span>
-                            </li>
-                            <li>
-                                <i class="tf-ion-android-phone-portrait"></i>
-                                <span>Numero de tel</span>
-                            </li>
-                            <li>
-                                <i class="tf-ion-android-globe"></i>
-                                <span>Fax: </span>
-                            </li>
-                            <li>
-                                <i class="tf-ion-android-mail"></i>
-                                <span>Email: hello@example.com</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- / End Contact Details -->
-
-
-
                 </div> <!-- end row -->
             </div> <!-- end container -->
         </div>
