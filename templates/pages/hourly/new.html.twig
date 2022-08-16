@@ -1,0 +1,18 @@
+{% extends 'layout/admin.html.twig' %}
+
+{% block content %}
+    <section class="signin-page account dark">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="block">
+
+                        <h2 class="text-center">Encoder une nouvelle plage horaire </h2>
+                        {{ include('pages/hourly/_form.html.twig') }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+

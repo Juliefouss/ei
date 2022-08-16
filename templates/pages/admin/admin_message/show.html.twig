@@ -1,0 +1,46 @@
+{% extends 'layout/admin.html.twig' %}
+
+
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="total-order mt-20">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tbody>
+                        <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>email</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>{{ admin_message.name }}</td>
+                            <td>{{ admin_message.firstname }}</td>
+                            <td>{{ admin_message.email }}</td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="dashboard-wrapper user-dashboard">
+                <h2> Objet : {{ admin_message.subject }}</h2>
+                <div class="media-body">
+                    <h2>Message : </h2>
+                    <p>{{ admin_message.message }}</p>
+                </div>
+
+            </div>
+        </div>
+        <a href="{{ path('app_admin_message_index') }}">Retour</a>
+
+        {{ include('pages/admin/admin_message/_delete_form.html.twig') }}
+    </div>
+</div>
+
+{% endblock %}

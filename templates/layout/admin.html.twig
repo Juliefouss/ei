@@ -32,6 +32,10 @@
         <!-- Main Stylesheet -->
         <link rel="stylesheet" href={{ asset("css/style.css")}}>
 
+        <!--Librairie Font awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
     </head>
 
 {% endblock %}
@@ -72,18 +76,18 @@
                     <!--Apply--->
 
                     <li class="dropdown ">
-                        <a href="{{ url('admin-hourly') }}">Gérer </a>
+                        <a href="{{ url('app_hourly_index') }}">Gérer </a>
                     </li>
 
                     <!--Create a new Apply--->
 
                     <li class="dropdown ">
-                        <a href="{{ url('admin-newHourly') }}">Créer</a>
+                        <a href="{{ url('app_hourly_new') }}">Créer</a>
                     </li>
                     <!-- Message -->
 
                     <li class="dropdown ">
-                        <a href="{{ url('admin-message') }}">Messages</a>
+                        <a href="{{ url('app_admin_message_index') }}">Messages</a>
                     </li>
 
                     <!-- Consulter les profils des utilisateurs -->

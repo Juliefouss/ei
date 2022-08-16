@@ -1,0 +1,47 @@
+{% extends 'layout/admin.html.twig' %}
+
+
+{% block content %}
+
+    <section class="user-dashboard page-wrapper dark">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="dashboard-wrapper user-dashboard background-white">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>Nom</th>
+                                    <th>Prénom</th>
+                                    <th>Object</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for admin_message in admin_messages %}
+                                    <tr>
+                                        <td>{{ admin_message.name }}</td>
+                                        <td>{{ admin_message.firstname }}</td>
+                                        <td>{{ admin_message.subject }}</td>
+                                        <td>
+                                            <div class="btn-group" role="group">
+                                                <a href="{{ path('app_admin_message_show', {'id': admin_message.id}) }}"><button type="button" class="btn btn-default"><i class="fa-solid fa-eye"></i></button></a>
+                                                <a href="{{ path('app_admin_message_delete', {'id': admin_message.id}) }}"><button type="button" class="btn btn-default"><i class="tf-ion-close" aria-hidden="true"></i></button></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="6">no records found</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

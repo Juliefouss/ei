@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hourly{% endblock %}
+
+{% block body %}
+    <h1>Hourly</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ hourly.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ hourly.date ? hourly.date|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Hour</th>
+                <td>{{ hourly.hour }}</td>
+            </tr>
+            <tr>
+                <th>Hospital</th>
+                <td>{{ hourly.hospital }}</td>
+            </tr>
+            <tr>
+                <th>Service</th>
+                <td>{{ hourly.service }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_hourly_index') }}">back to list</a>
+
+    <a href="{{ path('app_hourly_edit', {'id': hourly.id}) }}">edit</a>
+
+    {{ include('pages/hourly/_delete_form.html.twig') }}
+{% endblock %}

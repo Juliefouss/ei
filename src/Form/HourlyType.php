@@ -3,7 +3,6 @@
 namespace App\Form;
 
 use App\Entity\Hourly;
-use App\Entity\Time;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -46,7 +45,7 @@ class HourlyType extends AbstractType
                     'Pediatrie'=>'Pédiatrie'
                 ]
             ])
-            ->add('submit', SubmitType::class, ['label'=>'Ajouter'])
+            ->add('submit', SubmitType::class, ['label'=>'Envoyer'])
         ;
     }
 

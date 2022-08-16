@@ -9,8 +9,8 @@
                 <p> Horaire: {{ hourly.hour }}</p>
                 <p>Service: {{ hourly.service }}</p>
                 {% if is_granted("ROLE_ADMIN") %}
-                    <p>modifier</p>
-                    <p>supprimer</p>
+                    <a href="{{ path('app_hourly_edit', {'id': hourly.id}) }}">Modifier</a>
+                    {{ include('pages/hourly/_delete_form.html.twig') }}
                 {% elseif is_granted("ROLE_USER") %}
                 <p>Postuler</p>
                 {% endif %}

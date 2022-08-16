@@ -11,54 +11,29 @@
                             <table class="table">
                                 <thead>
                                 <tr>
-                                    <th>Company</th>
-                                    <th>Name</th>
-                                    <th>Address</th>
-                                    <th>Country</th>
-                                    <th class="col-md-2 col-sm-3">Phone</th>
+                                    <th>Nom</th>
+                                    <th>Prénom</th>
+                                    <th>email</th>
+                                    <th>Message</th>
                                     <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
+                                {% for userMessage in userMessages%}
                                 <tr>
-                                    <td>Nokia</td>
-                                    <td>Adam Smith</td>
-                                    <td>9/4 C Babor Road, Mohammad Pur, Dhaka</td>
-                                    <td>Bangladesh</td>
-                                    <td>+884 5452 6452</td>
+                                    <td> {{userMessage.name}} </td>
+                                    <td> {{userMessage.firstname }}</td>
+                                    <td> {{userMessage.email }}</td>
+                                    <td> {{userMessage.message }}</td>
                                     <td>
                                         <div class="btn-group" role="group">
-                                            <button type="button" class="btn btn-default"><i class="tf-pencil2" aria-hidden="true"></i></button>
+                                            <button type="button" class="btn btn-default"><i class="tf-pencil2" aria-hidden="true"></i>{{ url() }}</button>
                                             <button type="button" class="btn btn-default"><i class="tf-ion-close" aria-hidden="true"></i></button>
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>Samsung</td>
-                                    <td>Adam Smith</td>
-                                    <td>9/4 C Babor Road, Mohammad Pur, Dhaka</td>
-                                    <td>Bangladesh</td>
-                                    <td>+884 5452 6452</td>
-                                    <td>
-                                        <div class="btn-group" role="group">
-                                            <button type="button" class="btn btn-default"><i class="tf-pencil2" aria-hidden="true"></i></button>
-                                            <button type="button" class="btn btn-default"><i class="tf-ion-close" aria-hidden="true"></i></button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Motorola</td>
-                                    <td>Adam Smith</td>
-                                    <td>9/4 C Babor Road, Mohammad Pur, Dhaka</td>
-                                    <td>Bangladesh</td>
-                                    <td>+884 5452 6452</td>
-                                    <td>
-                                        <div class="btn-group" role="group">
-                                            <button type="button" class="btn btn-default"><i class="tf-pencil2" aria-hidden="true"></i></button>
-                                            <button type="button" class="btn btn-default"><i class="tf-ion-close" aria-hidden="true"></i></button>
-                                        </div>
-                                    </td>
-                                </tr>
+                                {% endfor %}
+
                                 </tbody>
                             </table>
                         </div>

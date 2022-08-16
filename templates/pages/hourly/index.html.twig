@@ -1,0 +1,23 @@
+{% extends 'layout/admin.html.twig' %}
+
+{% block content %}
+
+    <section>
+        <div class="product-section dark">
+            <div class="container">
+                <h2 class="title text-center white">Les annonces</h2>
+                {% for hourly in hourlies %}
+                    {% if loop.index0 % 3==0 %}
+                        <div class="row">
+                    {% endif %}
+                    {% include 'pages/include/hourly-include.html.twig' %}
+                    {% if loop.index0 % 3==2 %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            {{ knp_pagination_render(hourlies) }}
+        </div>
+    </section>
+
+{% endblock %}

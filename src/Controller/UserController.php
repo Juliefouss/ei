@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Form\UserRegisterType;
 use App\Repository\HourlyRepository;
+use App\Repository\UserMessageRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -32,8 +33,13 @@ class UserController extends AbstractController
 
     #[Route(path: 'user_message', name: 'user-message')]
 
-    public function user_message(): Response{
-        return $this-> render('pages/users/user-message.html.twig');
+    public function user_message( Request $request, UserMessageRepository $userMessageRepository, PaginatorInterface $paginator): Response{
+        $userMessages = $userMessageRepository->findAll();
+        $userMessages = $paginator->paginate(
+            $userMessages,
+            $request->query->getInt('pages', 1),5
+        );
+        return $this-> render('pages/users/user-message.html.twig', ['userMessages'=>$userMessages]);
     }
 
     #[Route(path: 'user_profile', name: 'user-profile')]
@@ -56,5 +62,6 @@ class UserController extends AbstractController
 
         return $this->render('pages/users/user-edit-profil.html.twig', ['registerType' => $form->createView()]);
     }
+
 
 }
