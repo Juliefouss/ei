@@ -1,0 +1,17 @@
+{% extends 'layout/user.html.twig' %}
+
+{% block content %}
+    <section>
+        <div class="container">
+            <div class="row">
+                {% set searchForm = getSearchForm() %}
+                {{ form_start(searchForm) }}
+                {{ form_widget(searchForm.specializations) }}
+                <button class="p-color-bg"><i class="fa fa-search" aria-hidden="true"></i></button>
+                {{ form_end(searchForm) }}
+
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

@@ -8,8 +8,8 @@
                 <div class="col-md-6 col-md-offset-3">
                     <div class="block">
 
-                       <p>coucou</p>
-
+                            {{ include('pages/users/user_profile/_form.html.twig', {'button_label': 'Update'}) }}
+                            <a href="{{ path('app_user_profile_index') }}">Retour</a>
                     </div>
                 </div>
             </div>
@@ -19,3 +19,6 @@
 
 {% endblock %}
 
+
+{#    {{ include('pages/users/user_profile/_delete_form.html.twig') }}#}
+{#{% endblock %}#}

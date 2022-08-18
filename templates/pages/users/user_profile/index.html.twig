@@ -8,19 +8,18 @@
                     <div class="dashboard-wrapper dashboard-user-profile background-white">
                         <div class="media">
                             <div class="pull-left text-center" href="#!">
-                                <img class="media-object user-img" src="images/avater.jpg" alt="Image">
+{#                                <img class="media-object user-img" src="{{ asset('uploads/'~app.user.photo.url) }}" alt="Image de profil">#}
                                 <a href="#x" class="btn btn-transparent mt-20">Change Image</a>
                             </div>
                             <div class="media-body">
                                 <ul class="user-profile-list">
-                                    <li><span>Id:</span> {{ app.user.id }}</li>
                                     <li><span>Nom:</span> {{ app.user.name }}</li>
                                     <li><span>Prénom:</span> {{ app.user.firstname }}</li>
                                     <li><span>Email:</span>{{ app.user.email }}</li>
                                     <li><span>Specialisation:</span>{{ app.user.specialization }}</li>
                                     <li><span>Numéro Inami:</span>{{ app.user.inamiNumber }}</li>
                                 </ul>
-                                <a class="text-center" href="{{ url('user-edit-profil', {id: app.user.id }) }}">Modifier</a>
+                                <a class="text-center" href="{{ url('app_user_profile_edit', {id: app.user.id }) }}">Modifier</a>
                             </div>
 
                         </div>
@@ -31,5 +30,4 @@
     </section>
 
 {% endblock %}
-
 

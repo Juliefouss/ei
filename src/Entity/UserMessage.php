@@ -25,6 +25,9 @@ class UserMessage
     #[ORM\Column(type: 'string', length: 255)]
     private ?string $message;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $Subject;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -74,6 +77,18 @@ class UserMessage
     public function setMessage(string $message): self
     {
         $this->message = $message;
+
+        return $this;
+    }
+
+    public function getSubject(): ?string
+    {
+        return $this->Subject;
+    }
+
+    public function setSubject(string $Subject): self
+    {
+        $this->Subject = $Subject;
 
         return $this;
     }

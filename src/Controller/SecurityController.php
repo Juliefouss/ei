@@ -2,10 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Photo;
 use App\Entity\User;
 use App\Form\UserRegisterType;
+use App\Service\PhotoUploader;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -14,19 +17,23 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
 {
-    #[Route(path: '/register' , name: 'register')]
-    public function register (Request $request, EntityManagerInterface $em, UserPasswordHasherInterface $passwordHasher): Response{
-       $user = new User();
-       $form = $this->createForm(UserRegisterType::class, $user);
-       $form->handleRequest($request);
-       if ($form->isSubmitted() && $form->isValid()){
-           $user->setPassword($passwordHasher->hashPassword($user,$user->getPassword()));
-           $user->setRoles(['ROLE_USER']);
-           $em->persist($user);
-           $em->flush();
-           return $this->redirectToRoute('app_login');
-       }
-       return $this->render('security/register.html.twig', ['registerForm' => $form->createView()]);
+    #[Route(path: '/register', name: 'register')]
+    public function register(Request $request, EntityManagerInterface $em, UserPasswordHasherInterface $passwordHasher, PhotoUploader $photoUploader): Response
+    {
+            $user = new User();
+            $photo = new Photo();
+        $form = $this->createForm(UserRegisterType::class, $user);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user->setPassword($passwordHasher->hashPassword($user, $user->getPassword()));
+            $user->setRoles(['ROLE_USER']);
+            $photoUploader->uploadPhoto($form);
+            $em->persist($user);
+            $em->persist($photo);
+            $em->flush();
+            return $this->redirectToRoute('app_login');
+        }
+        return $this->render('security/register.html.twig', ['registerForm' => $form->createView()]);
     }
 
     #[Route(path: '/login', name: 'app_login')]

@@ -19,10 +19,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $email;
 
     #[ORM\Column(type: 'json')]
-    private $roles = [];
+    private array $roles = [];
 
     #[ORM\Column(type: 'string')]
-    private $password;
+    private string $password;
 
     #[ORM\Column(type: 'string', length: 255)]
     private $name;
@@ -31,16 +31,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $firstname;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $username;
+    private ?string $username;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $job;
+    private ?string $job;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $specialization;
+    private ?string $specialization;
 
     #[ORM\Column(type: 'integer')]
-    private $inami_number;
+    private ?int $inami_number;
+
+    #[ORM\OneToOne(inversedBy: 'user', targetEntity: photo::class, cascade: ['persist', 'remove'])]
+    private $photo;
 
     public function getId(): ?int
     {
@@ -177,10 +180,24 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->inami_number;
     }
 
-    public function setInamiNumber(int $inami_number): self
+    public function setInamiNumber (int $inami_number): self
     {
         $this->inami_number = $inami_number;
 
         return $this;
     }
+
+    public function getPhoto(): ?photo
+    {
+        return $this->photo;
+    }
+
+    public function setPhoto(?photo $photo): self
+    {
+        $this->photo = $photo;
+
+        return $this;
+    }
+
+
 }

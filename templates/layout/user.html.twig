@@ -16,7 +16,7 @@
         <meta name="generator" content="Themefisher Constra HTML Template v1.0">
 
         <!-- Favicon -->
-        {#    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />#}
+{#            <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />#}
 
         <!-- Themefisher Icon font -->
         <link rel="stylesheet" href={{ asset ("plugins/themefisher-font/style.css")}}>
@@ -31,6 +31,10 @@
 
         <!-- Main Stylesheet -->
         <link rel="stylesheet" href={{ asset("css/style.css")}}>
+
+        <!--Librairie Font awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 
     </head>
 
@@ -77,13 +81,13 @@
                     <!-- Message -->
 
                     <li class="dropdown ">
-                        <a href="{{ url('user-message') }}">Messages</a>
+                        <a href="{{ url('app_user_message_index') }}">Messages</a>
                     </li>
 
                     <!-- Profil -->
 
                     <li class="dropdown ">
-                        <a href="{{ url('user-profile') }}">Mon profil</a>
+                        <a href="{{ url('app_user_profile_index'  , {'id': app.user.id}) }}">Mon profil</a>
                     </li>
 
                     <!-- Deconnexion -->
