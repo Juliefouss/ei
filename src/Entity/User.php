@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Entity;
 
 use App\Repository\UserRepository;
@@ -42,8 +43,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'integer')]
     private ?int $inami_number;
 
-    #[ORM\OneToOne(inversedBy: 'user', targetEntity: photo::class, cascade: ['persist', 'remove'])]
-    private $photo;
 
     public function getId(): ?int
     {
@@ -186,18 +185,5 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
-
-    public function getPhoto(): ?photo
-    {
-        return $this->photo;
-    }
-
-    public function setPhoto(?photo $photo): self
-    {
-        $this->photo = $photo;
-
-        return $this;
-    }
-
 
 }

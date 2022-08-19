@@ -44,7 +44,7 @@ class UserRegisterType extends AbstractType
                 'first_options'  => ['label' => 'Mot de passe'],
                 'second_options' => ['label' => 'Repeter votre mot de passe'],
             ])
-            ->add('photo', PhotoType::class, ['label'=> 'Photo de profil'])
+//            ->add('photo', PhotoType::class, ['label'=> 'Photo de profil'])
             ->add('submit', SubmitType::class, ['label'=> 'Envoyer'])
         ;
 

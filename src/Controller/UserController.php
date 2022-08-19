@@ -27,11 +27,11 @@ class UserController extends AbstractController
         return $this->render('pages/users/user-apply.html.twig', ['hourlies'=>$hourlies]);
     }
 
-    #[Route(path : '/user_search', name: 'user-search')]
-
-    public function userSearch(): Response{
-        return $this->render('pages/users/user-search.html.twig');
-    }
+//    #[Route(path : '/user_search', name: 'user-search')]
+//
+//    public function userSearch(): Response{
+//        return $this->render('pages/users/user-search.html.twig');
+//    }
 
 
 

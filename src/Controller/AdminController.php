@@ -2,12 +2,9 @@
 
 namespace App\Controller;
 
-use App\Entity\Hourly;
-use App\Form\HourlyType;
-use App\Repository\AdminMessageRepository;
-use App\Repository\HourlyRepository;
-use Doctrine\ORM\EntityManagerInterface;
-use Knp\Component\Pager\PaginatorInterface;
+use App\Repository\UserRepository;
+use App\Search\Admin\SearchUser;
+use App\Search\Admin\UserSearchType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -40,6 +37,23 @@ class AdminController extends AbstractController
     public function admin_users(): Response
     {
         return $this->render('pages/admin/admin-users.html.twig');
+    }
+
+
+    #[Route(path : '/admin-SearchUser', name: 'admin-search')]
+
+    public function adminSearch( Request $request, UserRepository $userRepository): Response{
+
+        $searchUser = new SearchUser();
+        $form = $this->createForm(UserSearchType::class, $searchUser);
+        $form->handleRequest($request);
+        $result =[];
+        if ($form->isSubmitted() && $form->isValid()){
+            $result = $userRepository->findBySearch($searchUser);
+
+        }
+        return $this->render('pages/admin/searchUser.html.twig', ['users'=>$result]);
+
     }
 
 

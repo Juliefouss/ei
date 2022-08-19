@@ -27,7 +27,7 @@ class UserProfileController extends AbstractController
      * @throws NonUniqueResultException
      */
     #[Route('/{id}/edit', name: 'app_user_profile_edit', methods: ['GET', 'POST'])]
-    public function edit( int $id, Request $request, User $user, UserRepository $userRepository, EntityManagerInterface $em, PhotoUploader $photoUploader): Response
+    public function edit( int $id, Request $request, User $user, UserRepository $userRepository, EntityManagerInterface $em): Response
 
     {
         $user =$userRepository->findById($id);

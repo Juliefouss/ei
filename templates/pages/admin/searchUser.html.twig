@@ -11,12 +11,10 @@
                             <div class="widget widget-subscription">
                                 <h4 class="widget-title">Rechercher un médecin</h4>
                             </div>
-                            <form>
                                 {% set searchForm = getSearchForm() %}
                                 {{ form_start(searchForm) }}
                                 {{ form_widget(searchForm.keyword) }}
                                 {{ form_end(searchForm) }}
-                            </form>
                         </aside>
                     </div>
                     <div class="col-md-8">

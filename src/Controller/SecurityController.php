@@ -18,18 +18,15 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class SecurityController extends AbstractController
 {
     #[Route(path: '/register', name: 'register')]
-    public function register(Request $request, EntityManagerInterface $em, UserPasswordHasherInterface $passwordHasher, PhotoUploader $photoUploader): Response
+    public function register(Request $request, EntityManagerInterface $em, UserPasswordHasherInterface $passwordHasher): Response
     {
             $user = new User();
-            $photo = new Photo();
         $form = $this->createForm(UserRegisterType::class, $user);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $user->setPassword($passwordHasher->hashPassword($user, $user->getPassword()));
             $user->setRoles(['ROLE_USER']);
-            $photoUploader->uploadPhoto($form);
             $em->persist($user);
-            $em->persist($photo);
             $em->flush();
             return $this->redirectToRoute('app_login');
         }

@@ -2,19 +2,19 @@
 
 namespace App\Twig;
 
-use App\Search\SearchFormGenerator;
+use App\Search\Admin\SearchUsersFormGenerator;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
 class MyTwigExtension extends AbstractExtension
 {
 
-    private SearchFormGenerator $searchFormGenerator;
+    private SearchUsersFormGenerator $searchFormGenerator;
 
     /**
-     * @param SearchFormGenerator $searchFormGenerator
+     * @param SearchUsersFormGenerator $searchFormGenerator
      */
-    public function __construct(SearchFormGenerator $searchFormGenerator)
+    public function __construct(SearchUsersFormGenerator $searchFormGenerator)
     {
         $this->searchFormGenerator = $searchFormGenerator;
     }
