@@ -2,7 +2,10 @@
 
 namespace App\Form;
 
+use App\Entity\Hospital;
 use App\Entity\Hourly;
+use App\Entity\Service;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -28,23 +31,8 @@ class HourlyType extends AbstractType
                     '22h00-8h30'=>'22h00-8h30'
 
                 ]])
-            ->add('hospital', ChoiceType::class, [
-                'label'=>'Hôpital',
-                'choices'=>[
-                    'Centre hospitalier Java'=>'Centre hospitalier Java',
-                    'Php clinic'=> 'Php clinic',
-                    'CHTM'=>'CHTML'
-                ]
-            ])
-            ->add('service', ChoiceType::class,[
-                'label'=>'Service',
-                'choices'=> [
-                    'Cardiologie'=> 'cardiologie',
-                    'Neurologie'=>'Neurologie',
-                    'Urgences'=>'Urgences',
-                    'Pediatrie'=>'Pédiatrie'
-                ]
-            ])
+            ->add('service', EntityType::class, ['class' => Service::class])
+            ->add('hospital', EntityType::class, ['class' => Hospital::class])
             ->add('submit', SubmitType::class, ['label'=>'Envoyer'])
         ;
     }

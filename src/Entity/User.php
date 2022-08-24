@@ -43,6 +43,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'integer')]
     private ?int $inami_number;
 
+    #[ORM\OneToOne(inversedBy: 'user', targetEntity: Photo::class, cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(nullable: false)]
+    private $photo;
+
 
     public function getId(): ?int
     {
@@ -68,7 +72,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getUserIdentifier(): string
     {
-        return (string) $this->email;
+        return (string)$this->email;
     }
 
     /**
@@ -179,11 +183,23 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->inami_number;
     }
 
-    public function setInamiNumber (int $inami_number): self
+    public function setInamiNumber(int $inami_number): self
     {
         $this->inami_number = $inami_number;
 
         return $this;
     }
 
+    public function getPhoto(): ?Photo
+    {
+        return $this->photo;
+    }
+
+    public function setPhoto(Photo $photo): self
+    {
+        $this->photo = $photo;
+
+        return $this;
+    }
 }
+

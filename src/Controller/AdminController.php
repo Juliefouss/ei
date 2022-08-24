@@ -2,9 +2,14 @@
 
 namespace App\Controller;
 
+use App\Entity\Hospital;
+use App\Entity\Service;
+use App\Form\HospitalType;
+use App\Form\ServiceType;
 use App\Repository\UserRepository;
 use App\Search\Admin\SearchUser;
-use App\Search\Admin\UserSearchType;
+use App\Search\Admin\SearchUserType;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,47 +22,47 @@ class AdminController extends AbstractController
         return $this->render('pages/admin/admin-home.html.twig');
     }
 
-//
-//    #[Route(path: '/admin_newHourly', name: 'admin-newHourly')]
-//    public function admin_newApply(Request $request, EntityManagerInterface $em): Response{
-//        $hourly = new Hourly();
-//        $form = $this->createForm(HourlyType::class, $hourly);
-//        $form->handleRequest($request);
-//        if ($form->isSubmitted()&&$form->isValid()) {
-//            $em->persist((object)$hourly);
-//            $em->flush();
-//            return $this->redirectToRoute ('admin-hourly');
-//        }
-//
-//        return $this->render('pages/admin/admin-newHourly.html.twig', ['HourlyForm'=>$form->createView()]);
-//    }
 
+    #[Route(path : '/admin_SearchUser', name: 'admin-searchUser')]
 
-    #[Route(path: '/admin_users', name: 'admin-users')]
-    public function admin_users(): Response
-    {
-        return $this->render('pages/admin/admin-users.html.twig');
-    }
-
-
-    #[Route(path : '/admin-SearchUser', name: 'admin-search')]
-
-    public function adminSearch( Request $request, UserRepository $userRepository): Response{
+    public function adminSearchUser( Request $request, UserRepository $userRepository): Response{
 
         $searchUser = new SearchUser();
-        $form = $this->createForm(UserSearchType::class, $searchUser);
+        $form = $this->createForm(SearchUserType::class, $searchUser);
         $form->handleRequest($request);
         $result =[];
         if ($form->isSubmitted() && $form->isValid()){
             $result = $userRepository->findBySearch($searchUser);
-
         }
         return $this->render('pages/admin/searchUser.html.twig', ['users'=>$result]);
 
     }
 
+    #[Route (path: '/adminAddHospital', name: 'adminAddHospital')]
+    public function adminAddHospital(Request $request,EntityManagerInterface $em):Response{
+        $hospital = new Hospital();
+        $form = $this->createForm(HospitalType::class, $hospital);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()){
+            $em->persist($hospital);
+            $em->flush();
+            return $this->redirectToRoute('admin-home');
+        }
+        return $this->render('pages/admin/addNewHospital.html.twig', ['hospitalForm' =>$form->createView()]);
 
+    }
 
+    #[Route(path: '/adminAddService', name: 'adminAddService')]
+    public function adminAddService(Request $request, EntityManagerInterface $em):Response{
+        $service = new Service();
+        $form = $this->createForm(ServiceType::class, $service);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()){
+            $em->persist($service);
+            $em->flush();
+            return $this->redirectToRoute('app_hourly_new');
+        }
+        return $this->render('pages/admin/addNewService.html.twig', ['serviceForm' =>$form->createView()]);
 
-
+    }
 }

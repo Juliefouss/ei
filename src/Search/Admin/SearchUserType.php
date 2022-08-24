@@ -2,12 +2,12 @@
 
 namespace App\Search\Admin;
 
-use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class UserSearchType extends AbstractType
+class SearchUserType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -15,6 +15,15 @@ class UserSearchType extends AbstractType
             ->add('keyword')
             ->add('submit', SubmitType::class, ['label'=>'chercher'])
         ;
+    }
+
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults([
+            'method' => 'GET',
+            'csrf_protection'=> false,
+            'data_class' => SearchUser::class,
+        ]);
     }
 
 

@@ -2,27 +2,32 @@
 
 namespace App\Twig;
 
-use App\Search\Admin\SearchUsersFormGenerator;
+use App\Search\Admin\SearchUserFormGenerator;
+use App\Search\User\HourlySearchFormGenerator;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
 class MyTwigExtension extends AbstractExtension
 {
 
-    private SearchUsersFormGenerator $searchFormGenerator;
+    private SearchUserFormGenerator $searchUserFormGenerator;
+    private HourlySearchFormGenerator $hourlySearchFormGenerator;
 
     /**
-     * @param SearchUsersFormGenerator $searchFormGenerator
+     * @param SearchUserFormGenerator $searchUserFormGenerator
+     * @param HourlySearchFormGenerator $hourlySearchFormGenerator
      */
-    public function __construct(SearchUsersFormGenerator $searchFormGenerator)
+    public function __construct(SearchUserFormGenerator $searchUserFormGenerator, HourlySearchFormGenerator $hourlySearchFormGenerator)
     {
-        $this->searchFormGenerator = $searchFormGenerator;
+        $this->searchUserFormGenerator = $searchUserFormGenerator;
+        $this->hourlySearchFormGenerator = $hourlySearchFormGenerator;
     }
 
     public function getFunctions(): array
     {
         return [
-            new TwigFunction('getSearchForm', [$this->searchFormGenerator,'getSearchForm'])
+            new TwigFunction('getSearchUserForm', [$this->searchUserFormGenerator,'getSearchUserForm']),
+            new TwigFunction('getHourlySearchForm', [$this->hourlySearchFormGenerator, 'getHourlySearchForm'])
         ];
     }
 

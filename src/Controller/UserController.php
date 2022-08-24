@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Repository\HourlyRepository;
+use App\Search\User\HourlySearch;
+use App\Search\User\HourlySearchType;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,13 +29,21 @@ class UserController extends AbstractController
         return $this->render('pages/users/user-apply.html.twig', ['hourlies'=>$hourlies]);
     }
 
-//    #[Route(path : '/user_search', name: 'user-search')]
-//
-//    public function userSearch(): Response{
-//        return $this->render('pages/users/user-search.html.twig');
-//    }
 
 
+    #[Route (path: '/hourly_search', name: 'hourly-search')]
+
+    public function hourly_search( Request $request, HourlyRepository $hourlyRepository, PaginatorInterface $paginator):Response
+    {
+        $hourlySearch = new HourlySearch();
+        $form = $this->createForm(HourlySearchType::class, $hourlySearch);
+        $form->handleRequest($request);
+        $result = [];
+        if ($form->isSubmitted() && $form->isValid()) {
+            $result = $hourlyRepository->findBySearch($hourlySearch);
+        }
+        return $this->render('pages/hourly/show.html.twig', ['hourlies' => $result]);
+    }
 
 
 }

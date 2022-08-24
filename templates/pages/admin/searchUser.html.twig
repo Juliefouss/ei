@@ -11,10 +11,11 @@
                             <div class="widget widget-subscription">
                                 <h4 class="widget-title">Rechercher un médecin</h4>
                             </div>
-                                {% set searchForm = getSearchForm() %}
-                                {{ form_start(searchForm) }}
-                                {{ form_widget(searchForm.keyword) }}
-                                {{ form_end(searchForm) }}
+                                {% set searchUserForm = getSearchUserForm() %}
+                                {{ form_start(searchUserForm) }}
+                                {{ form_widget(searchUserForm.keyword) }}
+                                {{ form_end(searchUserForm) }}
+
                         </aside>
                     </div>
                     <div class="col-md-8">
@@ -28,12 +29,12 @@
                                     </div>
                                     <div class="media-body">
                                         <ul class="user-profile-list">
-                                            <li><span>Nom:</span> {{ app.user.name }}</li>
-                                            <li><span>Prénom:</span> {{ app.user.firstname }}</li>
-                                            <li><span>Email:</span>{{ app.user.email }}</li>
-                                            <li><span>Specialisation:</span>{{ app.user.specialization }}
+                                            <li><span>Nom:</span> {{ user.name }}</li>
+                                            <li><span>Prénom:</span> {{ user.firstname }}</li>
+                                            <li><span>Email:</span>{{ user.email }}</li>
+                                            <li><span>Specialisation:</span>{{ user.specialization }}
                                             </li>
-                                            <li><span>Numéro Inami:</span>{{ app.user.inamiNumber }}</li>
+                                            <li><span>Numéro Inami:</span>{{ user.inamiNumber }}</li>
                                         </ul>
                                     </div>
                                 </div>

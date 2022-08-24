@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Hourly;
+use App\Search\User\HourlySearch;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -63,4 +64,50 @@ class HourlyRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+    /**
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function findById($id): Hourly {
+        $qb = $this->createQueryBuilder('a')
+            ->where('a.id=:id')
+            ->setParameter('id', $id)
+        ;
+        return $qb->getQuery()->getOneOrNullResult();
+    }
+
+
+
+    public function findAllWithServices() {
+        $qb = $this->createQueryBuilder('a')
+            ->leftJoin('a.Service', 'b')
+            ->addSelect('b');
+
+        return $qb->getQuery()->getResult();
+    }
+
+    public function findAllWithHospital(){
+        $qb=$this->createQueryBuilder('b')
+            ->leftJoin('b.Hospital', 'c')
+            ->addSelect('c');
+        return $qb->getQuery()->getResult();
+    }
+
+    public function findBySearch(HourlySearch $hourlySearch)
+    {
+        $qb = $this->createQueryBuilder('a');
+
+        if (count($hourlySearch->getHospitals())) {
+            $qb->andWhere('a.Hospital in (:hospitals)')
+                ->setParameter('hospitals', $hourlySearch->getHospitals());
+        }
+
+        if (count($hourlySearch->getServices())){
+            $qb->andWhere('a.Service in (:services)')
+                ->setParameter('services', $hourlySearch->getServices());
+        }
+
+        return $qb->getQuery()->getResult();
+    }
+
+
 }

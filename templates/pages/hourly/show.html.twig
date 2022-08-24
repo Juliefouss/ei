@@ -1,38 +1,40 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout/user.html.twig' %}
 
-{% block title %}Hourly{% endblock %}
+{% block content %}
 
-{% block body %}
-    <h1>Hourly</h1>
+    <section>
+        <div class="page-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <aside class="sidebar">
+                            <div class="widget widget-subscription">
+                                <h4 class="widget-title">Rechercher un horaire</h4>
+                            </div>
+                            {% set HourlySearchForm = getHourlySearchForm() %}
+                            {{ form_start(HourlySearchForm) }}
+                            {{ form_end(HourlySearchForm) }}
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ hourly.id }}</td>
-            </tr>
-            <tr>
-                <th>Date</th>
-                <td>{{ hourly.date ? hourly.date|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Hour</th>
-                <td>{{ hourly.hour }}</td>
-            </tr>
-            <tr>
-                <th>Hospital</th>
-                <td>{{ hourly.hospital }}</td>
-            </tr>
-            <tr>
-                <th>Service</th>
-                <td>{{ hourly.service }}</td>
-            </tr>
-        </tbody>
-    </table>
+                        </aside>
+                    </div>
+                    <div class="col-md-8 dark">
+                        <h2 class="title text-center white">Les annonces</h2>
+                        {% for hourly in hourlies %}
+                            {% if loop.index0 % 3==0 %}
+                                <div class="row">
+                            {% endif %}
+                            {% include 'pages/include/hourly-include.html.twig' %}
+                            {% if loop.index0 % 3==3 %}
+                                </div>
+                            {% endif %}
+                        {% else %}
+                            <h5 class="white"> Aucun résultat</h5>
+                        {% endfor %}
+                    </div>
+{#                    {{ knp_pagination_render(hourlies) }}#}
+                </div>
 
-    <a href="{{ path('app_hourly_index') }}">back to list</a>
-
-    <a href="{{ path('app_hourly_edit', {'id': hourly.id}) }}">edit</a>
-
-    {{ include('pages/hourly/_delete_form.html.twig') }}
+            </div>
+        </div>
+    </section>
 {% endblock %}

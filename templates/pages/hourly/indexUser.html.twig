@@ -3,20 +3,38 @@
 {% block content %}
 
     <section>
-        <div class="product-section dark">
+        <div class="page-wrapper">
             <div class="container">
-                <h2 class="title text-center white">Les annonces</h2>
-                {% for hourly in hourlies %}
-                    {% if loop.index0 % 3==0 %}
-                        <div class="row">
-                    {% endif %}
-                    {% include 'pages/include/hourly-include.html.twig' %}
-                    {% if loop.index0 % 3==2 %}
-                        </div>
-                    {% endif %}
-                {% endfor %}
+                <div class="row">
+                    <div class="col-md-4">
+                        <aside class="sidebar">
+                            <div class="widget widget-subscription">
+                                <h4 class="widget-title">Rechercher un horaire</h4>
+                            </div>
+                            {% set HourlySearchForm = getHourlySearchForm() %}
+                            {{ form_start(HourlySearchForm) }}
+                            {{ form_end(HourlySearchForm) }}
+
+                        </aside>
+                    </div>
+                    <div class="col-md-8 dark">
+                        <h2 class="title text-center white">Les annonces</h2>
+                        {% for hourly in hourlies %}
+                            {% if loop.index0 % 3==0 %}
+                                <div class="row">
+                            {% endif %}
+                            {% include 'pages/include/hourly-include.html.twig' %}
+                            {% if loop.index0 % 3==3 %}
+                                </div>
+                            {% endif %}
+                        {% else %}
+                            <h5 class="white"> Aucun résultat</h5>
+                        {% endfor %}
+                    </div>
+                                        {{ knp_pagination_render(hourlies) }}
+                </div>
+
             </div>
-            {{ knp_pagination_render(hourlies) }}
         </div>
     </section>
 

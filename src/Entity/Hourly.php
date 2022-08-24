@@ -19,69 +19,86 @@ class Hourly
     #[ORM\Column(type: 'string', length: 255)]
     private $hour;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $hospital;
+    #[ORM\ManyToOne(targetEntity: Service::class, inversedBy: 'hourlies')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Service $Service;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $service;
+    #[ORM\ManyToOne(targetEntity: Hospital::class, inversedBy: 'hourlies')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Hospital $Hospital;
 
-    public function getId(): ?int
+    /**
+     * @return mixed
+     */
+    public function getId()
     {
         return $this->id;
     }
 
-    public function getDate(): ?\DateTimeInterface
+    /**
+     * @param mixed $id
+     */
+    public function setId($id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDate()
     {
         return $this->date;
     }
 
-    public function setDate(\DateTimeInterface $date): self
+    /**
+     * @param mixed $date
+     */
+    public function setDate($date): void
     {
         $this->date = $date;
-
-        return $this;
     }
 
-    public function getHour(): ?string
+    /**
+     * @return mixed
+     */
+    public function getHour()
     {
         return $this->hour;
     }
 
-    public function setHour(string $hour): self
+    /**
+     * @param mixed $hour
+     */
+    public function setHour($hour): void
     {
         $this->hour = $hour;
+    }
+
+    public function getService(): ?Service
+    {
+        return $this->Service;
+    }
+
+    public function setService(?Service $Service): self
+    {
+        $this->Service = $Service;
 
         return $this;
     }
 
-    public function getHospital(): ?string
+    public function getHospital(): ?Hospital
     {
-        return $this->hospital;
+        return $this->Hospital;
     }
 
-    public function setHospital(string $hospital): self
+    public function setHospital(?Hospital $Hospital): self
     {
-        $this->hospital = $hospital;
-
-        return $this;
-    }
-
-    public function getService(): ?string
-    {
-        return $this->service;
-    }
-
-    public function setService(string $service): self
-    {
-        $this->service = $service;
+        $this->Hospital = $Hospital;
 
         return $this;
     }
 
 
-    public function __toString()
-    {
-        return $this->date;
-    }
 
 }
