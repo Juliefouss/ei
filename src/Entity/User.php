@@ -34,8 +34,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 255)]
     private ?string $username;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private ?string $job;
 
     #[ORM\Column(type: 'string', length: 255)]
     private ?string $specialization;
@@ -150,18 +148,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setUsername(string $username): self
     {
         $this->username = $username;
-
-        return $this;
-    }
-
-    public function getJob(): ?string
-    {
-        return $this->job;
-    }
-
-    public function setJob(string $job): self
-    {
-        $this->job = $job;
 
         return $this;
     }

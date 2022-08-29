@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Photo;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -63,4 +64,16 @@ class PhotoRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+    /**
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function findById(int $id): Photo
+
+    {
+        $qb = $this->createQueryBuilder('a')
+            ->where('a.id=:id')
+            ->setParameter('id', $id);
+        return $qb->getQuery()->getOneOrNullResult();
+    }
+
 }

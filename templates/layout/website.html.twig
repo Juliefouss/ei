@@ -1,0 +1,64 @@
+{% extends 'layout/basic.html.twig' %}
+
+{% block navigation %}
+
+    <!-- Main Menu Section -->
+    <section class="menu">
+        <nav class="navbar navigation">
+            <div class="container">
+                <!-- Navbar Links -->
+                <div id="navbar" class="navbar-collapse collapse text-center">
+                    <ul class="nav navbar-nav">
+
+                        <!-- Home -->
+                        <li class="dropdown ">
+                            <a href="{{ url('home') }}" >Home</a>
+                        </li><!-- / Home -->
+
+                        <!--About--->
+
+                        <li class="dropdown ">
+                            <a href="{{ url('about') }}">About</a>
+                        </li>
+
+                        <!--Contact--->
+
+                        <li class="dropdown ">
+                            <a href="{{ url('contact') }}">Contact Us</a>
+                        </li>
+                        <!-- Inscription -->
+
+                        <li class="dropdown ">
+                            <a href="{{ url('register') }}">Inscription</a>
+                        </li>
+
+                        <!-- Connexion ou déconnexion  -->
+                        {% if app.user %}
+                            <li class="dropdown">
+                                {% if is_granted("ROLE_ADMIN") %}
+                                    <a  href="{{ url('admin-home') }}"><i class="fa-solid fa-user"></i></a>
+                                {% elseif is_granted("ROLE_USER") %}
+                                    <a  href="{{ url('user-home') }}"><i class="fa-solid fa-user"></i></a>
+                                {% endif %}
+                                <a  href="{{ url('app_logout') }}"><i class="fa-solid fa-right-from-bracket"></i></a>
+                            </li>
+
+                        {% else %}
+                            <li class="dropdown ">
+                                <a href="{{ url('app_login') }}">Connexion</a>
+                            </li>
+                        {% endif %}
+
+
+                    </ul><!-- / .nav .navbar-nav -->
+
+                </div>
+                <!--/.navbar-collapse -->
+            </div><!-- / .container -->
+        </nav>
+    </section>
+
+{% endblock %}
+
+{% block content %}
+{% endblock %}

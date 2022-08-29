@@ -1,0 +1,22 @@
+
+{% block content %}
+
+    {% if app.user %}
+
+        {% if is_granted("ROLE_ADMIN") %}
+
+            {% include 'pages/include/admin-home.html.twig' %}
+
+        {% elseif is_granted("ROLE_USER") %}
+
+            {% include 'pages/include/user-home.html.twig' %}
+
+        {% endif %}
+    {% endif %}
+
+
+
+
+
+
+{% endblock %}

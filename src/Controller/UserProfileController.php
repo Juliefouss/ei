@@ -3,7 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Form\UserRegisterType;
+use App\Form\EditPhotoType;
+use App\Form\EditProfilType;
 use App\Repository\UserRepository;
 use App\Service\PhotoUploader;
 use Doctrine\ORM\EntityManagerInterface;
@@ -27,28 +28,53 @@ class UserProfileController extends AbstractController
      * @throws NonUniqueResultException
      */
     #[Route('/{id}/edit', name: 'app_user_profile_edit', methods: ['GET', 'POST'])]
-    public function edit( int $id, Request $request, User $user, UserRepository $userRepository, EntityManagerInterface $em): Response
+    public function edit(int $id, Request $request, User $user, UserRepository $userRepository, EntityManagerInterface $em): Response
 
     {
-        $user =$userRepository->findById($id);
-        $form = $this->createForm(UserRegisterType::class, $user);
+        $user = $userRepository->findById($id);
+        $form = $this->createForm(EditProfilType::class, $user);
+        $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-
-            $em->persist($user);
-            $em->flush();
-            return $this->redirectToRoute('app_user_profile_index', [], Response::HTTP_SEE_OTHER);
+            $userRepository->add($user, true);
+            return $this->redirectToRoute('app_user_profile_index', []);
         }
-
         return $this->renderForm('pages/users/user_profile/edit.html.twig', [
             'user' => $user,
-            'form' => $form,
+            'form' => $form
         ]);
+
     }
+
+    /**
+     * @throws NonUniqueResultException
+     */
+    #[Route('/{id}/editPhoto', name: 'app_user_profile_editPhoto', methods: ['GET', 'POST'])]
+    public function editPhoto(int $id, Request $request, UserRepository $userRepository, EntityManagerInterface $em, PhotoUploader $photoUploader): Response
+    {
+        $user = $userRepository->findById($id);
+        $form = $this->createForm(EditPhotoType::class, $user);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user->setPhoto($photoUploader->UploadPhoto($form->get('photo')));
+            if ($user->getPhoto() !== null) {
+                $em->persist($user->getPhoto());
+            }
+            $em->persist($user);
+            $em->flush();
+            return $this->redirectToRoute('app_user_profile_index', []);
+        }
+        return $this->renderForm('pages/users/user_profile/editPhoto.html.twig', [
+            'user' => $user,
+            'EditPhotoForm' => $form
+        ]);
+
+    }
+
 
     #[Route('/{id}', name: 'app_user_profile_delete', methods: ['POST'])]
     public function delete(Request $request, User $user, UserRepository $userRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
             $userRepository->remove($user, true);
         }
 
