@@ -2,14 +2,14 @@
 
 {% block content %}
 
-    <section class="signin-page account dark">
+    <section class="signin-page account">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-md-offset-3">
                     <div class="block">
-
                         <h2 class="text-center">Modifier </h2>
                         {{ include('pages/hourly/_form.html.twig') }}
+                        <a href="{{ path('app_hourly_index') }}">Retour</a>
                     </div>
                 </div>
             </div>

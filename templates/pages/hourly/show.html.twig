@@ -1,40 +1,60 @@
 {% extends 'layout/user.html.twig' %}
 
 {% block content %}
-
-    <section>
-        <div class="page-wrapper">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
-                        <aside class="sidebar">
-                            <div class="widget widget-subscription">
-                                <h4 class="widget-title">Rechercher un horaire</h4>
-                            </div>
-                            {% set HourlySearchForm = getHourlySearchForm() %}
-                            {{ form_start(HourlySearchForm) }}
-                            {{ form_end(HourlySearchForm) }}
-
-                        </aside>
+    <section class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="content">
+                        <h1 class="page-name"> Détails de l'annonce</h1>
                     </div>
-                    <div class="col-md-8 dark">
-                        <h2 class="title text-center white">Les annonces</h2>
-                        {% for hourly in hourlies %}
-                            {% if loop.index0 % 3==0 %}
-                                <div class="row">
-                            {% endif %}
-                            {% include 'pages/include/hourly-include.html.twig' %}
-                            {% if loop.index0 % 3==3 %}
-                                </div>
-                            {% endif %}
-                        {% else %}
-                            <h5 class="white"> Aucun résultat</h5>
-                        {% endfor %}
-                    </div>
-{#                    {{ knp_pagination_render(hourlies) }}#}
                 </div>
-
             </div>
         </div>
     </section>
+    <div class="page-wrapper">
+        <div class="checkout shopping">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="block billing-details">
+                            <h4 class="widget-title">Horaire</h4>
+                            <form class="checkout-form">
+                                <div class="form-group">
+                                    <label for="full_name">{{ hourly.date|date("d/m/Y", "Europe/Paris") }}</label>
+                                    <input type="text" class="form-control" id="full_name" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="user_address">{{ hourly.hospital }}</label>
+                                    <input type="text" class="form-control" id="user_address" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="user_address">{{ hourly.service }}</label>
+                                    <input type="text" class="form-control" id="user_address" placeholder="">
+                                </div>
+
+                            </form>
+                            <button class="btn btn-transparent"> <a href="{{ path('app_hourly_user-index') }}">Retour</a></button>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="product-checkout-details">
+                            <div class="block">
+                                <h4 class="widget-title">Detail Hôpital</h4>
+                                <h4>{{ hourly.hospital.name }}</h4>
+                                <p>{{ hourly.hospital.adress }}</p>
+                                <p>{{ hourly.hospital.postalCode }}</p>
+                                <p>{{ hourly.hospital.town }}</p>
+                                <p>{{ hourly.hospital.phoneNumber }}</p>
+                                <p>{{ hourly.hospital.email }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
 {% endblock %}

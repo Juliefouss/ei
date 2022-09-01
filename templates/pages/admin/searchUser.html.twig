@@ -1,12 +1,23 @@
 {% extends 'layout/admin.html.twig' %}
 
 {% block content %}
-
+    <section class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="content">
+                        <h1 class="page-name"> Les médecins</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <section>
         <div class="page-wrapper">
             <div class="container">
                 <div class="row">
                     <div class="col-md-4">
+                        <div class="padding">
                         <aside class="sidebar">
                             <div class="widget widget-subscription">
                                 <h4 class="widget-title">Rechercher un médecin</h4>
@@ -17,32 +28,30 @@
                                 {{ form_end(searchUserForm) }}
 
                         </aside>
+                        </div>
                     </div>
                     <div class="col-md-8">
                         {% for user in users %}
                             <div class="dashboard-user-profile">
                                 <div class="media">
-                                    <div class="pull-left text-center">
-                                        <img class="media-object user-img"
-                                             src="{{ asset('images/avater.jpg') }}" alt="photo de profil">
-                                        <a href="#x" class="btn btn-transparent mt-20">Changer la photo</a>
+                                    <div class="pull-left text-center" href="#!">
+                                        <img class="media-object user-img" src="{{ asset('/images/uploads/' ~user.photo.url) }}" alt="Image de profil">
                                     </div>
                                     <div class="media-body">
                                         <ul class="user-profile-list">
                                             <li><span>Nom:</span> {{ user.name }}</li>
                                             <li><span>Prénom:</span> {{ user.firstname }}</li>
-                                            <li><span>Email:</span>{{ user.email }}</li>
-                                            <li><span>Specialisation:</span>{{ user.specialization }}
+                                            <li><span>Email:</span> {{ user.email }}</li>
+                                            <li><span>Specialisation:</span> {{ user.specialization }}
                                             </li>
-                                            <li><span>Numéro Inami:</span>{{ user.inamiNumber }}</li>
+                                            <li><span>N° Inami:</span> {{ user.inamiNumber }}</li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                         {% else %}
-                            <h5> Aucun résultat</h5>
+                            <h5 class="text-center"> Aucun résultat</h5>
                         {% endfor %}
-
                     </div>
                 </div>
             </div>

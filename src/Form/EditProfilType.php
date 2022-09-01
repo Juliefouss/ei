@@ -19,21 +19,28 @@ class EditProfilType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-        ->add('name', TextType::class, ['label'=>'Nom'])
-        ->add('firstname', TextType::class, ['label'=>'Prénom'])
-        ->add('email', EmailType::class, ['label'=>'Email'])
-        ->add('username', TextType::class, ['label'=>'Nom utilisateur'])
-        ->add('specialization', ChoiceType::class, ['label'=>'Specialisation',
-            'choices'=>[
-                'Aucune'=> '',
-                'Cardiologie'=> 'cardiologie',
-                'Neurologie'=>'Neurologie',
-                'Urgences'=>'Urgences',
-                'Pediatrie'=>'Pédiatrie'
+            ->add('name', TextType::class, ['label'=>'Nom'])
+            ->add('firstname', TextType::class, ['label'=>'Prénom'])
+            ->add('email', EmailType::class, ['label'=>'Email'])
+            ->add('username', TextType::class, ['label'=>'Nom utilisateur'])
+            ->add('job', ChoiceType::class, ['label'=> 'Titre', 'choices'=>[
+                'Docteur'=> 'Docteur',
+                'Professeur'=> 'Professeur'
             ]])
-        ->add('inamiNumber', NumberType::class, ['label'=>'Numéro Inami'])
-        ->add('submit', SubmitType::class, ['label'=> 'Envoyer'])
-    ;
+            ->add('specialization', ChoiceType::class, ['label'=>'Specialisation',
+                'choices'=>[
+                    'Aucune'=> '',
+                    'Cardiologie'=> 'cardiologie',
+                    'Neurologie'=>'Neurologie',
+                    'Urgences'=>'Urgences',
+                    'Pediatrie'=>'Pédiatrie',
+                    'Oncologie' => 'Oncologie',
+                    ''
+                ]])
+            ->add('inamiNumber', NumberType::class, ['label'=>'Numéro Inami'])
+            ->add('submit', SubmitType::class, ['label'=> 'Envoyer'])
+        ;
+
     }
 
     public function configureOptions(OptionsResolver $resolver): void

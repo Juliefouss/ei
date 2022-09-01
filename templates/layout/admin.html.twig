@@ -4,7 +4,7 @@
 
 <!-- Main Menu Section -->
 <section class="menu">
-    <nav class="navbar navigation">
+    <nav class="navbar navigation background-blue">
         <div class="container">
             <!-- Navbar Links -->
             <div id="navbar" class="navbar-collapse collapse text-center">
@@ -18,13 +18,18 @@
                     <!--Apply--->
 
                     <li class="dropdown ">
-                        <a href="{{ url('app_hourly_index') }}">Gérer </a>
+                        <a href="{{ url('app_hourly_index') }}">Annonces </a>
                     </li>
 
-                    <!--Create a new Apply--->
+                    <!--Hospital--->
 
                     <li class="dropdown ">
-                        <a href="{{ url('app_hourly_new') }}">Créer</a>
+                        <a href="{{ url('app_hospital_index') }}">Hôpitaux</a>
+                    </li>
+                    <!--Service--->
+
+                    <li class="dropdown ">
+                        <a href="{{ url('app_service_index') }}">Services</a>
                     </li>
                     <!-- Message -->
 

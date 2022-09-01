@@ -23,13 +23,19 @@ class UserRegisterType extends AbstractType
             ->add('firstname', TextType::class, ['label'=>'Prénom'])
             ->add('email', EmailType::class, ['label'=>'Email'])
             ->add('username', TextType::class, ['label'=>'Nom utilisateur'])
+            ->add('job', ChoiceType::class, ['label'=> 'Titre', 'choices'=>[
+                'Docteur'=> 'Docteur',
+                'Professeur'=> 'Professeur'
+            ]])
             ->add('specialization', ChoiceType::class, ['label'=>'Specialisation',
                 'choices'=>[
                     'Aucune'=> '',
                     'Cardiologie'=> 'cardiologie',
                     'Neurologie'=>'Neurologie',
                     'Urgences'=>'Urgences',
-                    'Pediatrie'=>'Pédiatrie'
+                    'Pediatrie'=>'Pédiatrie',
+                    'Oncologie' => 'Oncologie',
+                    ''
                 ]])
             ->add('inamiNumber', NumberType::class, ['label'=>'Numéro Inami'])
             ->add('Password', RepeatedType::class, [
@@ -37,7 +43,7 @@ class UserRegisterType extends AbstractType
                 'first_options'  => ['label' => 'Mot de passe'],
                 'second_options' => ['label' => 'Répeter votre mot de passe'],
             ])
-            ->add('photo', PhotoType::class, ['label'=> 'photo'])
+            ->add('photo', PhotoType::class, ['label'=> 'Photo'])
             ->add('submit', SubmitType::class, ['label'=> 'Envoyer'])
         ;
 

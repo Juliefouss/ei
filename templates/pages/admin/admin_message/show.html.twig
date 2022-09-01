@@ -3,44 +3,81 @@
 
 
 {% block content %}
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="total-order mt-20">
-                <div class="table-responsive">
-                    <table class="table">
-                        <tbody>
-                        <thead>
-                        <tr>
-                            <th>Nom</th>
-                            <th>Prénom</th>
-                            <th>email</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>{{ admin_message.name }}</td>
-                            <td>{{ admin_message.firstname }}</td>
-                            <td>{{ admin_message.email }}</td>
-                        </tr>
-
-                        </tbody>
-                    </table>
+    <section class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="content">
+                        <h1 class="page-name"> Détails du message</h1>
+                    </div>
                 </div>
-            </div>
-            <div class="dashboard-wrapper user-dashboard">
-                <h2> Objet : {{ admin_message.subject }}</h2>
-                <div class="media-body">
-                    <h2>Message : </h2>
-                    <p>{{ admin_message.message }}</p>
-                </div>
-
             </div>
         </div>
-        <a href="{{ path('app_admin_message_index') }}">Retour</a>
+    </section>
+    <section class="user-dashboard page-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <img class="img-responsive" src="{{ asset('images/PhotoMessage.jpg') }}" alt="photo message">
+                </div>
+                <div class="col-md-7">
+                    <div class="dashboard-wrapper dashboard-user-profile border">
+                        <div class="media-body">
+                            <ul class="user-profile-list">
+                                <li><span>Nom:</span> {{ admin_message.name }}</li>
+                                <li><span>Prénom:</span> {{ admin_message.firstname}}</li>
+                                <li><span>Email:</span> {{ admin_message.email}}</li>
+                                <li><span>Objet</span> {{ admin_message.subject}}</li>
+                                <li><span>Message</span> {{ admin_message.message }}</li>
+                                <li><button class="btn btn-transparent"> <a href="{{ path('app_admin_message_index') }}">Retour</a></button></li>
+                                <li>{{ include('pages/admin/admin_message/_delete_form.html.twig') }}</li>
+                            </ul>
+                        </div>
 
-        {{ include('pages/admin/admin_message/_delete_form.html.twig') }}
-    </div>
-</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{#    #}
+{#<div class="container">#}
+{#    <div class="row">#}
+{#        <div class="col-md-12">#}
+{#            <div class="total-order mt-20">#}
+{#                <div class="table-responsive">#}
+{#                    <table class="table">#}
+{#                        <tbody>#}
+{#                        <thead>#}
+{#                        <tr>#}
+{#                            <th>Nom</th>#}
+{#                            <th>Prénom</th>#}
+{#                            <th>email</th>#}
+{#                        </tr>#}
+{#                        </thead>#}
+{#                        <tbody>#}
+{#                        <tr>#}
+{#                            <td>{{ admin_message.name }}</td>#}
+{#                            <td>{{ admin_message.firstname }}</td>#}
+{#                            <td>{{ admin_message.email }}</td>#}
+{#                        </tr>#}
+
+{#                        </tbody>#}
+{#                    </table>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="dashboard-wrapper user-dashboard">#}
+{#                <h2> Objet : {{ admin_message.subject }}</h2>#}
+{#                <div class="media-body">#}
+{#                    <h2>Message : </h2>#}
+{#                    <p>{{ admin_message.message }}</p>#}
+{#                </div>#}
+
+{#            </div>#}
+{#        </div>#}
+{#        <a href="{{ path('app_admin_message_index') }}">Retour</a>#}
+
+{#        {{ include('pages/admin/admin_message/_delete_form.html.twig') }}#}
+{#    </div>#}
+{#</div>#}
 
 {% endblock %}

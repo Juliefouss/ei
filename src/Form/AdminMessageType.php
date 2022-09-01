@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\AdminMessage;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -15,8 +16,9 @@ class AdminMessageType extends AbstractType
             ->add('name')
             ->add('firstname')
             ->add('email')
-            ->add('subject')
             ->add('message')
+            ->add('subject')
+            ->add('submit', SubmitType::class, ['label'=> 'Envoyer'])
         ;
     }
 

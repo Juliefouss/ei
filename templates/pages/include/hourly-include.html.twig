@@ -2,20 +2,19 @@
 
 {% block content %}
     <div class="col-md-4">
-        <div class="product-item background-white">
+        <div class="product-item">
             <h3 class="title text-center">{{ hourly.hospital.name }}</h3>
             <div class="product-content">
                 <p>Date: {{ hourly.date|date("d/m/Y", "Europe/Paris") }}</p>
                 <p> Horaire: {{ hourly.hour }}</p>
                 <p>Service: {{ hourly.service.name }}</p>
                 {% if is_granted("ROLE_ADMIN") %}
-                    <a href="{{ path('app_hourly_edit', {'id': hourly.id}) }}">Modifier</a>
+                    <button class="btn btn-transparent"><a href="{{ path('app_hourly_edit', {'id': hourly.id}) }}">Modifier</a></button>
                     {{ include('pages/hourly/_delete_form.html.twig') }}
                 {% elseif is_granted("ROLE_USER") %}
-                <p>Postuler</p>
+                <a href="{{ path('app_hourly_show', {'id': hourly.id}) }}">Voir</a>
                 {% endif %}
             </div>
         </div>
     </div>
-
 {% endblock %}

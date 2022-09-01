@@ -1,0 +1,63 @@
+{% extends 'layout/admin.html.twig' %}
+
+{% block content %}
+    <section class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="content">
+                        <h1 class="page-name">Hôpitaux</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+    <div class="container">
+        <div class="row">
+            <button class="btn btn-main btn-medium btn-round red"><a href="{{ url('app_hospital_new') }}">Ajouter un nouvel hôpital</a></button>
+                <div class="col-md-12">
+                <div class="dashboard-wrapper user-dashboard background-white">
+                    <div class="table-responsive">
+                        <table class="table">
+                        <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Nom</th>
+                                        <th>Adresse</th>
+                                        <th>Code Postal</th>
+                                        <th>Ville</th>
+                                        <th>Numéro de téléphone</th>
+                                        <th>Email</th>
+                                    </tr>
+                                </thead>
+                            <tbody>
+                                    {% for hospital in hospitals %}
+                                        <tr>
+                                            <td>{{ hospital.id }}</td>
+                                            <td>{{ hospital.name }}</td>
+                                            <td>{{ hospital.Adress }}</td>
+                                            <td>{{ hospital.PostalCode }}</td>
+                                            <td>{{ hospital.Town }}</td>
+                                            <td>{{ hospital.PhoneNumber }}</td>
+                                            <td>{{ hospital.email }}</td>
+                                            <td>
+                                                <button class="btn btn-transparent"><a href="{{ path('app_hospital_edit', {'id': hospital.id}) }}">Modifier</a></button>
+                                                {{ include('pages/hospital/_delete_form.html.twig') }}
+                                            </td>
+                                        </tr>
+                                    {% else %}
+                                        <tr>
+                                            <td colspan="8">Auncun Hôpital enregistré</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+{% endblock %}

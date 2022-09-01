@@ -15,7 +15,7 @@ class ServiceType extends AbstractType
     {
         $builder
             ->add('name',TextareaType::class, ['label'=> 'Nom du service'])
-            ->add('submit', SubmitType::class, ['label'=>'Ajouter'])
+            ->add('submit', SubmitType::class, ['label'=>'Envoyer'])
         ;
     }
 

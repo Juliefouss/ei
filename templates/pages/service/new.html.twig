@@ -1,14 +1,15 @@
 {% extends 'layout/admin.html.twig' %}
 
 {% block content %}
-    <section class="signin-page account dark">
+    <section class="signin-page account">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-md-offset-3">
                     <div class="block">
 
-                        <h2 class="text-center">Ajouter un nouvel hôpital </h2>
-                        {{ form(hospitalForm) }}
+                        <h2 class="text-center">Ajouter un nouveau service </h2>
+                            {{ include('pages/service/_form.html.twig') }}
+                            <a href="{{ path('app_service_index') }}">Retour</a>
                     </div>
                 </div>
             </div>
@@ -16,4 +17,3 @@
     </section>
 
 {% endblock %}
-

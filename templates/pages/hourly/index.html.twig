@@ -1,23 +1,50 @@
 {% extends 'layout/admin.html.twig' %}
 
 {% block content %}
-
-    <section>
-        <div class="product-section dark">
-            <div class="container">
-                <h2 class="title text-center white">Les annonces</h2>
-                {% for hourly in hourlies %}
-                    {% if loop.index0 % 3==0 %}
-                        <div class="row">
-                    {% endif %}
-                    {% include 'pages/include/hourly-include.html.twig' %}
-                    {% if loop.index0 % 3==3 %}
-                        </div>
-                    {% endif %}
-                {% endfor %}
+    <section class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="content">
+                        <h1 class="page-name"> Les annonces</h1>
+                    </div>
+                </div>
             </div>
-            {{ knp_pagination_render(hourlies) }}
         </div>
     </section>
+
+    <section>
+        <div class="page-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <button class="btn btn-main btn-medium btn-round red"><a class="white" href="{{ url('app_hourly_new') }}">Ajouter une annonce</a></button>
+                        <aside class="sidebar">
+                            {% set HourlyAdminSearch = getHourlyAdminSearchForm() %}
+                            {{ form_start(HourlyAdminSearch) }}
+                            {{ form_end(HourlyAdminSearch) }}
+
+                        </aside>
+                    </div>
+                    <div class="col-md-8 ">
+                        {% for hourly in hourlies %}
+                            {% if loop.index0 % 3==0 %}
+                                <div class="row">
+                            {% endif %}
+                            {% include 'pages/include/hourly-include.html.twig' %}
+                            {% if loop.index0 % 3==3 %}
+                                </div>
+                            {% endif %}
+                        {% else %}
+                            <h5 class="text-center text-capitalize"> Aucun résultat</h5>
+                        {% endfor %}
+                    </div>
+                   {{ knp_pagination_render(hourlies) }}
+                </div>
+
+            </div>
+        </div>
+    </section>
+
 
 {% endblock %}

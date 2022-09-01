@@ -1,12 +1,26 @@
 {% extends 'layout/user.html.twig' %}
 
 {% block content %}
-
-    <section class="user-dashboard page-wrapper dark">
+    <section class="page-header">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="dashboard-wrapper user-dashboard background-white">
+                    <div class="content">
+                        <h1 class="page-name"> Vos Messages</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="user-dashboard page-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <img class="img-responsive" src="{{ asset('images/PhotoMessage.jpg') }}" alt="photo message">
+                </div>
+                <div class="col-md-7">
+                    <div class="dashboard-wrapper user-dashboard">
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>
@@ -24,11 +38,11 @@
                                         <td> {{userMessage.email }}</td>
                                         <td> {{userMessage.subject }}</td>
                                         <td>
-                                            <div class="btn-group" role="group">
-                                                <a href="{{ path('app_user_message_show', {'id': userMessage.id}) }}"><button type="button" class="btn btn-default"><i class="fa-solid fa-eye"></i></button></a>
+                                            <div class="btn-group " role="group">
+                                                <a href="{{ path('app_user_message_show', {'id': userMessage.id}) }}"><button type="button" class="btn btn-transparent">Voir</button></a>
                                                 <form method="post" action="{{ path('app_user_message_delete', {'id': userMessage.id}) }}" onsubmit="return confirm('Supprimer ce message?');">
                                                     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ userMessage.id) }}">
-                                                    <button class="btn btn-default"><i class="tf-ion-close" aria-hidden="true"></i></button>
+                                                    <button class="btn btn-transparent">Supprimer</button>
                                                 </form>
                                             </div>
                                         </td>
@@ -46,48 +60,3 @@
 
 
 {% endblock %}
-
-
-
-
-{#{% extends 'base.html.twig' %}#}
-
-{#{% block title %}UserMessage index{% endblock %}#}
-
-{#{% block body %}#}
-{#    <h1>UserMessage index</h1>#}
-
-{#    <table class="table">#}
-{#        <thead>#}
-{#            <tr>#}
-{#                <th>Id</th>#}
-{#                <th>Name</th>#}
-{#                <th>Email</th>#}
-{#                <th>Firstname</th>#}
-{#                <th>Message</th>#}
-{#                <th>actions</th>#}
-{#            </tr>#}
-{#        </thead>#}
-{#        <tbody>#}
-{#        {% for user_message in user_messages %}#}
-{#            <tr>#}
-{#                <td>{{ user_message.id }}</td>#}
-{#                <td>{{ user_message.name }}</td>#}
-{#                <td>{{ user_message.email }}</td>#}
-{#                <td>{{ user_message.firstname }}</td>#}
-{#                <td>{{ user_message.message }}</td>#}
-{#                <td>#}
-{#                    <a href="{{ path('app_user_message_show', {'id': user_message.id}) }}">show</a>#}
-{#                    <a href="{{ path('app_user_message_edit', {'id': user_message.id}) }}">edit</a>#}
-{#                </td>#}
-{#            </tr>#}
-{#        {% else %}#}
-{#            <tr>#}
-{#                <td colspan="6">no records found</td>#}
-{#            </tr>#}
-{#        {% endfor %}#}
-{#        </tbody>#}
-{#    </table>#}
-
-{#    <a href="{{ path('app_user_message_new') }}">Create new</a>#}
-{#{% endblock %}#}

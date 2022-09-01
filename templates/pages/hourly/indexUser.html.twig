@@ -2,6 +2,17 @@
 
 {% block content %}
 
+    <section class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="content">
+                        <h1 class="page-name"> Les annonces </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <section>
         <div class="page-wrapper">
             <div class="container">
@@ -17,8 +28,7 @@
 
                         </aside>
                     </div>
-                    <div class="col-md-8 dark">
-                        <h2 class="title text-center white">Les annonces</h2>
+                    <div class="col-md-8 ">
                         {% for hourly in hourlies %}
                             {% if loop.index0 % 3==0 %}
                                 <div class="row">
@@ -31,7 +41,7 @@
                             <h5 class="white"> Aucun résultat</h5>
                         {% endfor %}
                     </div>
-                                        {{ knp_pagination_render(hourlies) }}
+                    {{ knp_pagination_render(hourlies) }}
                 </div>
 
             </div>

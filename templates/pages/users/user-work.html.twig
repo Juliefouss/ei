@@ -1,0 +1,23 @@
+{% extends 'layout/user.html.twig' %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="form-horizontal">
+            {% if app.user %}
+            {% for hourly in hourlies %}
+                {{ form_start (workForm) }}
+                {{ form_row(workForm.app.user.name) }}
+                {{ form_row(workForm.hourly.id) }}
+                {{ form_row(workForm.content) }}
+                {{ form_row(workForm.submit) }}
+                {{ form_end(workForm) }}
+
+{#            <h1>bonjour</h1>#}
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

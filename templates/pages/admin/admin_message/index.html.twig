@@ -2,18 +2,32 @@
 
 
 {% block content %}
-
-    <section class="user-dashboard page-wrapper dark">
+    <section class="page-header">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="dashboard-wrapper user-dashboard background-white">
+                    <div class="content">
+                        <h1 class="page-name"> Messages</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="user-dashboard page-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <img class="img-responsive" src="{{ asset('images/PhotoMessage.jpg') }}" alt="photo message">
+                </div>
+                <div class="col-md-7">
+                    <div class="dashboard-wrapper user-dashboard">
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>
                                 <tr>
                                     <th>Nom</th>
-                                    <th>Prénom</th>
+                                    <th>email</th>
                                     <th>Object</th>
                                     <th></th>
                                 </tr>
@@ -25,13 +39,16 @@
                                         <td>{{ admin_message.firstname }}</td>
                                         <td>{{ admin_message.subject }}</td>
                                         <td>
-                                            <div class="btn-group" role="group">
-                                                <a href="{{ path('app_admin_message_show', {'id': admin_message.id}) }}"><button type="button" class="btn btn-default"><i class="fa-solid fa-eye"></i></button></a>
-                                                <form method="post" action="{{ path('app_admin_message_delete', {'id': admin_message.id}) }}" onsubmit="return confirm('Supprimer ce message?');">
-                                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ admin_message.id) }}">
-                                                    <button type="button" class="btn btn-default"><i class="tf-ion-close" aria-hidden="true"></i></button>
-                                                </form>
-                                            </div>
+                                            <a href="{{ path('app_admin_message_show', {'id': admin_message.id}) }}">
+                                                <button class="btn btn-transparent">Voir</button>
+                                            </a>
+                                            <form method="post"
+                                                  action="{{ path('app_admin_message_delete', {'id': admin_message.id}) }}"
+                                                  onsubmit="return confirm('Supprimer ce message?');">
+                                                <input type="hidden" name="_token"
+                                                       value="{{ csrf_token('delete' ~ admin_message.id) }}">
+                                                <button class="btn btn-transparent">Supprimer</button>
+                                            </form>
                                         </td>
                                     </tr>
                                 {% else %}
@@ -39,6 +56,7 @@
                                         <td colspan="6">no records found</td>
                                     </tr>
                                 {% endfor %}
+
                                 </tbody>
                             </table>
                         </div>

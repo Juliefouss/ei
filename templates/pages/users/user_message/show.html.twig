@@ -1,89 +1,41 @@
 {% extends 'layout/user.html.twig' %}
 
-
-
 {% block content %}
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="total-order mt-20">
-                    <div class="table-responsive">
-                        <table class="table">
-                            <tbody>
-                            <thead>
-                            <tr>
-                                <th>Nom</th>
-                                <th>Prénom</th>
-                                <th>email</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>{{ user_message.name }}</td>
-                                <td>{{ user_message.firstname }}</td>
-                                <td>{{ user_message.email }}</td>
-                            </tr>
-
-                            </tbody>
-                        </table>
+    <section class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="content">
+                        <h1 class="page-name"> Détails du message</h1>
                     </div>
-                </div>
-                <div class="dashboard-wrapper user-dashboard">
-                    <h2> Objet : {{ user_message.subject }}</h2>
-                    <div class="media-body">
-                        <h2>Message : </h2>
-                        <p>{{ user_message.message }}</p>
-                    </div>
-
                 </div>
             </div>
-            <a href="{{ path('app_user_message_index') }}">Retour</a>
-
-            {{ include('pages/users/user_message/_delete_form.html.twig') }}
         </div>
-    </div>
+    </section>
+    <section class="user-dashboard page-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <img class="img-responsive" src="{{ asset('images/PhotoMessage.jpg') }}" alt="photo message">
+                </div>
+                <div class="col-md-7">
+                    <div class="dashboard-wrapper dashboard-user-profile border">
+                    <div class="media-body">
+                        <ul class="user-profile-list">
+                            <li><span>Nom:</span> {{ user_message.name }}</li>
+                            <li><span>Prénom:</span> {{ user_message.firstname}}</li>
+                            <li><span>Email:</span> {{ user_message.email}}</li>
+                            <li><span>Objet</span> {{ user_message.subject}}</li>
+                            <li><span>Message</span> {{ user_message.message }}</li>
+                            <li><button class="btn btn-transparent"> <a href="{{ path('app_user_message_index') }}">Retour</a></button></li>
+                            <li>{{ include('pages/users/user_message/_delete_form.html.twig') }}</li>
+                        </ul>
+                </div>
+
+            </div>
+        </div>
+            </div>
+        </div>
+    </section>
 
 {% endblock %}
-
-
-
-
-
-
-
-{#{% extends 'base.html.twig' %}#}
-
-{#{% block title %}UserMessage{% endblock %}#}
-
-{#{% block body %}#}
-{#    <h1>UserMessage</h1>#}
-
-{#    <table class="table">#}
-{#        <tbody>#}
-{#            <tr>#}
-{#                <th>Id</th>#}
-{#                <td>{{ user_message.id }}</td>#}
-{#            </tr>#}
-{#            <tr>#}
-{#                <th>Name</th>#}
-{#                <td>{{ user_message.name }}</td>#}
-{#            </tr>#}
-{#            <tr>#}
-{#                <th>Email</th>#}
-{#                <td>{{ user_message.email }}</td>#}
-{#            </tr>#}
-{#            <tr>#}
-{#                <th>Firstname</th>#}
-{#                <td>{{ user_message.firstname }}</td>#}
-{#            </tr>#}
-{#            <tr>#}
-{#                <th>Message</th>#}
-{#                <td>{{ user_message.message }}</td>#}
-{#            </tr>#}
-{#        </tbody>#}
-{#    </table>#}
-
-{#    <a href="{{ path('app_user_message_index') }}">Retour </a>#}
-
-{#    {{ include('pages/users/user_message/_delete_form.html.twig') }}#}
-{#{% endblock %}#}

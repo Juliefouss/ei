@@ -22,10 +22,10 @@ class HourlySearchFormGenerator
         $this->router = $router;
     }
 
-
     public function getHourlySearchForm(): FormView{
         $form = $this->formFactory->create(HourlySearchType::class, new HourlySearch(), ['action'=>$this->router->generate('hourly-search')]);
         return $form->createView();
     }
+
 
 }

@@ -1,11 +1,22 @@
 {% extends 'layout/user.html.twig' %}
 
 {% block content %}
-    <section class="user-dashboard page-wrapper dark">
+    <section class="page-header">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="dashboard-wrapper dashboard-user-profile background-white">
+                    <div class="content">
+                        <h1 class="page-name"> Votre Profil</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="user-dashboard page-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="dashboard-wrapper dashboard-user-profile border">
                         <div class="media">
                             <div class="pull-left text-center" href="#!">
                                 <img class="media-object user-img" src="{{ asset('/images/uploads/' ~app.user.photo.url) }}" alt="Image de profil">
@@ -13,15 +24,15 @@
                             </div>
                             <div class="media-body">
                                 <ul class="user-profile-list">
-                                    <li><span>Nom:</span> {{ app.user.name }}</li>
+                                    <li><span class="hight">Nom:</span> {{ app.user.name }}</li>
                                     <li><span>Prénom:</span> {{ app.user.firstname }}</li>
-                                    <li><span>Email:</span>{{ app.user.email }}</li>
-                                    <li><span>Specialisation:</span>{{ app.user.specialization }}</li>
-                                    <li><span>Numéro Inami:</span>{{ app.user.inamiNumber }}</li>
+                                    <li><span>Email:</span> {{ app.user.email }}</li>
+                                    <li><span>Titre:</span> {{ app.user.job }}</li>
+                                    <li><span>Specialisation:</span> {{ app.user.specialization }}</li>
+                                    <li><span>N° Inami:</span> {{ app.user.inamiNumber }}</li>
+                                    <li> <span><a class="btn btn-transparent mt-20" href="{{ url('app_user_profile_edit', {id: app.user.id }) }}">Modifier</a></span></li>
                                 </ul>
-                                <a class="text-center" href="{{ url('app_user_profile_edit', {id: app.user.id }) }}">Modifier</a>
                             </div>
-
                         </div>
                     </div>
                 </div>

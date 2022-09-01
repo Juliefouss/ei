@@ -255,6 +255,7 @@ td, th {
     .label {
         border: 1px solid #000
 
+
     }
 
     .table {
@@ -1845,7 +1846,8 @@ pre code {
 
 @media (min-width: 1200px) {
     .container {
-        width: 1170px
+        width: 1170px;
+        margin: 0 auto;
     }
 }
 
@@ -2733,12 +2735,14 @@ th {
     padding: 8px;
     line-height: 1.42857143;
     vertical-align: top;
-    border-top: 1px solid #ddd
+    border-top: 1px solid #ddd;
+    color: #0c1f54;
 }
 
 .table > thead > tr > th {
     vertical-align: bottom;
-    border-bottom: 2px solid #ddd
+    border-bottom: 2px solid #ddd;
+    color: #0c1f54;
 }
 
 .table > caption + thead > tr:first-child > td, .table > caption + thead > tr:first-child > th, .table > colgroup + thead > tr:first-child > td, .table > colgroup + thead > tr:first-child > th, .table > thead:first-child > tr:first-child > td, .table > thead:first-child > tr:first-child > th {
@@ -2878,13 +2882,12 @@ fieldset {
 legend {
     display: block;
     width: 100%;
-    padding: 0;
-    margin-bottom: 20px;
-    font-size: 21px;
-    line-height: inherit;
-    color: #333;
+    padding: 10px;
     border: 0;
-    border-bottom: 1px solid #e5e5e5
+    color: #0c1f54;
+    font-size: 15px;
+    line-height: 1.5;
+}
 }
 
 label {
@@ -3483,7 +3486,7 @@ a.btn.disabled, fieldset[disabled] a.btn {
     margin-top: 15px !important;
     width: 100%;
     margin: 0;
-    background: #000;
+    background: #0c1f54;
     color: #fff;
     border-radius: 0;
     border-color: #000;
@@ -3502,7 +3505,7 @@ a.btn.disabled, fieldset[disabled] a.btn {
 
 .btn-primary:hover {
     color: #fff;
-    background-color: #286090;
+    background-color: #739dc1;
     border-color: #204d74
 }
 
@@ -4519,7 +4522,7 @@ select[multiple].input-group-sm > .form-control, select[multiple].input-group-sm
 
 @media (min-width: 768px) {
     .navbar {
-        border-radius: 4px
+        /*border-radius: 0px*/
     }
 }
 
@@ -5111,8 +5114,8 @@ select[multiple].input-group-sm > .form-control, select[multiple].input-group-sm
 .pagination {
     display: inline-block;
     padding-left: 0;
-    margin: 20px 0;
-    border-radius: 4px
+    border-radius: 4px;
+    margin-left : 254px;
 }
 
 .pagination > li {
@@ -5125,10 +5128,10 @@ select[multiple].input-group-sm > .form-control, select[multiple].input-group-sm
     padding: 6px 12px;
     margin-left: -1px;
     line-height: 1.42857143;
-    color: #337ab7;
+    color: #0c1f54;
     text-decoration: none;
     background-color: #fff;
-    border: 1px solid #ddd
+    border: 1px solid #0c1f54
 }
 
 .pagination > li:first-child > a, .pagination > li:first-child > span {
@@ -5144,24 +5147,24 @@ select[multiple].input-group-sm > .form-control, select[multiple].input-group-sm
 
 .pagination > li > a:focus, .pagination > li > a:hover, .pagination > li > span:focus, .pagination > li > span:hover {
     z-index: 2;
-    color: #23527c;
+    color: #0c1f54;
     background-color: #eee;
-    border-color: #ddd
+    border-color: #0c1f54
 }
 
 .pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover {
     z-index: 3;
     color: #fff;
     cursor: default;
-    background-color: #337ab7;
-    border-color: #337ab7
+    background-color: #0c1f54;
+    border-color: #0c1f54;
 }
 
 .pagination > .disabled > a, .pagination > .disabled > a:focus, .pagination > .disabled > a:hover, .pagination > .disabled > span, .pagination > .disabled > span:focus, .pagination > .disabled > span:hover {
-    color: #777;
+    color: #0c1f54;
     cursor: not-allowed;
     background-color: #fff;
-    border-color: #ddd
+    border-color: #0c1f54
 }
 
 .pagination-lg > li > a, .pagination-lg > li > span {
@@ -7240,4 +7243,9 @@ select{
     -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
     -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.form-label{
+    color: #0c1f54;
+    font-size: 15px;
 }

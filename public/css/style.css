@@ -54,6 +54,10 @@ body {
   line-height: 1.5;
   font-family: "Poppins", sans-serif;
   -webkit-font-smoothing: antialiased;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
 }
 
 p {
@@ -64,6 +68,7 @@ p {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Poppins", sans-serif;
+  color: #0c1f54;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -79,11 +84,16 @@ ol, ul {
 iframe {
   border: 0;
 }
-
-a, a:focus, a:hover {
+a{
   text-decoration: none;
   outline: 0;
-  color: #000;
+  color: #0c1f54;
+}
+
+ a:focus, a:hover {
+  text-decoration: none;
+  outline: 0;
+  color: #739dc1;
 }
 
 blockquote {
@@ -137,7 +147,7 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
   margin-right: 5px;
 }
 .btn-main:hover, .btn-small:hover, .btn-transparent:hover, .btn-solid-border:hover {
-  background: black;
+  background: #739dc1;
   color: #fff;
 }
 
@@ -149,12 +159,12 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
 
 .btn-transparent {
   background: transparent;
-  padding: 0;
-  color: #000;
+  padding: 1px;
+  color: #0c1f54;
 }
 .btn-transparent:hover {
   background: transparent;
-  color: #000;
+  color: #739dc1;
 }
 
 .btn-large {
@@ -376,7 +386,7 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
 }
 
 .page-wrapper {
-  padding: 70px 0;
+  padding: 20px 0;
 }
 
 .social-media-icons ul li {
@@ -752,7 +762,7 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
   color: #000;
 }
 .navigation .navbar-nav > li > a {
-  color: #333;
+  color: #F7F7F7;
   font-size: 14px;
   padding: 20px 15px;
   text-transform: uppercase;
@@ -761,7 +771,7 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
 }
 .navigation .navbar-nav > li > a:hover, .navigation .navbar-nav > li > a:active, .navigation .navbar-nav > li > a:focus {
   background: none;
-  color: #000;
+  color: #739dc1;
 }
 .navigation .container {
   position: relative;
@@ -949,6 +959,9 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
 
 .product-item {
   margin-bottom: 30px;
+  border-radius: 5px;
+  border: 1px solid #0c1f54;
+
 }
 .product-item .product-thumb {
   position: relative;
@@ -1457,7 +1470,7 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
 }
 
 .dashboard-wrapper {
-  border: 1px solid #dedede;
+  /*border: 1px solid #0c1f54;*/
   margin-top: 30px;
   padding: 20px;
 }
@@ -1481,12 +1494,16 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
 }
 .dashboard-user-profile .user-profile-list li {
   margin-bottom: 8px;
+  font-size: 15px;
+  color: #0c1f54;
 }
 .dashboard-user-profile .user-profile-list span {
   font-weight: bold;
-  margin-right: 5px;
+  margin-right: 50px;
   width: 100px;
   display: inline-block;
+  font-size: 18px;
+  color: #0c1f54;
 }
 
 /*=================================================================
@@ -1781,8 +1798,8 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
 }
 
 .widget {
-  margin-bottom: 30px;
-  padding-bottom: 35px;
+  /*margin-bottom: 30px;*/
+  /*padding-bottom: 35px;*/
 }
 .widget .widget-title {
   margin: 0;
@@ -2208,7 +2225,7 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
   border: 1px solid #dedede;
   box-shadow: none;
   height: 45px !important;
-  color: #0c0c0c;
+  color: #0c1f54;
   height: 38px;
   font-family: "Open Sans", sans-serif;
   font-size: 14px;
@@ -2217,7 +2234,7 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
 .contact-form input:hover,
 .contact-form textarea:hover,
 .contact-form #contact-submit:hover {
-  border-color: #000;
+  border-color: #0c1f54;
 }
 .contact-form #contact-submit {
   border: none;
@@ -2306,11 +2323,13 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
 }
 
 .footer {
-  background: #F7F7F7;
-  padding: 50px 0;
+  background:  #f5f5f9;
+  padding: 0 0;
+  height: 50px;
+  margin-top: 20px;
 }
 .footer .footer-menu {
-  margin-top: 30px;
+  margin-top: 0;
 }
 .footer .footer-menu li {
   display: inline-block;
@@ -2322,10 +2341,11 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
 }
 .footer .copyright-text {
   margin-top: 20px;
+  color: #0c1f54;
 }
 
 .copyright-text a {
-  color: #000;
+  color: #0c1f54;
 }
 
 .social-media li {
@@ -2355,7 +2375,26 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
   background-color: #ffffff;
 }
 
+.background-blue{
+  background-color:  #0c1f54 ;
+}
 
+.blue{
+  color: #0c1f54;
+}
 
+.red{
+  background-color: #f52c3e;
+}
+
+.border{
+  border: 1px solid #0c1f54;
+  border-radius: 1px;
+}
+
+.padding{
+  margin-top: 35px;
+  margin-bottom: 40px;
+}
 
 /*# sourceMappingURL=style.css.map */

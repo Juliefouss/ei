@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Hourly;
 use App\Form\HourlyType;
 use App\Repository\HourlyRepository;
+use App\Search\User\HourlySearch;
+use App\Search\User\HourlySearchType;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -92,4 +94,7 @@ class HourlyController extends AbstractController
 
         return $this->redirectToRoute('app_hourly_index', [], Response::HTTP_SEE_OTHER);
     }
+
+
 }
+

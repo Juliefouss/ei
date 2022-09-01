@@ -1,23 +1,52 @@
-{% extends 'layout/basic.html.twig' %}
+{% extends 'layout/website.html.twig' %}
 
 {% block content %}
-
-    <section class="signin-page account dark">
+    <section class="page-header">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 col-md-offset-3">
-                    <div class="block">
-
-                        <h2 class="text-center">Créer votre compte</h2>
-                        {{ form(registerForm) }}
-
-                        <p class="mt-20">Déja un compte ?<a href="{{ url('app_login') }}"> Se connecter </a></p>
-{#                        <p><a href="forget-password.html"> Forgot your password?</a></p>#}
+                <div class="col-md-12">
+                    <div class="content">
+                        <h1 class="page-name"> Inscription</h1>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    <section>
+        <div class="contact-section">
+            <div class="container">
+                <div class="row">
+                    <!-- Contact Form -->
+                    <div class="contact-form col-md-12" >
+
+                        {{ form(registerForm) }}
+
+                        <p class="mt-20 text-center">Déja un compte ?<a href="{{ url('app_login') }}"> Se connecter </a>
+
+                    </div>
+
+                    <!-- ./End Contact Form -->
+                </div> <!-- end row -->
+            </div> <!-- end container -->
+        </div>
+    </section>
+
+{#    <section class="signin-page account">#}
+{#        <div class="container">#}
+{#            <div class="row">#}
+{#                <div class="col-md-6 col-md-offset-3">#}
+{#                    <div class="block">#}
+
+{#                        <h2 class="text-center blue">Créer votre compte</h2>#}
+{#                        {{ form(registerForm) }}#}
+
+{#                        <p class="mt-20">Déja un compte ?<a href="{{ url('app_login') }}"> Se connecter </a></p>#}
+{#                        <p><a href="forget-password.html"> Forgot your password?</a></p>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </section>#}
 
 
 {% endblock %}

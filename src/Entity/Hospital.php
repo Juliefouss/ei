@@ -21,6 +21,21 @@ class Hospital
     #[ORM\OneToMany(mappedBy: 'Hospital', targetEntity: Hourly::class)]
     private $hourlies;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $Adress;
+
+    #[ORM\Column(type: 'string', length: 30)]
+    private ?string $PhoneNumber;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $email;
+
+    #[ORM\Column(type: 'integer')]
+    private $PostalCode;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $Town;
+
     public function __construct()
     {
         $this->hourlies = new ArrayCollection();
@@ -77,6 +92,66 @@ class Hospital
     public function __toString()
     {
         return $this->name;
+    }
+
+    public function getAdress(): ?string
+    {
+        return $this->Adress;
+    }
+
+    public function setAdress(string $Adress): self
+    {
+        $this->Adress = $Adress;
+
+        return $this;
+    }
+
+    public function getPhoneNumber(): ?string
+    {
+        return $this->PhoneNumber;
+    }
+
+    public function setPhoneNumber(string $PhoneNumber): self
+    {
+        $this->PhoneNumber = $PhoneNumber;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    public function getPostalCode(): ?int
+    {
+        return $this->PostalCode;
+    }
+
+    public function setPostalCode(int $PostalCode): self
+    {
+        $this->PostalCode = $PostalCode;
+
+        return $this;
+    }
+
+    public function getTown(): ?string
+    {
+        return $this->Town;
+    }
+
+    public function setTown(string $Town): self
+    {
+        $this->Town = $Town;
+
+        return $this;
     }
 
 }

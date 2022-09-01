@@ -3,8 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\Hourly;
+use App\Search\Admin\HourlyAdminSearch;
 use App\Search\User\HourlySearch;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -65,7 +67,7 @@ class HourlyRepository extends ServiceEntityRepository
 //        ;
 //    }
     /**
-     * @throws \Doctrine\ORM\NonUniqueResultException
+     * @throws NonUniqueResultException
      */
     public function findById($id): Hourly {
         $qb = $this->createQueryBuilder('a')
@@ -104,6 +106,24 @@ class HourlyRepository extends ServiceEntityRepository
         if (count($hourlySearch->getServices())){
             $qb->andWhere('a.Service in (:services)')
                 ->setParameter('services', $hourlySearch->getServices());
+        }
+
+        return $qb->getQuery()->getResult();
+    }
+
+
+    public function findByAdminSearch(HourlyAdminSearch $hourlyAdminSearch)
+    {
+        $qb = $this->createQueryBuilder('a');
+
+        if (count($hourlyAdminSearch->getHospitals())) {
+            $qb->andWhere('a.Hospital in (:hospitals)')
+                ->setParameter('hospitals', $hourlyAdminSearch->getHospitals());
+        }
+
+        if (count($hourlyAdminSearch->getServices())){
+            $qb->andWhere('a.Service in (:services)')
+                ->setParameter('services', $hourlyAdminSearch->getServices());
         }
 
         return $qb->getQuery()->getResult();
