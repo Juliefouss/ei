@@ -27,6 +27,9 @@ class Hourly
     #[ORM\JoinColumn(nullable: false)]
     private ?Hospital $Hospital;
 
+    #[ORM\ManyToOne(targetEntity: HourlyRequest::class, inversedBy: 'hourlies')]
+    private $HourlyRequest;
+
     /**
      * @return mixed
      */
@@ -95,6 +98,18 @@ class Hourly
     public function setHospital(?Hospital $Hospital): self
     {
         $this->Hospital = $Hospital;
+
+        return $this;
+    }
+
+    public function getHourlyRequest(): ?HourlyRequest
+    {
+        return $this->HourlyRequest;
+    }
+
+    public function setHourlyRequest(?HourlyRequest $HourlyRequest): self
+    {
+        $this->HourlyRequest = $HourlyRequest;
 
         return $this;
     }

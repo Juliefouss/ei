@@ -21,9 +21,13 @@ class Service
     #[ORM\OneToMany(mappedBy: 'Service', targetEntity: Hourly::class)]
     private $hourlies;
 
+    #[ORM\OneToMany(mappedBy: 'service', targetEntity: HourlyRequest::class)]
+    private $hourlyRequests;
+
     public function __construct()
     {
         $this->hourlies = new ArrayCollection();
+        $this->hourlyRequests = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -77,6 +81,36 @@ class Service
     public function __toString()
     {
         return $this->name;
+    }
+
+    /**
+     * @return Collection<int, HourlyRequest>
+     */
+    public function getHourlyRequests(): Collection
+    {
+        return $this->hourlyRequests;
+    }
+
+    public function addHourlyRequest(HourlyRequest $hourlyRequest): self
+    {
+        if (!$this->hourlyRequests->contains($hourlyRequest)) {
+            $this->hourlyRequests[] = $hourlyRequest;
+            $hourlyRequest->setService($this);
+        }
+
+        return $this;
+    }
+
+    public function removeHourlyRequest(HourlyRequest $hourlyRequest): self
+    {
+        if ($this->hourlyRequests->removeElement($hourlyRequest)) {
+            // set the owning side to null (unless already changed)
+            if ($hourlyRequest->getService() === $this) {
+                $hourlyRequest->setService(null);
+            }
+        }
+
+        return $this;
     }
 
 }

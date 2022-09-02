@@ -25,11 +25,12 @@ class UserRegisterType extends AbstractType
             ->add('username', TextType::class, ['label'=>'Nom utilisateur'])
             ->add('job', ChoiceType::class, ['label'=> 'Titre', 'choices'=>[
                 'Docteur'=> 'Docteur',
-                'Professeur'=> 'Professeur'
+                'Professeur'=> 'Professeur',
+                 'Aucun'=> 'Non applicable'
             ]])
             ->add('specialization', ChoiceType::class, ['label'=>'Specialisation',
                 'choices'=>[
-                    'Aucune'=> '',
+                    'Aucune'=> 'non applicable',
                     'Cardiologie'=> 'cardiologie',
                     'Neurologie'=>'Neurologie',
                     'Urgences'=>'Urgences',

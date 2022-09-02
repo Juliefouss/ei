@@ -1,0 +1,48 @@
+{% extends 'layout/basic.html.twig' %}
+
+
+{% block navigation %}
+
+    <!-- Main Menu Section -->
+    <section class="menu">
+        <nav class="navbar navigation background-blue">
+            <div class="container">
+                <!-- Navbar Links -->
+                <div id="navbar" class="navbar-collapse collapse text-center">
+                    <ul class="nav navbar-nav">
+
+                        <!-- Home -->
+                        <li class="dropdown ">
+                            <a href="{{ url('partnersHospitalHome') }}" >Home</a>
+                        </li><!-- / Home -->
+
+                        <!--Apply--->
+
+                        <li class="dropdown ">
+                            <a href="{{ url('partnersHospitalForm') }}">Demande</a>
+                        </li>
+
+                        <li class="dropdown ">
+                            <a href="{{ url('partnerHospital-adminMessage') }}">Contact Admin</a>
+                        </li>
+
+
+                        <!-- Deconnexion -->
+
+                        <li class="dropdown ">
+                            <a href="{{ url('app_logout') }}">Déconnexion</a>
+                        </li>
+
+
+                    </ul><!-- / .nav .navbar-nav -->
+
+                </div>
+                <!--/.navbar-collapse -->
+            </div><!-- / .container -->
+        </nav>
+    </section>
+{% endblock %}
+
+
+{% block content %}
+{% endblock %}

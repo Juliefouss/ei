@@ -2,9 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Hospital;
 use App\Entity\Service;
-use App\Form\HospitalType;
 use App\Form\ServiceType;
 use App\Repository\HourlyRepository;
 use App\Repository\UserRepository;
@@ -12,8 +10,6 @@ use App\Search\Admin\HourlyAdminSearch;
 use App\Search\Admin\HourlyAdminSearchType;
 use App\Search\Admin\SearchUser;
 use App\Search\Admin\SearchUserType;
-use App\Search\User\HourlySearch;
-use App\Search\User\HourlySearchType;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -31,11 +27,12 @@ class AdminController extends AbstractController
 
 
     #[Route (path: '/adminSearchUserIndex', name: 'adminSearchUserIndex')]
-    public function adminUserIndex(UserRepository $userRepository, PaginatorInterface $paginator, Request $request): Response{
+    public function adminUserIndex(UserRepository $userRepository, PaginatorInterface $paginator, Request $request): Response
+    {
         $users = $userRepository->findAll();
         $users = $paginator->paginate(
             $users,
-            $request->query->getInt('page', 1),6);
+            $request->query->getInt('page', 1), 6);
         return $this->render('pages/admin/searchUserIndex.html.twig', [
             'users' => $users
         ]);
@@ -77,7 +74,7 @@ class AdminController extends AbstractController
     public function hourlySearchAdmin(Request $request, HourlyRepository $hourlyRepository, PaginatorInterface $paginator): Response
     {
         $hourlyAdminSearch = new HourlyAdminSearch();
-        $result= [];
+        $result = [];
         $form = $this->createForm(HourlyAdminSearchType::class, $hourlyAdminSearch);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {

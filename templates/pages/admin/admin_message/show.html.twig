@@ -22,9 +22,9 @@
                     <div class="dashboard-wrapper dashboard-user-profile border">
                         <div class="media-body">
                             <ul class="user-profile-list">
-                                <li><span>Nom:</span> {{ admin_message.name }}</li>
-                                <li><span>Prénom:</span> {{ admin_message.firstname}}</li>
-                                <li><span>Email:</span> {{ admin_message.email}}</li>
+                                <li><span>Nom:</span> {{ admin_message.user.name }}</li>
+                                <li><span>Prénom:</span> {{ admin_message.user.firstname}}</li>
+                                <li><span>Email:</span> {{ admin_message.user.email}}</li>
                                 <li><span>Objet: </span> {{ admin_message.subject}}</li>
                                 <li><span>Message:</span> {{ admin_message.message }}</li>
                                 <li><button class="btn btn-transparent"> <a href="{{ path('app_admin_message_index') }}">Retour</a></button></li>

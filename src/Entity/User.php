@@ -50,6 +50,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 255)]
     private $job;
 
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: HourlyRequest::class)]
+    private $hourlyRequests;
+
+    #[ORM\OneToMany(mappedBy: 'User', targetEntity: AdminMessage::class)]
+    private $adminMessages;
+
+    public function __construct()
+    {
+        $this->hourlyRequests = new ArrayCollection();
+        $this->adminMessages = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {
@@ -201,6 +213,66 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setJob(string $job): self
     {
         $this->job = $job;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, HourlyRequest>
+     */
+    public function getHourlyRequests(): Collection
+    {
+        return $this->hourlyRequests;
+    }
+
+    public function addHourlyRequest(HourlyRequest $hourlyRequest): self
+    {
+        if (!$this->hourlyRequests->contains($hourlyRequest)) {
+            $this->hourlyRequests[] = $hourlyRequest;
+            $hourlyRequest->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeHourlyRequest(HourlyRequest $hourlyRequest): self
+    {
+        if ($this->hourlyRequests->removeElement($hourlyRequest)) {
+            // set the owning side to null (unless already changed)
+            if ($hourlyRequest->getUser() === $this) {
+                $hourlyRequest->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, AdminMessage>
+     */
+    public function getAdminMessages(): Collection
+    {
+        return $this->adminMessages;
+    }
+
+    public function addAdminMessage(AdminMessage $adminMessage): self
+    {
+        if (!$this->adminMessages->contains($adminMessage)) {
+            $this->adminMessages[] = $adminMessage;
+            $adminMessage->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAdminMessage(AdminMessage $adminMessage): self
+    {
+        if ($this->adminMessages->removeElement($adminMessage)) {
+            // set the owning side to null (unless already changed)
+            if ($adminMessage->getUser() === $this) {
+                $adminMessage->setUser(null);
+            }
+        }
 
         return $this;
     }

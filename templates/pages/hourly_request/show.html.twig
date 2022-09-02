@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}HourlyRequest{% endblock %}
+
+{% block body %}
+    <h1>HourlyRequest</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ hourly_request.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ hourly_request.date ? hourly_request.date|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Hour</th>
+                <td>{{ hourly_request.hour }}</td>
+            </tr>
+            <tr>
+                <th>Message</th>
+                <td>{{ hourly_request.message }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_hourly_request_index') }}">back to list</a>
+
+    <a href="{{ path('app_hourly_request_edit', {'id': hourly_request.id}) }}">edit</a>
+
+    {{ include('hourly_request/_delete_form.html.twig') }}
+{% endblock %}

@@ -31,6 +31,8 @@
                             <li class="dropdown ">
                         {% if is_granted("ROLE_ADMIN") %}
                             <a  href="{{ url('admin-home') }}"><i class="fa-solid fa-user"></i></a>
+                        {% elseif is_granted ("ROLE_HOSPITAL")%}
+                            <a href="{{ url('partnersHospitalHome') }}"><i class="fa-solid fa-user"></i></a>
                         {% elseif is_granted("ROLE_USER") %}
                             <a  href="{{ url('user-home') }}"><i class="fa-solid fa-user"></i></a>
                         {% endif %}

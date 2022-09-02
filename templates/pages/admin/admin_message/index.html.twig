@@ -27,16 +27,16 @@
                                 <thead>
                                 <tr>
                                     <th>Nom</th>
-                                    <th>email</th>
-                                    <th>Object</th>
+                                    <th>Prénom</th>
+                                    <th>Objet</th>
                                     <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 {% for admin_message in admin_messages %}
                                     <tr>
-                                        <td>{{ admin_message.name }}</td>
-                                        <td>{{ admin_message.firstname }}</td>
+                                        <td>{{ admin_message.user.name }}</td>
+                                        <td>{{ admin_message.user.firstname }}</td>
                                         <td>{{ admin_message.subject }}</td>
                                         <td>
                                             <a href="{{ path('app_admin_message_show', {'id': admin_message.id}) }}">

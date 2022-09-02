@@ -1,0 +1,31 @@
+{% extends 'layout/hospital.html.twig' %}
+
+{% block content %}
+
+    <section class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="content">
+                        <h1 class="page-name"> Nouveau message</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="contact-section">
+            <div class="container">
+                <div class="row">
+                    <!-- Contact Form -->
+                    <div class="contact-form col-md-12" >
+                        {{ form(adminMessageform) }}
+                    </div>
+
+                    <!-- ./End Contact Form -->
+                </div> <!-- end row -->
+            </div> <!-- end container -->
+        </div>
+    </section>
+
+{% endblock %}
