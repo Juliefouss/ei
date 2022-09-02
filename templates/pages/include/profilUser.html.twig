@@ -1,0 +1,19 @@
+<div class="col-md-4">
+    <div class="dashboard-user-profile">
+        <div class="media">
+            <div class="text-center">
+                <img class="user-img " src="{{ asset('/images/uploads/' ~user.photo.url) }}" alt="Image de profil">
+            </div>
+            <div class="media-body">
+                <ul class="user-profile-list">
+                    <li><span>Nom:</span> {{ user.name }}</li>
+                    <li><span>Prénom:</span> {{ user.firstname }}</li>
+                    <li><span>Specialisation:</span> {{ user.specialization }}</li>
+                </ul>
+                <div class="text-center padding">
+                    <button class="btn btn-main btn-small btn-round"><a class="white" href="{{ url('app_user_profile_show', {'id': user.id}) }}"> voir le profil</a></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

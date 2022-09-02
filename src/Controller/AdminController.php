@@ -30,6 +30,18 @@ class AdminController extends AbstractController
     }
 
 
+    #[Route (path: '/adminSearchUserIndex', name: 'adminSearchUserIndex')]
+    public function adminUserIndex(UserRepository $userRepository, PaginatorInterface $paginator, Request $request): Response{
+        $users = $userRepository->findAll();
+        $users = $paginator->paginate(
+            $users,
+            $request->query->getInt('page', 1),6);
+        return $this->render('pages/admin/searchUserIndex.html.twig', [
+            'users' => $users
+        ]);
+    }
+
+
     #[Route(path: '/admin_SearchUser', name: 'admin-searchUser')]
     public function adminSearchUser(Request $request, UserRepository $userRepository): Response
     {

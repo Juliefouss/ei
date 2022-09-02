@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="content">
-                        <h1 class="page-name"> Les annonces</h1>
+                        <h1 class="page-name"> Annonces</h1>
                     </div>
                 </div>
             </div>
@@ -20,6 +20,7 @@
                     <div class="col-md-4">
                         <button class="btn btn-main btn-medium btn-round red"><a class="white" href="{{ url('app_hourly_new') }}">Ajouter une annonce</a></button>
                         <aside class="sidebar">
+                            <h3> Filtres</h3>
                             {% set HourlyAdminSearch = getHourlyAdminSearchForm() %}
                             {{ form_start(HourlyAdminSearch) }}
                             {{ form_end(HourlyAdminSearch) }}

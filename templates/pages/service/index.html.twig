@@ -7,42 +7,42 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="content">
-                        <h1 class="page-name"> Les services</h1>
+                        <h1 class="page-name"> Services</h1>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-<section>
-    <div class="product-section">
-        <div class="container">
-{#            <div class="col-md-6">#}
-{#                <img class="img-responsive" src="{{ asset('images/PhotoHospital.jpg') }}" alt="Photo pour les services">#}
-{#            </div>#}
-            <div class="col-md-12">
-                <div class="padding">
-                <button class="btn btn-main btn-medium btn-round red"><a href="{{ url('app_service_new') }}">Ajouter un nouveau service</a></button>
-                </div>
+    <section>
+        <div class="product-section">
+            <div class="container">
+                <div class="col-md-12">
+                    <div class="padding">
+                        <button class="btn btn-main btn-medium btn-round red"><a class="white" href="{{ url('app_service_new') }}">Ajouter
+                                un nouveau service</a></button>
+                    </div>
                     {% for service in services %}
-                {% if loop.index0 % 3==0 %}
-                    <div class="row">
-                {% endif %}
+                        {% if loop.index0 % 3==0 %}
+                            <div class="row">
+                        {% endif %}
                         <div class="col-md-4">
-                            <div class="product-item background-white">
+                            <div class="product-item">
                                 <div class="text-center">
-                <h4>{{ service.name }}</h4>
-                                    <button class="btn btn-transparent"><a href="{{ path('app_service_edit', {'id': service.id}) }}">Modifier</a></button>
-                                                    {{ include('pages/service/_delete_form.html.twig') }}
-                            </div>
+                                    <h4>{{ service.name }}</h4>
+                                    <button class="btn btn-transparent"><a
+                                                href="{{ path('app_service_edit', {'id': service.id}) }}">Modifier</a>
+                                    </button>
+                                    {{ include('pages/service/_delete_form.html.twig') }}
+                                </div>
                             </div>
                         </div>
-                {% if loop.index0 % 3==3 %}
-                    </div>
-                {% endif %}
-            {% endfor %}
+                        {% if loop.index0 % 3==3 %}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
             </div>
+            {# {{ knp_pagination_render(services) }} #}
         </div>
-{#        {{ knp_pagination_render(hourlies) }}#}
-    </div>
-</section>
+    </section>
 {% endblock %}

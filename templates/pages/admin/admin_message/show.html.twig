@@ -27,8 +27,8 @@
                                 <li><span>Nom:</span> {{ admin_message.name }}</li>
                                 <li><span>Prénom:</span> {{ admin_message.firstname}}</li>
                                 <li><span>Email:</span> {{ admin_message.email}}</li>
-                                <li><span>Objet</span> {{ admin_message.subject}}</li>
-                                <li><span>Message</span> {{ admin_message.message }}</li>
+                                <li><span>Objet: </span> {{ admin_message.subject}}</li>
+                                <li><span>Message:</span> {{ admin_message.message }}</li>
                                 <li><button class="btn btn-transparent"> <a href="{{ path('app_admin_message_index') }}">Retour</a></button></li>
                                 <li>{{ include('pages/admin/admin_message/_delete_form.html.twig') }}</li>
                             </ul>

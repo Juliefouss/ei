@@ -24,6 +24,14 @@ class UserProfileController extends AbstractController
     }
 
 
+    #[Route('/{id}', name: 'app_user_profile_show', methods: ['GET'])]
+    public function user_profile_show(User $user): Response
+    {
+        return $this->render('pages/users/user_profile/show.html.twig', [
+            'user' => $user,
+        ]);
+    }
+
     /**
      * @throws NonUniqueResultException
      */

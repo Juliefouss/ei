@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="content">
-                        <h1 class="page-name"> Les médecins</h1>
+                        <h1 class="page-name"> Médecins</h1>
                     </div>
                 </div>
             </div>
@@ -39,12 +39,13 @@
                                     </div>
                                     <div class="media-body">
                                         <ul class="user-profile-list">
+                                            <li><span>Titre:</span> {{ user.job }}</li>
                                             <li><span>Nom:</span> {{ user.name }}</li>
                                             <li><span>Prénom:</span> {{ user.firstname }}</li>
-                                            <li><span>Email:</span> {{ user.email }}</li>
                                             <li><span>Specialisation:</span> {{ user.specialization }}
                                             </li>
                                             <li><span>N° Inami:</span> {{ user.inamiNumber }}</li>
+                                            <li><span>Email:</span><a href="mailto:{{ user.email }}">{{ user.email }}</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -52,6 +53,9 @@
                         {% else %}
                             <h5 class="text-center"> Aucun résultat</h5>
                         {% endfor %}
+                        <div class="text-right">
+                            <button class="btn btn-main btn-small btn-round"><a class="white" href="{{ url('adminSearchUserIndex')}}">Retour</a></button>
+                        </div>
                     </div>
                 </div>
             </div>

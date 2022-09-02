@@ -131,7 +131,7 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
 }
 
 .btn-main, .btn-small, .btn-transparent, .btn-solid-border {
-  background: #000;
+  background: #0c1f54;
   color: #fff;
   display: inline-block;
   font-size: 11px;
@@ -179,6 +179,7 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
 .btn-small {
   padding: 8px 25px;
   font-size: 10px;
+  background-color: #0c1f54;
 }
 
 .btn-round {
@@ -960,7 +961,7 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
 .product-item {
   margin-bottom: 30px;
   border-radius: 5px;
-  border: 1px solid #0c1f54;
+  border: 1px solid #739dc1;
 
 }
 .product-item .product-thumb {
@@ -1977,7 +1978,7 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
   display: inline-block;
 }
 .account .block a {
-  color: #000;
+  color: #0c1f54;
 }
 .account .block h2 {
   font-weight: 400;
@@ -2341,11 +2342,14 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
 }
 .footer .copyright-text {
   margin-top: 20px;
-  color: #0c1f54;
+  color: #0C1F548E;
+  font-size: 14px;
+  font-weight: 300;
 }
 
 .copyright-text a {
-  color: #0c1f54;
+  color: #0C1F548E;
+  font-weight: 500;
 }
 
 .social-media li {
@@ -2396,5 +2400,22 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
   margin-top: 35px;
   margin-bottom: 40px;
 }
+
+.mini-padding{
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+.btn-main:hover a{
+  color: #F7F7F7;
+}
+
+.dashboard-user-profile {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border: 1px solid #739dc1;
+  border-radius: 5px;
+}
+
 
 /*# sourceMappingURL=style.css.map */

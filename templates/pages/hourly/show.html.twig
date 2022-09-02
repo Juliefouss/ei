@@ -34,7 +34,9 @@
                                 </div>
 
                             </form>
-                            <button class="btn btn-transparent"> <a href="{{ path('app_hourly_user-index') }}">Retour</a></button>
+                            <div class="text-right">
+                            <button class="btn btn-main btn-small btn-round"> <a class="white" href="{{ path('app_hourly_user-index') }}">Retour</a></button>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -46,7 +48,7 @@
                                 <p>{{ hourly.hospital.postalCode }}</p>
                                 <p>{{ hourly.hospital.town }}</p>
                                 <p>{{ hourly.hospital.phoneNumber }}</p>
-                                <p>{{ hourly.hospital.email }}</p>
+                                <p> <a href= "mailto:{{hourly.hospital.email }}">{{ hourly.hospital.email }}</a></p>
                             </div>
                         </div>
                     </div>
