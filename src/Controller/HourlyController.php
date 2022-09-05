@@ -19,7 +19,7 @@ class HourlyController extends AbstractController
     #[Route('/', name: 'app_hourly_index', methods: ['GET'])]
     public function index(HourlyRepository $hourlyRepository, PaginatorInterface $paginator, Request $request): Response
     {
-        $hourlies = $hourlyRepository->findAll();
+        $hourlies = $hourlyRepository->findBy([], ['date'=>'ASC']);
         $hourlies = $paginator->paginate(
             $hourlies,
             $request->query->getInt('page', 1),6);
@@ -31,7 +31,7 @@ class HourlyController extends AbstractController
     #[Route('/user', name: 'app_hourly_user-index', methods: ['GET'])]
     public function indexUser(HourlyRepository $hourlyRepository, PaginatorInterface $paginator, Request $request): Response
     {
-        $hourlies = $hourlyRepository->findAll();
+        $hourlies = $hourlyRepository->findBy([], ['date'=>'ASC']);
         $hourlies = $paginator->paginate(
             $hourlies,
             $request->query->getInt('page', 1),6);

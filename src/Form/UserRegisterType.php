@@ -35,8 +35,7 @@ class UserRegisterType extends AbstractType
                     'Neurologie'=>'Neurologie',
                     'Urgences'=>'Urgences',
                     'Pediatrie'=>'Pédiatrie',
-                    'Oncologie' => 'Oncologie',
-                    ''
+                    'Oncologie' => 'Oncologie'
                 ]])
             ->add('inamiNumber', NumberType::class, ['label'=>'Numéro Inami'])
             ->add('Password', RepeatedType::class, [

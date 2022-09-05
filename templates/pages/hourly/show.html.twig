@@ -16,7 +16,7 @@
         <div class="checkout shopping">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-6">
                         <div class="block billing-details">
                             <h4 class="widget-title">Horaire</h4>
                             <form class="checkout-form">
@@ -39,7 +39,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="product-checkout-details">
                             <div class="block">
                                 <h4 class="widget-title">Detail Hôpital</h4>
@@ -49,6 +49,7 @@
                                 <p>{{ hourly.hospital.town }}</p>
                                 <p>{{ hourly.hospital.phoneNumber }}</p>
                                 <p> <a href= "mailto:{{hourly.hospital.email }}">{{ hourly.hospital.email }}</a></p>
+                                <button class="btn btn-main btn-small btn-round "><a class="white" href="mailto:{{ hourly.hospital.applyMail }}">Postuler</a> </button>
                             </div>
                         </div>
                     </div>

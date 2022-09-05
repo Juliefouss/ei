@@ -39,6 +39,9 @@ class Hospital
     #[ORM\OneToMany(mappedBy: 'hospital', targetEntity: HourlyRequest::class)]
     private $hourlyRequests;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $ApplyMail;
+
     public function __construct()
     {
         $this->hourlies = new ArrayCollection();
@@ -184,6 +187,18 @@ class Hospital
                 $hourlyRequest->setHospital(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getApplyMail(): ?string
+    {
+        return $this->ApplyMail;
+    }
+
+    public function setApplyMail(string $ApplyMail): self
+    {
+        $this->ApplyMail = $ApplyMail;
 
         return $this;
     }
