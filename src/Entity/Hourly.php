@@ -3,7 +3,10 @@
 namespace App\Entity;
 
 use App\Repository\HourlyRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use JetBrains\PhpStorm\Pure;
 
 #[ORM\Entity(repositoryClass: HourlyRepository::class)]
 class Hourly
@@ -28,7 +31,7 @@ class Hourly
     private ?Hospital $Hospital;
 
     #[ORM\ManyToOne(targetEntity: HourlyRequest::class, inversedBy: 'hourlies')]
-    private $HourlyRequest;
+    private ?HourlyRequest $HourlyRequest;
 
     /**
      * @return mixed
@@ -113,9 +116,5 @@ class Hourly
 
         return $this;
     }
-
-
-
-
 
 }

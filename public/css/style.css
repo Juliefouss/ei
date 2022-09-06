@@ -2418,4 +2418,8 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
 }
 
 
+.text-center span{
+  font-weight: bolder;
+}
+
 /*# sourceMappingURL=style.css.map */

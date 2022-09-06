@@ -40,7 +40,7 @@ class AdminController extends AbstractController
 
 
     #[Route(path: '/admin_SearchUser', name: 'admin-searchUser')]
-    public function adminSearchUser(Request $request, UserRepository $userRepository): Response
+    public function adminSearchUser(Request $request, UserRepository $userRepository, PaginatorInterface $paginator): Response
     {
 
         $searchUser = new SearchUser();
@@ -85,4 +85,5 @@ class AdminController extends AbstractController
         }
         return $this->render('pages/hourly/index.html.twig', ['hourlies' => $result]);
     }
+
 }

@@ -3,7 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\Hourly;
+use App\Entity\User;
 use App\Search\Admin\HourlyAdminSearch;
+use App\Search\Hospital\HourlyHospitalSearch;
 use App\Search\User\HourlySearch;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\NonUniqueResultException;
@@ -137,5 +139,21 @@ class HourlyRepository extends ServiceEntityRepository
         return $qb->getQuery()->getResult();
     }
 
+    public function findByHospitalSearch(HourlyHospitalSearch $hourlyHospitalSearch){
 
+        $qb = $this->createQueryBuilder('a')
+            ->orderBy('a.date', 'ASC');
+
+        if (count($hourlyHospitalSearch->getHospitals())) {
+            $qb->andWhere('a.Hospital in (:hospitals)')
+                ->setParameter('hospitals', $hourlyHospitalSearch->getHospitals());
+        }
+
+        if (count($hourlyHospitalSearch->getServices())){
+            $qb->andWhere('a.Service in (:services)')
+                ->setParameter('services', $hourlyHospitalSearch->getServices());
+        }
+
+        return $qb->getQuery()->getResult();
+    }
 }

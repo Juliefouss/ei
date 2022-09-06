@@ -7,6 +7,7 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use JetBrains\PhpStorm\Pure;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -28,10 +29,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private string $password;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $name;
+    private ?string $name;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $firstname;
+    private ?string $firstname;
 
     #[ORM\Column(type: 'string', length: 255)]
     private ?string $username;
@@ -48,15 +49,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?Photo $photo;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $job;
+    private ?string $job;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: HourlyRequest::class)]
     private $hourlyRequests;
 
     #[ORM\OneToMany(mappedBy: 'User', targetEntity: AdminMessage::class)]
-    private $adminMessages;
+    private Collection $adminMessages;
 
-    public function __construct()
+    #[Pure] public function __construct()
     {
         $this->hourlyRequests = new ArrayCollection();
         $this->adminMessages = new ArrayCollection();
@@ -276,6 +277,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
 
 
 }

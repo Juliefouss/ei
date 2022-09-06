@@ -95,3 +95,13 @@
 
 
 })(jQuery);
+
+$(document).ready(() => {
+  $('a.cross').click(e => {
+    e.preventDefault();
+    $.get(e.currentTarget.href, res => {
+      $(e.currentTarget).parents('.product-content').append(res);
+    });
+  });
+});
+

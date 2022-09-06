@@ -4,6 +4,8 @@ namespace App\Controller;
 
 
 use App\Repository\HourlyRepository;
+use App\Search\Hospital\HourlyHospitalSearch;
+use App\Search\Hospital\HourlyHospitalSearchType;
 use App\Search\User\HourlySearch;
 use App\Search\User\HourlySearchType;
 use Knp\Component\Pager\PaginatorInterface;
@@ -36,6 +38,22 @@ class UserController extends AbstractController
                 $request->query->getInt('page', 1), 6);
         }
         return $this->render('pages/hourly/indexUser.html.twig', ['hourlies' => $result]);
+    }
+
+    #[Route(path: 'hourlyHospitalSearch' , name: 'hourlyHospitalSearch')]
+    public function hourlyHospitalSearch( Request $request, HourlyRepository $hourlyRepository, PaginatorInterface $paginator):Response
+    {
+        $hourlyHospitalSearch = new HourlyHospitalSearch();
+        $result= [];
+        $form = $this->createForm(HourlyHospitalSearchType::class, $hourlyHospitalSearch);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $result = $hourlyRepository->findByHospitalSearch($hourlyHospitalSearch);
+            $result = $paginator->paginate(
+                $result,
+                $request->query->getInt('page', 1), 6);
+        }
+        return $this->render('pages/hourly/indexHospital.html.twig', ['hourlies' => $result]);
     }
 
 }

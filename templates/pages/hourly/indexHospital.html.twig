@@ -1,0 +1,51 @@
+{% extends 'layout/hospital.html.twig' %}
+
+{% block content %}
+
+    <section class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="content">
+                        <h1 class="page-name"> Annonces </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="page-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <aside class="sidebar">
+                            <div class="widget widget-subscription">
+                                <h4 class="widget-title">Filtres</h4>
+                                {% set HourlyHospitalSearchForm = getHourlyHospitalSearchForm() %}
+                                {{ form_start(HourlyHospitalSearchForm) }}
+                                {{ form_rest(HourlyHospitalSearchForm) }}
+                            </div>
+
+                        </aside>
+                    </div>
+                    <div class="col-md-8 ">
+                        {% for hourly in hourlies %}
+                            {% if loop.index0 % 3==0 %}
+                                <div class="row">
+                            {% endif %}
+                            {% include 'pages/include/hourly-include.html.twig' %}
+                            {% if loop.index0 % 3==3 %}
+                                </div>
+                            {% endif %}
+                        {% else %}
+                            <h5 class="text-center text-capitalize"> Aucun résultat</h5>
+                        {% endfor %}
+                    </div>
+                    {{ knp_pagination_render(hourlies) }}
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
