@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\ContactMessage;
-use App\Form\ContactMessage1Type;
+use App\Form\ContactMessageType;
 use App\Repository\ContactMessageRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,25 +21,6 @@ class ContactMessageController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_contact_message_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, ContactMessageRepository $contactMessageRepository): Response
-    {
-        $contactMessage = new ContactMessage();
-        $form = $this->createForm(ContactMessage1Type::class, $contactMessage);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $contactMessageRepository->add($contactMessage, true);
-
-            return $this->redirectToRoute('app_contact_message_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->renderForm('contact_message/new.html.twig', [
-            'contact_message' => $contactMessage,
-            'form' => $form,
-        ]);
-    }
-
     #[Route('/{id}', name: 'app_contact_message_show', methods: ['GET'])]
     public function show(ContactMessage $contactMessage): Response
     {
@@ -51,7 +32,7 @@ class ContactMessageController extends AbstractController
     #[Route('/{id}/edit', name: 'app_contact_message_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, ContactMessage $contactMessage, ContactMessageRepository $contactMessageRepository): Response
     {
-        $form = $this->createForm(ContactMessage1Type::class, $contactMessage);
+        $form = $this->createForm(ContactMessageType::class, $contactMessage);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

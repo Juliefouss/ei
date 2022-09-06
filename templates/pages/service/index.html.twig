@@ -18,7 +18,8 @@
             <div class="container">
                 <div class="col-md-12">
                     <div class="padding">
-                        <button class="btn btn-main btn-medium btn-round red"><a class="white" href="{{ url('app_service_new') }}">Ajouter
+                        <button class="btn btn-main btn-medium btn-round red"><a class="white"
+                                                                                 href="{{ url('app_service_new') }}">Ajouter
                                 un nouveau service</a></button>
                     </div>
                     {% for service in services %}
@@ -39,10 +40,12 @@
                         {% if loop.index0 % 3==3 %}
                             </div>
                         {% endif %}
+
+
                     {% endfor %}
                 </div>
             </div>
-            {# {{ knp_pagination_render(services) }} #}
+            {{ knp_pagination_render(services) }}
         </div>
     </section>
 {% endblock %}

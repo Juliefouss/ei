@@ -35,7 +35,16 @@ class EditProfilType extends AbstractType
                     'Urgences'=>'Urgences',
                     'Pediatrie'=>'Pédiatrie',
                     'Oncologie' => 'Oncologie',
-                    ''
+                    'Gynécologie'=> 'Gynecologie',
+                    'Gastroentérologie' => 'Gastroentérologie',
+                    'Endocrinologie' => 'Endocrinologie',
+                    'Pneumologie' => 'Pneumologie',
+                    'Infectiologie'=> 'Infectiologie',
+                    'Néphrologie'=> 'Néphrologie',
+                    'Urologie'=>'Urologie',
+                    'Néonatologie'=> 'Néonatologie',
+                    'ORL'=> 'ORL',
+                    'Physiologie'=>'Physiologie'
                 ]])
             ->add('inamiNumber', NumberType::class, ['label'=>'Numéro Inami'])
             ->add('submit', SubmitType::class, ['label'=> 'Envoyer'])

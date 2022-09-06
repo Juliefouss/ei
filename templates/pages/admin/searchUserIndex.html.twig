@@ -35,12 +35,13 @@
                             {% if loop.index0 % 3==0 %}
                                 <div class="row">
                             {% endif %}
-{{ include('pages/include/profilUser.html.twig') }}
+                            {{ include('pages/include/profilUser.html.twig') }}
                             {% if loop.index0 % 3==3 %}
                                 </div>
                             {% endif %}
                         {% endfor %}
                     </div>
+                    {{ knp_pagination_render(users) }}
                 </div>
             </div>
         </div>

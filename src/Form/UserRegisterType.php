@@ -30,12 +30,22 @@ class UserRegisterType extends AbstractType
             ]])
             ->add('specialization', ChoiceType::class, ['label'=>'Specialisation',
                 'choices'=>[
-                    'Aucune'=> 'non applicable',
+                    'Aucune'=> '',
                     'Cardiologie'=> 'cardiologie',
                     'Neurologie'=>'Neurologie',
                     'Urgences'=>'Urgences',
                     'Pediatrie'=>'Pédiatrie',
-                    'Oncologie' => 'Oncologie'
+                    'Oncologie' => 'Oncologie',
+                    'Gynécologie'=> 'Gynecologie',
+                    'Gastroentérologie' => 'Gastroentérologie',
+                    'Endocrinologie' => 'Endocrinologie',
+                    'Pneumologie' => 'Pneumologie',
+                    'Infectiologie'=> 'Infectiologie',
+                    'Néphrologie'=> 'Néphrologie',
+                    'Urologie'=>'Urologie',
+                    'Néonatologie'=> 'Néonatologie',
+                    'ORL'=> 'ORL',
+                    'Physiologie'=>'Physiologie'
                 ]])
             ->add('inamiNumber', NumberType::class, ['label'=>'Numéro Inami'])
             ->add('Password', RepeatedType::class, [

@@ -17,45 +17,36 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="block billing-details">
+                        <div class="block">
                             <h4 class="widget-title">Horaire</h4>
-                            <form class="checkout-form">
-                                <div class="form-group">
-                                    <label for="full_name">{{ hourly.date|date("d/m/Y", "Europe/Paris") }}</label>
-                                    <input type="text" class="form-control" id="full_name" placeholder="">
-                                </div>
-                                <div class="form-group">
-                                    <label for="user_address">{{ hourly.hospital }}</label>
-                                    <input type="text" class="form-control" id="user_address" placeholder="">
-                                </div>
-                                <div class="form-group">
-                                    <label for="user_address">{{ hourly.service }}</label>
-                                    <input type="text" class="form-control" id="user_address" placeholder="">
-                                </div>
-
-                            </form>
-                            <div class="text-right">
-                            <button class="btn btn-main btn-small btn-round"> <a class="white" href="{{ path('app_hourly_user-index') }}">Retour</a></button>
-                            </div>
+                            <h5 class="widget-title">Date: {{ hourly.date|date("d/m/Y", "Europe/Paris") }}</h5>
+                            <h5 class="widget-title">Service: {{ hourly.service }}</h5>
+                            <h5 class="widget-title">Lieu : {{ hourly.hospital }} </h5>
+                            <h5 class="widget-title"><div class="text-center">
+                                    <button class="btn btn-main btn-small btn-round"><a class="white"href="mailto:{{ hourly.hospital.applyMail }}">Postuler</a></button>
+                                </div></h5>
+                        <div class="text-right">
+                            <button class="btn btn-main btn-small btn-round"><a class="white"href="{{ path('app_hourly_user-index') }}">Retour</a>
+                            </button>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="product-checkout-details">
-                            <div class="block">
-                                <h4 class="widget-title">Detail Hôpital</h4>
-                                <h4>{{ hourly.hospital.name }}</h4>
-                                <p>{{ hourly.hospital.adress }}</p>
-                                <p>{{ hourly.hospital.postalCode }}</p>
-                                <p>{{ hourly.hospital.town }}</p>
-                                <p>{{ hourly.hospital.phoneNumber }}</p>
-                                <p> <a href= "mailto:{{hourly.hospital.email }}">{{ hourly.hospital.email }}</a></p>
-                                <button class="btn btn-main btn-small btn-round "><a class="white" href="mailto:{{ hourly.hospital.applyMail }}">Postuler</a> </button>
-                            </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="product-checkout-details">
+                        <div class="block">
+                            <h4 class="widget-title">Detail Hôpital</h4>
+                            <h4>{{ hourly.hospital.name }}</h4>
+                            <p>{{ hourly.hospital.adress }}</p>
+                            <p>{{ hourly.hospital.postalCode }}</p>
+                            <p>{{ hourly.hospital.town }}</p>
+                            <p>{{ hourly.hospital.phoneNumber }}</p>
+                            <p><a href="mailto:{{ hourly.hospital.email }}">{{ hourly.hospital.email }}</a></p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
 

@@ -40,14 +40,6 @@ class HospitalController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_hospital_show', methods: ['GET'])]
-    public function show(Hospital $hospital): Response
-    {
-        return $this->render('pages/hospital/show.html.twig', [
-            'hospital' => $hospital,
-        ]);
-    }
-
     #[Route('/{id}/edit', name: 'app_hospital_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Hospital $hospital, HospitalRepository $hospitalRepository): Response
     {

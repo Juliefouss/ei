@@ -6,6 +6,7 @@ use App\Entity\Service;
 use App\Form\Service1Type;
 use App\Form\ServiceType;
 use App\Repository\ServiceRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,10 +16,14 @@ use Symfony\Component\Routing\Annotation\Route;
 class ServiceController extends AbstractController
 {
     #[Route('/', name: 'app_service_index', methods: ['GET'])]
-    public function index(ServiceRepository $serviceRepository): Response
+    public function index(ServiceRepository $serviceRepository, PaginatorInterface $paginator, Request $request): Response
     {
+        $services = $serviceRepository->findAll();
+        $services = $paginator->paginate(
+            $services,
+            $request->query->getInt('page', 1), 6);
         return $this->render('pages/service/index.html.twig', [
-            'services' => $serviceRepository->findAll(),
+            'services' => $services,
         ]);
     }
 
@@ -41,13 +46,6 @@ class ServiceController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_service_show', methods: ['GET'])]
-    public function show(Service $service): Response
-    {
-        return $this->render('pages/service/show.html.twig', [
-            'service' => $service,
-        ]);
-    }
 
     #[Route('/{id}/edit', name: 'app_service_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Service $service, ServiceRepository $serviceRepository): Response
