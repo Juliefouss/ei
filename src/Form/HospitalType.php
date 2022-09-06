@@ -22,6 +22,7 @@ class HospitalType extends AbstractType
             ->add('Town', TextareaType::class,['label'=> 'Ville'])
             ->add('PhoneNumber', TextareaType::class, ['label'=> 'Numéro de téléphone'])
             ->add('email', EmailType::class, ['label'=> 'Email'])
+            ->add('applyMail', EmailType::class, ['label'=>'Adresse mail pour postuler'])
             ->add('submit', SubmitType::class, ['label'=>'Envoyer'])
         ;
     }

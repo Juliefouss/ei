@@ -50,16 +50,9 @@
                     </li>
 
                     <!-- Consulter les profils des utilisateurs -->
-                    <li class="dropdown dropdown-slide">
-                        <a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350"
-                           role="button" aria-haspopup="true" aria-expanded="false">Profils <span
-                                    class="tf-ion-ios-arrow-down"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="{{ url('app_user_profile_index'  , {'id': app.user.id}) }}">Mon profil</a></li>
-                            <li><a href="{{ url('adminSearchUserIndex') }}">Médecins</a></li>
-                        </ul>
+                    <li class="dropdown">
+                    <a href="{{ url('adminSearchUserIndex') }}">Médecins</a>
                     </li>
-
                     <!-- Deconnexion -->
 
                     <li class="dropdown ">

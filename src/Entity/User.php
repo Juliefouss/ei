@@ -57,6 +57,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'User', targetEntity: AdminMessage::class)]
     private Collection $adminMessages;
 
+
     #[Pure] public function __construct()
     {
         $this->hourlyRequests = new ArrayCollection();
@@ -277,8 +278,5 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
-
-
-
 }
 

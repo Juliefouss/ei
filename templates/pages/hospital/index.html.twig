@@ -29,6 +29,7 @@
                                         <th>Ville</th>
                                         <th>Numéro de téléphone</th>
                                         <th>Email</th>
+                                        <th>Email pour postuler</th>
                                     </tr>
                                 </thead>
                             <tbody>
@@ -41,6 +42,7 @@
                                             <td>{{ hospital.Town }}</td>
                                             <td>{{ hospital.PhoneNumber }}</td>
                                             <td>{{ hospital.email }}</td>
+                                            <td>{{ hospital.applyMail }}</td>
                                             <td>
                                                 <button class="btn btn-transparent"><a href="{{ path('app_hospital_edit', {'id': hospital.id}) }}">Modifier</a></button>
                                                 {{ include('pages/hospital/_delete_form.html.twig') }}

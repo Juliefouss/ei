@@ -3,6 +3,7 @@
             <div class="product-item">
                 <h3 class="title text-center">{{ hourly.hospital.name }}</h3>
                 <div class="product-content">
+                    <p> ID : {{ hourly.id }}</p>
                     <p>Date: {{ hourly.date|date("d/m/Y", "Europe/Paris") }}</p>
                     <p> Horaire: {{ hourly.hour }}</p>
                     <p>Service: {{ hourly.service.name }}</p>
