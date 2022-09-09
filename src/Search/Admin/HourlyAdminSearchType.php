@@ -4,9 +4,9 @@ namespace App\Search\Admin;
 
 use App\Entity\Hospital;
 use App\Entity\Service;
-use App\Search\User\HourlySearch;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -17,8 +17,9 @@ class HourlyAdminSearchType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('services', EntityType::class, ['label'=> 'Service', 'class' => Service::class, 'multiple' => true, 'expanded' => true])
+            ->add('number', NumberType::class, ['label' => 'Id annonce'])
             ->add('hospitals', EntityType::class, ['label'=> 'Hôpital', 'class' => Hospital::class, 'multiple' => true, 'expanded' => true])
+            ->add('services', EntityType::class, ['label'=> 'Services', 'class' => Service::class, 'multiple' => true, 'expanded' => true])
             ->add('submit', SubmitType::class, ['label'=>'Chercher'])
         ;
     }

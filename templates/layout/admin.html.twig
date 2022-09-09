@@ -12,7 +12,7 @@
 
                     <!-- Home -->
                     <li class="dropdown ">
-                        <a href="{{ url('admin-home') }}" >Home</a>
+                        <a href="{{ url('admin-home') }}" >Accueil</a>
                     </li><!-- / Home -->
 
                     <!--Hourly--->
@@ -43,9 +43,10 @@
                            role="button" aria-haspopup="true" aria-expanded="false">Messages <span
                                     class="tf-ion-ios-arrow-down"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="{{ url('app_admin_message_index') }}">Messages Admin</a></li>
-                            <li><a href="{{ url('app_contact_message_index') }}">Message Contact</a></li>
-                            <li><a href="{{ url('app_hourly_request_index') }}">Demande</a></li>
+                            <li><a href="{{ url('app_contact_message_index') }}">Messages site</a></li>
+                            <li><a href="{{ url('app_admin_message_index') }}">Messages hôpitaux</a></li>
+                            <li><a href="{{ url('app_hourly_request_index') }}">Demandes d'ajout</a></li>
+                            <li><a href="{{ url('app_delete_message_index') }}">Demandes de suppression</a></li>
                         </ul>
                     </li>
 

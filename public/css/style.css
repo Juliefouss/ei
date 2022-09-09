@@ -98,10 +98,12 @@ a{
 
 blockquote {
   font-size: 18px;
-  border-color: #000;
+  /*border-color: #000;*/
   padding: 20px 40px;
-  text-align: left;
-  color: #777;
+  /*text-align: left;*/
+  color: #0054a5;
+  font-weight: bold;
+  /*font-style: italic;*/
 }
 
 .navbar-toggle .icon-bar {
@@ -257,7 +259,7 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
   padding: 20px 0 30px;
 }
 .title h2 {
-  font-size: 18px;
+  font-size: 21px;
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -801,7 +803,7 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
   transition: 0.3s all;
 }
 .navigation .dropdown-slide .dropdown-menu li a:hover {
-  background-color: #000;
+  background-color: #739dc1;
   color: #fff;
 }
 
@@ -1473,7 +1475,7 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
 .dashboard-wrapper {
   /*border: 1px solid #0c1f54;*/
   margin-top: 30px;
-  padding: 20px;
+  /*padding: 20px;*/
 }
 .dashboard-wrapper h2 {
   font-size: 18px;
@@ -2326,8 +2328,8 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
 .footer {
   background:  #f5f5f9;
   padding: 0 0;
-  height: 50px;
-  margin-top: 20px;
+  height: 70px;
+  margin: 0 auto;
 }
 .footer .footer-menu {
   margin-top: 0;
@@ -2419,7 +2421,66 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
 
 
 .text-center span{
-  font-weight: bolder;
+  font-weight: 900;
 }
 
+.calendrier{
+  width: 65%;
+  height: 48%;
+  margin: auto;
+  padding-top: 30px;
+}
+
+.fc-toolbar-title{
+  font-size: 18px !important;
+
+}
+
+.fc-prev-button .fc-button .fc-button-primary{
+  size: 2px;
+  padding: 0 !important;
+}
+
+.fc .fc-daygrid-day.fc-day-today{
+  background-color: #b8cad5 !important;
+}
+
+.space {
+  margin-top: 100px;
+}
+.align{
+  margin-top: 117px;
+}
+
+.push-top{
+  margin-top: 60px;
+
+}
+
+.push-bottom{
+  margin-top: -58px;
+}
+.about-text{
+  margin-top: 80px;
+}
+.about{
+  color: #0c1f54;
+  font-size: 17px;
+  font-weight: lighter;
+  line-height:40px;
+}
+
+.color-home{
+  background-color: #0054a5;
+}
+
+.padding-align{
+  padding: 20px 31px;
+}
+
+.fc .fc-button-primary{
+  background-color: #b8cad5 !important;
+  border-color:#b8cad5 !important;
+  padding: 0 !important;
+}
 /*# sourceMappingURL=style.css.map */

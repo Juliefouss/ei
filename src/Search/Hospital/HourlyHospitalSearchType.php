@@ -16,8 +16,8 @@ class HourlyHospitalSearchType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('services', EntityType::class, ['label'=> 'Service', 'class' => Service::class, 'multiple' => true, 'expanded' => true])
             ->add('hospitals', EntityType::class, ['label'=> 'Hôpital', 'class' => Hospital::class, 'multiple' => true, 'expanded' => true])
+            ->add('services', EntityType::class, ['label'=> 'Services', 'class' => Service::class, 'multiple' => true, 'expanded' => true])
             ->add('submit', SubmitType::class, ['label'=>'Chercher'])
         ;
     }

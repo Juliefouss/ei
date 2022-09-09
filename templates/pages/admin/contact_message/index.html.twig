@@ -42,19 +42,12 @@
                                                 <a href="{{ path('app_contact_message_show', {'id': contact_message.id}) }}">
                                                     <button class="btn btn-transparent">Voir</button>
                                                 </a>
-{#                                                <form method="post"#}
-{#                                                      action="{{ path('app_admin_message_delete', {'id': admin_message.id}) }}"#}
-{#                                                      onsubmit="return confirm('Supprimer ce message?');">#}
-{#                                                    <input type="hidden" name="_token"#}
-{#                                                           value="{{ csrf_token('delete' ~ admin_message.id) }}">#}
-{#                                                    <button class="btn btn-transparent">Supprimer</button>#}
-{#                                                </form>#}
                                                 {{ include('pages/admin/contact_message/_delete_form.html.twig') }}
                                             </td>
                                         </tr>
                                     {% else %}
                                         <tr>
-                                            <td colspan="6">no records found</td>
+                                            <td colspan="6">Pas de message</td>
                                         </tr>
                                     {% endfor %}
 

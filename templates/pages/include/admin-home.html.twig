@@ -4,11 +4,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <img class="img-responsive" src="{{ asset('images/PhotoUserAdminHome.jpg') }}" alt="photo accueil utilisateur">
+                    <img class="img-responsive" src="{{ asset('images/PhotoAdminUserHome.jpg') }}"
+                         alt="photo accueil utilisateur">
                 </div>
                 <div class="col-md-6">
                     <div class="title text-center">
-                        <h2 class="blue"> Bienvenue {{ app.user.username }}</h2>
+                        <h2> Bienvenue  {{ app.user.username }} {{ app.user.firstname }}</h2>
+                    </div>
+                    <div class="calendrier text-center">
                     </div>
                 </div>
             </div>

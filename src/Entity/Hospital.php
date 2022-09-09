@@ -42,6 +42,9 @@ class Hospital
     #[ORM\Column(type: 'string', length: 255)]
     private $ApplyMail;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $website;
+
     public function __construct()
     {
         $this->hourlies = new ArrayCollection();
@@ -199,6 +202,18 @@ class Hospital
     public function setApplyMail(string $ApplyMail): self
     {
         $this->ApplyMail = $ApplyMail;
+
+        return $this;
+    }
+
+    public function getWebsite(): ?string
+    {
+        return $this->website;
+    }
+
+    public function setWebsite(string $website): self
+    {
+        $this->website = $website;
 
         return $this;
     }

@@ -124,14 +124,16 @@ class HourlyRepository extends ServiceEntityRepository
     public function findByAdminSearch(HourlyAdminSearch $hourlyAdminSearch)
     {
         $qb = $this->createQueryBuilder('a')
-            ->orderBy('a.date', 'ASC');
+            ->orderBy('a.date', 'ASC')
+            ->where('a.id LIKE :number')
+            ->setParameter('number', $hourlyAdminSearch->getNumber());
 
         if (count($hourlyAdminSearch->getHospitals())) {
             $qb->andWhere('a.Hospital in (:hospitals)')
                 ->setParameter('hospitals', $hourlyAdminSearch->getHospitals());
         }
 
-        if (count($hourlyAdminSearch->getServices())){
+        if (count($hourlyAdminSearch->getServices())) {
             $qb->andWhere('a.Service in (:services)')
                 ->setParameter('services', $hourlyAdminSearch->getServices());
         }
@@ -139,7 +141,8 @@ class HourlyRepository extends ServiceEntityRepository
         return $qb->getQuery()->getResult();
     }
 
-    public function findByHospitalSearch(HourlyHospitalSearch $hourlyHospitalSearch){
+    public function findByHospitalSearch(HourlyHospitalSearch $hourlyHospitalSearch)
+    {
 
         $qb = $this->createQueryBuilder('a')
             ->orderBy('a.date', 'ASC');
@@ -149,7 +152,7 @@ class HourlyRepository extends ServiceEntityRepository
                 ->setParameter('hospitals', $hourlyHospitalSearch->getHospitals());
         }
 
-        if (count($hourlyHospitalSearch->getServices())){
+        if (count($hourlyHospitalSearch->getServices())) {
             $qb->andWhere('a.Service in (:services)')
                 ->setParameter('services', $hourlyHospitalSearch->getServices());
         }

@@ -35,6 +35,9 @@
    <!--Librairie Font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <!--Fullcalendar -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" integrity="sha256-5veQuRbWaECuYxwap/IOE/DAwNxgm4ikX7nrgsqYp88=" crossorigin="anonymous">
+
 </head>
 
 {% endblock %}
@@ -70,14 +73,12 @@
 
 {% block footer %}
 <footer class="footer section text-center">
-    <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <p class="copyright-text">Copyright &copy;2021, Designed &amp; Developed by <a
                             href="https://themefisher.com/">Themefisher</a></p>
             </div>
         </div>
-    </div>
 </footer>
 </body>
 {% endblock %}
@@ -111,5 +112,8 @@
 
 <!-- Main Js File -->
 <script src={{ asset ("js/script.js")}}></script>
+
+<!-- Full calendar -->
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js" integrity="sha256-7PzqE1MyWa/IV5vZumk1CVO6OQbaJE4ns7vmxuUP/7g=" crossorigin="anonymous"></script>
 
 {% endblock %}

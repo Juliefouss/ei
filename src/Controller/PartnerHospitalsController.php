@@ -3,12 +3,19 @@
 namespace App\Controller;
 
 use App\Entity\AdminMessage;
+use App\Entity\DeleteMessage;
 use App\Entity\HourlyRequest;
 use App\Form\AdminMessageType;
+use App\Form\DeleteMessageType;
 use App\Form\HourlyRequestType;
 use App\Repository\AdminMessageRepository;
+use App\Repository\DeleteMessageRepository;
+use App\Repository\HourlyRepository;
 use App\Repository\HourlyRequestRepository;
+use App\Search\Hospital\HourlyHospitalSearch;
+use App\Search\Hospital\HourlyHospitalSearchType;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -54,5 +61,39 @@ class PartnerHospitalsController extends AbstractController
             'adminMessage' =>$adminMessage,
             'adminMessageform' => $form
         ]);
+    }
+
+    #[Route(path: '/partnersHospital/deleteMessage', name: 'partnerHospital-deleteMessage')]
+
+    public function deleteMessage(DeleteMessageRepository $deleteMessageRepository, EntityManagerInterface $em, Request $request): Response{
+        $deleteMessage = new DeleteMessage();
+        $form = $this->createForm(DeleteMessageType::class, $deleteMessage);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            $em->persist($deleteMessage);
+            $em->flush();
+            return $this->redirectToRoute('partnersHospitalHome');
+        }
+        return $this->renderForm('pages/PartnerHospitals/deleteMessage.html.twig', [
+            'deleteMessage' =>$deleteMessage,
+            'deleteMessageForm' => $form
+        ]);
+    }
+
+
+    #[Route(path: 'hourlyHospitalSearch' , name: 'hourlyHospitalSearch')]
+    public function hourlyHospitalSearch( Request $request, HourlyRepository $hourlyRepository, PaginatorInterface $paginator):Response
+    {
+        $hourlyHospitalSearch = new HourlyHospitalSearch();
+        $result= [];
+        $form = $this->createForm(HourlyHospitalSearchType::class, $hourlyHospitalSearch);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $result = $hourlyRepository->findByHospitalSearch($hourlyHospitalSearch);
+            $result = $paginator->paginate(
+                $result,
+                $request->query->getInt('page', 1), 6);
+        }
+        return $this->render('pages/hourly/indexHospital.html.twig', ['hourlies' => $result]);
     }
 }

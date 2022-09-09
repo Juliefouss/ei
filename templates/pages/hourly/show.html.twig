@@ -22,7 +22,8 @@
                             <h5 class="widget-title">Date: {{ hourly.date|date("d/m/Y", "Europe/Paris") }}</h5>
                             <h5 class="widget-title">Service: {{ hourly.service }}</h5>
                             <h5 class="widget-title">Lieu : {{ hourly.hospital }} </h5>
-                            <h5 class="widget-title"><div class="text-center">
+                            <h5 class="widget-title">
+                                <div class="text-center">
                                     <button class="btn btn-main btn-small btn-round"><a class="white"href="mailto:{{ hourly.hospital.applyMail }}">Postuler</a></button>
                                 </div></h5>
                         <div class="text-right">
@@ -40,6 +41,7 @@
                             <p>{{ hourly.hospital.postalCode }}</p>
                             <p>{{ hourly.hospital.town }}</p>
                             <p>{{ hourly.hospital.phoneNumber }}</p>
+                            <p>{{ hourly.hospital.website }}</p>
                             <p><a href="mailto:{{ hourly.hospital.email }}">{{ hourly.hospital.email }}</a></p>
                         </div>
                     </div>

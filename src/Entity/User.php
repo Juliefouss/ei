@@ -57,11 +57,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'User', targetEntity: AdminMessage::class)]
     private Collection $adminMessages;
 
+    #[ORM\OneToMany(mappedBy: 'author', targetEntity: DeleteMessage::class)]
+    private $deleteMessages;
+
 
     #[Pure] public function __construct()
     {
         $this->hourlyRequests = new ArrayCollection();
         $this->adminMessages = new ArrayCollection();
+        $this->deleteMessages = new ArrayCollection();
     }
 
 
@@ -273,6 +277,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($adminMessage->getUser() === $this) {
                 $adminMessage->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, DeleteMessage>
+     */
+    public function getDeleteMessages(): Collection
+    {
+        return $this->deleteMessages;
+    }
+
+    public function addDeleteMessage(DeleteMessage $deleteMessage): self
+    {
+        if (!$this->deleteMessages->contains($deleteMessage)) {
+            $this->deleteMessages[] = $deleteMessage;
+            $deleteMessage->setAuthor($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDeleteMessage(DeleteMessage $deleteMessage): self
+    {
+        if ($this->deleteMessages->removeElement($deleteMessage)) {
+            // set the owning side to null (unless already changed)
+            if ($deleteMessage->getAuthor() === $this) {
+                $deleteMessage->setAuthor(null);
             }
         }
 

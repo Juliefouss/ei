@@ -105,3 +105,22 @@ $(document).ready(() => {
   });
 });
 
+
+// Fullcalendar
+
+window.onload = () =>{
+  let calendarElt = document.querySelector(".calendrier")
+
+  let calendar = new FullCalendar.Calendar(calendarElt,{
+    initialView: 'dayGridMonth',
+    locale: 'fr',
+    timeZone : 'Europe/Bruxelles',
+    headerToolbar : {
+      start: 'prev',
+      center: 'title',
+      end: 'next'
+    }
+  })
+
+  calendar.render()
+}

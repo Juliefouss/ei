@@ -13,7 +13,7 @@
                         {{ include('pages/hourly/_delete_form.html.twig') }}
 
                     {% elseif is_granted("ROLE_HOSPITAL") %}
-                        <button class="btn btn-transparent"><a href="{{ path('partnerHospital-adminMessage') }}">Demande de suppression</a></button>
+                        <button class="btn btn-transparent"><a href="{{ path('partnerHospital-deleteMessage') }}">Demande de suppression</a></button>
 
                     {% elseif is_granted("ROLE_USER") %}
                         <button class="btn btn-main btn-small btn-round mini-padding"><a class="white"

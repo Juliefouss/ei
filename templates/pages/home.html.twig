@@ -3,28 +3,42 @@
 {% block content %}
 
     <section class="page-wrapper ">
-       <div class="container">
-           <div class="row">
-           <div class="col-md-6">
-             <img class="img-responsive" src="{{ asset('images/PhotoHome.jpg') }}" alt="photo accueil">
-               </div>
-           <div class="col-md-6">
-               <div class="title text-center">
-               <h2 class="blue">Bienvenue</h2>
-               </div>
-               <div class="text-center">
-                   <p>Le site Medec'Im est un site destiné aux médecins qui souhaitent travailler comme intérimaires dans nos différents hôpitaux partenaires.</p>
-               </div>
-              <div class="text-center">
-                  <p>Si vous êtes <span>médecins</span> et intérressés n'hésitez pas à vous inscrire et de rejoindre notre aventure</p>
-                  <button class="btn btn-main btn-small btn-round mini-padding"><a class="white" href="{{ url('register') }}">S'inscrire</a></button>
-              </div>
-               <div class="text-center">
-                   <p>Vous êtes un <span>Hôpital</span> et vous souhaitez vous ajouter à nos partenaires, n'hésitez pas à nous contacter</p>
-               <button class="btn btn-main btn-small btn-round mini-padding"><a class="white" href="{{ url('contact') }}">Contactez nous</a> </button>
-               </div>
-           </div>
-       </div>
-       </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <img class="img-responsive" src="{{ asset('images/PhotoHome.jpg') }}" alt="photo accueil">
+                </div>
+                <div class="col-md-6">
+                    <div class="title text-center">
+                        <h1 class="blue">Bienvenue</h1>
+                    </div>
+                    <div class="text-center">
+                        <blockquote>Nos membres sont à la recherche de continuité et de qualité des soins et nous
+                            mettons tout en œuvre pour leur permettre d’y arriver.
+                        </blockquote>
+                    </div>
+                    <div class="text-center">
+                        <p class="about">Medec’Im est pensé de façon à maximiser la communication et les interactions
+                            entre les <span> médecins</span>
+                            et les <span>hôpitaux </span>. </p>
+                    </div>
+                    <div>
+                        <div class="text-center padding">
+                            <button class="btn btn-main btn-large btn-round-full color-home"><a class="white"
+                                                                                     href="{{ url('register') }}">Je
+                                    suis un médecin</a></button>
+                        </div>
+
+                    </div>
+                    <div class="text-center padding">
+
+                            <button class="btn btn-main btn-large btn-round-full padding-align "><a class="white"
+                                                                                      href="{{ url('contact') }}">J'ai
+                                    besoin de médecins</a></button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 {% endblock %}

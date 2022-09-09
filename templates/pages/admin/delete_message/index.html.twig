@@ -33,27 +33,23 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {% for admin_message in admin_messages %}
-                                    <tr>
-                                        <td>{{ admin_message.user.name }}</td>
-                                        <td>{{ admin_message.user.firstname }}</td>
-                                        <td>{{ admin_message.subject }}</td>
-                                        <td>
-                                            <a href="{{ path('app_admin_message_show', {'id': admin_message.id}) }}">
-                                                <button class="btn btn-transparent">Voir</button>
-                                            </a>
+                                {% for delete_message in delete_messages %}
+                                                <tr>
+                                                    <td>{{ delete_message.author.name }} {{ delete_message.author.firstname }}</td>
+                                                    <td>{{ delete_message.HourlyId }}</td>
+                                                    <td>
                                             <form method="post"
-                                                  action="{{ path('app_admin_message_delete', {'id': admin_message.id}) }}"
+                                                  action="{{ path('app_delete_message_delete', {'id': delete_message.id}) }}"
                                                   onsubmit="return confirm('Supprimer ce message?');">
                                                 <input type="hidden" name="_token"
-                                                       value="{{ csrf_token('delete' ~ admin_message.id) }}">
+                                                       value="{{ csrf_token('delete' ~ delete_message.id) }}">
                                                 <button class="btn btn-transparent">Supprimer</button>
                                             </form>
                                         </td>
                                     </tr>
                                 {% else %}
                                     <tr>
-                                        <td colspan="6">Pas de messages </td>
+                                        <td colspan="6">Pas de message </td>
                                     </tr>
                                 {% endfor %}
 
@@ -67,3 +63,19 @@
         </div>
     </section>
 {% endblock %}
+
+
+{#        {% for delete_message in delete_messages %}#}
+{#            <tr>#}
+{#                <td>{{ delete_message.id }}</td>#}
+{#                <td>{{ delete_message.HourlyId }}</td>#}
+{#                <td>#}
+{#                    <a href="{{ path('app_delete_message_show', {'id': delete_message.id}) }}">show</a>#}
+{#                    <a href="{{ path('app_delete_message_edit', {'id': delete_message.id}) }}">edit</a>#}
+{#                </td>#}
+{#            </tr>#}
+{#        {% else %}#}
+{#            <tr>#}
+{#                <td colspan="3">no records found</td>#}
+{#            </tr>#}
+{#        {% endfor %}#}
