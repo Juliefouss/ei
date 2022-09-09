@@ -79,6 +79,14 @@ class HourlyController extends AbstractController
         ]);
     }
 
+    #[Route('/{id}/admin', name: 'app_hourly_showAdmin', methods: ['GET'])]
+    public function showAdmin(Hourly $hourly): Response
+    {
+        return $this->render('pages/hourly/showAdmin.html.twig', [
+            'hourly' => $hourly,
+        ]);
+    }
+
     #[Route('/{id}/edit', name: 'app_hourly_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Hourly $hourly, HourlyRepository $hourlyRepository): Response
     {

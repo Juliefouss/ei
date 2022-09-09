@@ -12,6 +12,7 @@
             </div>
         </div>
     </section>
+    <section>
     <div class="page-wrapper">
         <div class="checkout shopping">
             <div class="container">
@@ -26,31 +27,31 @@
                                 <div class="text-center">
                                     <button class="btn btn-main btn-small btn-round"><a class="white"href="mailto:{{ hourly.hospital.applyMail }}">Postuler</a></button>
                                 </div></h5>
-                        <div class="text-right">
-                            <button class="btn btn-main btn-small btn-round"><a class="white"href="{{ path('app_hourly_user-index') }}">Retour</a>
-                            </button>
+                            <div class="text-right">
+                                <button class="btn btn-main btn-small btn-round"><a class="white"href="{{ path('app_hourly_user-index') }}">Retour</a>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="product-checkout-details">
-                        <div class="block">
-                            <h4 class="widget-title">Detail Hôpital</h4>
-                            <h4>{{ hourly.hospital.name }}</h4>
-                            <p>{{ hourly.hospital.adress }}</p>
-                            <p>{{ hourly.hospital.postalCode }}</p>
-                            <p>{{ hourly.hospital.town }}</p>
-                            <p>{{ hourly.hospital.phoneNumber }}</p>
-                            <p>{{ hourly.hospital.website }}</p>
-                            <p><a href="mailto:{{ hourly.hospital.email }}">{{ hourly.hospital.email }}</a></p>
+                    <div class="col-md-6">
+                        <div class="product-checkout-details">
+                            <div class="block">
+                                <h4 class="widget-title">Detail Hôpital</h4>
+                                <h4>{{ hourly.hospital.name }}</h4>
+                                <p>{{ hourly.hospital.adress }}</p>
+                                <p>{{ hourly.hospital.postalCode }}</p>
+                                <p>{{ hourly.hospital.town }}</p>
+                                <p>{{ hourly.hospital.phoneNumber }}</p>
+                                <p>{{ hourly.hospital.website }}</p>
+                                <p><a href="mailto:{{ hourly.hospital.email }}">{{ hourly.hospital.email }}</a></p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
-
+    </section>
 
 
 {% endblock %}

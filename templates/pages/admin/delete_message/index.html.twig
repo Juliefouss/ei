@@ -18,7 +18,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-5">
-                    <img class="img-responsive" src="{{ asset('images/PhotoMessage.jpg') }}" alt="photo message">
+                    <img class="img-responsive" src="{{ asset('images/PhotoHoraire.jpg') }}" alt="photo message">
                 </div>
                 <div class="col-md-7">
                     <div class="dashboard-wrapper user-dashboard">
@@ -26,9 +26,9 @@
                             <table class="table">
                                 <thead>
                                 <tr>
-                                    <th>Nom</th>
-                                    <th>Prénom</th>
-                                    <th>Objet</th>
+                                    <th>Expéditeur</th>
+                                    <th>ID</th>
+                                    <th></th>
                                     <th></th>
                                 </tr>
                                 </thead>
@@ -37,6 +37,7 @@
                                                 <tr>
                                                     <td>{{ delete_message.author.name }} {{ delete_message.author.firstname }}</td>
                                                     <td>{{ delete_message.HourlyId }}</td>
+                                                    <td><button class="btn btn-transparent"><a href="{{ path('app_hourly_showAdmin', {'id' : delete_message.HourlyId}) }}">Voir l'annonce</a></button></td>
                                                     <td>
                                             <form method="post"
                                                   action="{{ path('app_delete_message_delete', {'id': delete_message.id}) }}"

@@ -72,7 +72,7 @@ class PartnerHospitalsController extends AbstractController
         if($form->isSubmitted() && $form->isValid()){
             $em->persist($deleteMessage);
             $em->flush();
-            return $this->redirectToRoute('partnersHospitalHome');
+            return $this->redirectToRoute('app_hourly_hospital_index');
         }
         return $this->renderForm('pages/PartnerHospitals/deleteMessage.html.twig', [
             'deleteMessage' =>$deleteMessage,
