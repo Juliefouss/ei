@@ -28,7 +28,7 @@ class UserRegisterType extends AbstractType
                 'Professeur'=> 'Professeur',
                  'Aucun'=> 'Non applicable'
             ]])
-            ->add('specialization', ChoiceType::class, ['label'=>'Specialisation',
+            ->add('specialization', ChoiceType::class, ['label'=>'Spécialisation',
                 'choices'=>[
                     'Aucune'=> '',
                     'Cardiologie'=> 'cardiologie',
