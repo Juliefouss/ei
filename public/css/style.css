@@ -2420,7 +2420,7 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
 }
 
 
-.text-center span{
+.text-center span, span{
   font-weight: 900;
 }
 

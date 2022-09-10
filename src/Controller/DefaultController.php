@@ -41,6 +41,12 @@ class DefaultController extends AbstractController
         return $this->render('pages/contact.html.twig', ['contactMessageForm'=>$form->createView()]);
     }
 
+    #[Route(path: 'registerInfo', name:'registerInfo')]
+    public function registerInfo():Response{
+
+         return $this->render('pages/registerInfo.html.twig');
+    }
+
     #[Route (path: 'connectHome' , name: 'connectHome')]
     public function connectHome():Response{
          return $this->render('pages/ConnectHome.html.twig');

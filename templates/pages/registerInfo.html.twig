@@ -1,0 +1,45 @@
+{% extends 'layout/website.html.twig' %}
+
+{% block content %}
+    <section class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="content">
+                        <h1 class="page-name"> Inscription</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="contact-section">
+            <div class="container">
+                <div class="row">
+                    <!-- Contact Form -->
+                    <div class="contact-form col-md-6" >
+
+                       <p class="about">
+                           Je suis un <span>médecin</span> et je souhaite rejoindre l'équipe afin de travailler comme intérimaire
+                       </p>
+                           <div class="text-left">
+                            <button class="btn btn-main btn-large btn-round-full padding"><a class="white" href="{{ path('register') }}">Je m'inscris</a></button>
+                        </div>
+
+                        <img class="img-responsive" src="{{ asset('images/PhotoDoctor.jpg') }}" alt="Photo médecin">
+
+                    </div>
+                    <!-- ./End Contact Form -->
+                    <div class="col-md-6">
+                        <p class="about">Je suis un <span>hôpital</span> et je souhaire recevoir les informations pour commencer une collaboration.</p>
+                        <div class="text-right">
+                            <button class="btn btn-main btn-large btn-round-full padding"><a class="white" href="{{ path('contact') }}">Contactez nous</a> </button>
+                        </div>
+                        <img class="img-responsive" src="{{ asset('images/PhotoHospitalBuild.jpg') }}" alt="Photo Hôpital">
+                    </div>
+                </div> <!-- end row -->
+            </div> <!-- end container -->
+        </div>
+    </section>
+
+{% endblock %}
