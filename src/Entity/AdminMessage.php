@@ -30,12 +30,12 @@ class AdminMessage
     private ?string $message;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $subject;
+    private ?string $subject;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'adminMessages')]
     #[ORM\JoinColumn(nullable: false)]
     #[Blameable (on: 'create')]
-    private $User;
+    private ?User $User;
 
     public function getId(): ?int
     {

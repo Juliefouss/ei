@@ -13,13 +13,14 @@
         </div>
     </section>
     <section class="user-dashboard page-wrapper">
+
         <div class="container">
-            <div class="row">
                 <div class="col-md-12">
+                    <h3 class="widget-title padding text-center"> Profil de {{ user.job}} {{ user.firstname }}</h3>
                     <div class="dashboard-wrapper dashboard-user-profile border">
                         <div class="media">
                             <div class="pull-left text-center" href="#!">
-                                <img class="user-img" src="{{ asset('/images/uploads/' ~user.photo.url) }}" alt="Image de profil">
+                                <img class="user-img padding" src="{{ asset('/images/uploads/' ~user.photo.url) }}" alt="Image de profil">
 
                             </div>
                             <div class="media-body">
@@ -39,7 +40,6 @@
                     </div>
                 </div>
             </div>
-        </div>
     </section>
 
 {% endblock %}

@@ -20,7 +20,7 @@
                         <div class="padding">
                         <aside class="sidebar">
                             <div class="widget widget-subscription">
-                                <h4 class="widget-title">Rechercher un médecin</h4>
+                                <h4 class="widget-title">Rechercher un utilisateur</h4>
                             </div>
                                 {% set searchUserForm = getSearchUserForm() %}
                                 {{ form_start(searchUserForm) }}
@@ -35,7 +35,7 @@
                             <div class="dashboard-user-profile">
                                 <div class="media">
                                     <div class="pull-left text-center" href="#!">
-                                        <img class="media-object user-img" src="{{ asset('/images/uploads/' ~user.photo.url) }}" alt="Image de profil">
+                                        <img class="media-object user-img padding" src="{{ asset('/images/uploads/' ~user.photo.url) }}" alt="Image de profil">
                                     </div>
                                     <div class="media-body">
                                         <ul class="user-profile-list">
