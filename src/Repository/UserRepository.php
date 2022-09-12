@@ -98,7 +98,6 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     public function findBySearch(SearchUser $searchUser)
     {
         $qb = $this->createQueryBuilder('a')
-//            ->where('a.roles =:ROLE_USER')
             ->andwhere('a.name LIKE :keyword')
             ->orWhere('a.firstname LIKE :keyword')
             ->orWhere('a.specialization LIKE :keyword')
@@ -106,5 +105,4 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
             ->setParameter('keyword', '%' . $searchUser->getKeyword() . '%');
         return $qb->getQuery()->getResult();
     }
-
 }
