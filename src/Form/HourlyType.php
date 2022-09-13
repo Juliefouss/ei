@@ -32,7 +32,7 @@ class HourlyType extends AbstractType
 
                 ]])
             ->add('service', EntityType::class, ['class' => Service::class])
-            ->add('hospital', EntityType::class, ['class' => Hospital::class])
+            ->add('hospital', EntityType::class, ['class' => Hospital::class, 'label'=>'Hôpital'])
             ->add('submit', SubmitType::class, ['label'=>'Envoyer'])
         ;
     }
