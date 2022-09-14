@@ -1,7 +1,5 @@
 {% extends 'layout/website.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
-
 {% block content %}
     <section class="page-header">
         <div class="container">
@@ -33,18 +31,19 @@
                                 <label for="inputEmail"></label><input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus placeholder="email">
                             </div>
                             <div class="form-group">
-                                <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required placeholder="mot de passe">
+                                <label for="inputPassword"></label><input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required placeholder="mot de passe">
                             </div>
-                            <div class="text-center">
+                            <div class="form-group text-center">
                                 <input type="hidden" name="_csrf_token"
                                        value="{{ csrf_token('authenticate') }}">
-                                <button type="submit" class="btn btn-main text-center" >c'est parti</button>
+                                <button class="btn btn-main text-center" type="submit">C'est parti</button>
                             </div>
                         </form>
-                        <p class="mt-20">Nouveau sur le site ?<a href= {{ url('register') }}> Créer un compte</a></p>
+                        <p class="mt-20">Nouveau sur le site ?<a href= {{ url('register') }}> Créer un nouveau compte</a></p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 {% endblock %}
+

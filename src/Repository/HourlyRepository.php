@@ -124,9 +124,7 @@ class HourlyRepository extends ServiceEntityRepository
     public function findByAdminSearch(HourlyAdminSearch $hourlyAdminSearch)
     {
         $qb = $this->createQueryBuilder('a')
-            ->orderBy('a.date', 'ASC')
-            ->where('a.id LIKE :number')
-            ->setParameter('number', $hourlyAdminSearch->getNumber());
+            ->orderBy('a.date', 'ASC');
 
         if (count($hourlyAdminSearch->getHospitals())) {
             $qb->andWhere('a.Hospital in (:hospitals)')

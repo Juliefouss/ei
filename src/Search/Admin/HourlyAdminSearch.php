@@ -4,25 +4,9 @@ namespace App\Search\Admin;
 
 class HourlyAdminSearch
 {
-    private mixed $number;
     private mixed $services;
     private mixed $hospitals;
 
-    /**
-     * @return mixed
-     */
-    public function getNumber(): mixed
-    {
-        return $this->number;
-    }
-
-    /**
-     * @param mixed $number
-     */
-    public function setNumber(mixed $number): void
-    {
-        $this->number = $number;
-    }
 
     /**
      * @return mixed

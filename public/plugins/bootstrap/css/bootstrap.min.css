@@ -1358,7 +1358,7 @@ body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
     line-height: 1.42857143;
-    color: #333;
+    color: #0c1f54;
     background-color: #fff
 }
 
@@ -1482,27 +1482,27 @@ hr {
 }
 
 .h1, h1 {
-    font-size: 36px
-}
-
-.h2, h2 {
     font-size: 30px
 }
 
+.h2, h2 {
+    font-size: 25px
+}
+
 .h3, h3 {
-    font-size: 24px
+    font-size: 22px
 }
 
 .h4, h4 {
-    font-size: 18px
+    font-size: 20px
 }
 
 .h5, h5 {
-    font-size: 14px
+    font-size: 17px
 }
 
 .h6, h6 {
-    font-size: 12px
+    font-size: 16px
 }
 
 p {
@@ -2885,7 +2885,7 @@ legend {
     padding-left: 15px;
     border: 0;
     color: #0c1f54;
-    font-size: 17px;
+    font-size: 14px;
     line-height: 1.5;
 
 }
@@ -7248,5 +7248,5 @@ select{
 
 .form-label{
     color: #0c1f54;
-    font-size: 15px;
+    font-size: 13px;
 }

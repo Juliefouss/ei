@@ -63,7 +63,7 @@ body {
 p {
   font-family: "Poppins", sans-serif;
   color: #757575;
-  font-size: 15px;
+  font-size: 14px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -97,7 +97,7 @@ a{
 }
 
 blockquote {
-  font-size: 18px;
+  font-size: 14px;
   /*border-color: #000;*/
   padding: 20px 40px;
   /*text-align: left;*/
@@ -616,8 +616,8 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
 }
 
 .top-header .container {
-  padding-top: 35px;
-  padding-bottom: 35px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   border-bottom: 1px solid #dedede;
 }
 .top-header .dropdown-menu {
@@ -793,7 +793,7 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
   border: none;
 }
 .navigation .dropdown-slide .dropdown-menu li a {
-  color: #222;
+  color: #0c1f54;
   font-size: 12px;
   border: 1px solid transparent;
   display: block;
@@ -2465,7 +2465,7 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
 }
 .about{
   color: #0c1f54;
-  font-size: 17px;
+  font-size: 14px;
   font-weight: lighter;
   line-height:40px;
 }

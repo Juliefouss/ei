@@ -19,7 +19,7 @@
                     <div class="dashboard-wrapper dashboard-user-profile border">
                         <div class="media">
                             <div class="pull-left text-center" href="#!">
-                                <img class="media-object user-img" src="{{ asset('/images/uploads/' ~app.user.photo.url) }}" alt="Image de profil">
+                                <img class="media-object user-img" src="{{ asset('public/images/uploads/' ~app.user.photo.url) }}" alt="Image de profil">
                                 <a href="{{ url('app_user_profile_editPhoto', {id: app.user.id }) }}" class="btn btn-transparent mt-20">Change Image</a>
                             </div>
                             <div class="media-body">
