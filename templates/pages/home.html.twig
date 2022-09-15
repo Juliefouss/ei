@@ -12,31 +12,50 @@
                     <div class="title text-center">
                         <h1 class="blue">Bienvenue</h1>
                     </div>
-                    <div class="text-center">
-                        <blockquote>Nos membres sont à la recherche de continuité et de qualité des soins et nous
-                            mettons tout en œuvre pour leur permettre d’y arriver.
-                        </blockquote>
-                    </div>
-                    <div class="text-center">
-                        <p class="about">Medec’Im est pensé de façon à maximiser la communication et les interactions
-                            entre les <span> médecins</span>
-                            et les <span>hôpitaux </span>. </p>
-                    </div>
-                    <div>
-                        <div class="text-center padding">
-                            <button class="btn btn-main btn-large btn-round-full color-home"><a class="white"
-                                                                                     href="{{ url('register') }}">Je
-                                    suis un médecin</a></button>
-                        </div>
+                    {% if app.user %}
+                        <h3 class="text-center padding">Merci {{ app.user.firstname }} {{ app.user.name }} d'avoir rejoint notre équipe</h3>
+                        {% if is_granted("ROLE_ADMIN") %}
+                            <div class="text-center">
+                            <a href="{{ url('admin-home') }}">Revenir sur mon profil</a>
+                            </div>
+                        {% elseif is_granted ("ROLE_HOSPITAL") %}
+                            <div class="text-center">
+                            <a href="{{ url('partnersHospitalHome') }}">Revenir sur mon profil</a>
+                            </div>
+                        {% elseif is_granted("ROLE_USER") %}
+                            <div class="text-center">
+                            <a href="{{ url('user-home') }}">Revenir sur mon profil</a>
+                            </div>
+                        {% endif %}
+                    {% else %}
 
-                    </div>
-                    <div class="text-center padding">
+
+                        <div class="text-center">
+                            <blockquote>Nos membres sont à la recherche de continuité et de qualité des soins et
+                                nous
+                                mettons tout en œuvre pour leur permettre d’y arriver.
+                            </blockquote>
+                        </div>
+                        <div class="text-center">
+                            <p class="about">Medec’Im est pensé de façon à maximiser la communication et les
+                                interactions
+                                entre les <span> médecins</span>
+                                et les <span>hôpitaux </span>. </p>
+                        </div>
+                        <div>
+                            <div class="text-center padding">
+                                <button class="btn btn-main btn-large btn-round-full color-home"><a class="white"
+                                                                                                    href="{{ url('register') }}">Je
+                                        suis un médecin</a></button>
+                            </div>
+                        </div>
+                        <div class="text-center padding">
 
                             <button class="btn btn-main btn-large btn-round-full padding-align "><a class="white"
-                                                                                      href="{{ url('contact') }}">J'ai
+                                                                                                    href="{{ url('contact') }}">J'ai
                                     besoin de médecins</a></button>
-
-                    </div>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         </div>

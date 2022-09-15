@@ -11,8 +11,13 @@
                 <div class="title text-center">
                     <h2 class="blue"> Bienvenue {{ app.user.name }} {{ app.user.firstname }}</h2>
                 </div>
+                <div class="text-justify padding">
+                    <p class="about">Nous vous rappelons que notre objectif est de vous mettre en relation avec des médecins à la recherche de travail ponctuel</p>
+                    <p class="about">Merci de vous maintenir une relation avec eux via votre service de Ressources Humaines</p>
+                    <p class="about">Dans un soucis de bonne pratique, merci de nous prévénir de tout changement de vos coordonnées</p>
+                </div>
                 <div class="text-center">
-                    <div class="calendrier"></div>
+                    <button class="btn btn-danger"><a class="white" href="{{ path('partnerHospital-adminMessage') }}">Modification de mes données</a></button>
                 </div>
             </div>
         </div>
