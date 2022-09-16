@@ -19,23 +19,11 @@ class HourlyController extends AbstractController
     #[Route('/', name: 'app_hourly_index', methods: ['GET'])]
     public function index(HourlyRepository $hourlyRepository, PaginatorInterface $paginator, Request $request): Response
     {
-        $hourlies = $hourlyRepository->findBy([], ['date' => 'ASC']);
+        $hourlies = $hourlyRepository->findBy([], ['id' => 'ASC']);
         $hourlies = $paginator->paginate(
             $hourlies,
             $request->query->getInt('page', 1), 6);
         return $this->render('pages/hourly/index.html.twig', [
-            'hourlies' => $hourlies
-        ]);
-    }
-
-    #[Route ('/hospital', name: 'app_hourly_hospital_index', methods: ['GET'])]
-    public function indexHospital(HourlyRepository $hourlyRepository, PaginatorInterface $paginator, Request $request, EntityManagerInterface $em): Response
-    {
-        $hourlies = $hourlyRepository->findBy([], ['date' => 'ASC']);
-        $hourlies = $paginator->paginate(
-            $hourlies,
-            $request->query->getInt('page', 1), 6);
-        return $this->render('pages/hourly/indexHospital.html.twig', [
             'hourlies' => $hourlies
         ]);
     }
@@ -95,6 +83,14 @@ class HourlyController extends AbstractController
     public function show(Hourly $hourly): Response
     {
         return $this->render('pages/hourly/show.html.twig', [
+            'hourly' => $hourly,
+        ]);
+    }
+
+    #[Route('/{id}/message', name: 'app_hourly_show_message', methods: ['GET'])]
+    public function showMessage(Hourly $hourly): Response
+    {
+        return $this->render('pages/hourly/showMessage.html.twig', [
             'hourly' => $hourly,
         ]);
     }

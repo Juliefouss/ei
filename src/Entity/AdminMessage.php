@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AdminMessageRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation\Blameable;
 
@@ -37,6 +39,18 @@ class AdminMessage
 
     #[ORM\Column(type: 'integer')]
     private $numberHourly;
+
+    #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'textChange')]
+    private $textChange;
+
+    #[ORM\OneToOne(targetEntity: Hospital::class, cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(nullable: false)]
+    private $hospital;
+
+    public function __construct()
+    {
+        $this->textChange = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -111,6 +125,44 @@ class AdminMessage
     public function setNumberHourly(int $numberHourly): self
     {
         $this->numberHourly = $numberHourly;
+
+        return $this;
+    }
+
+
+    /**
+     * @return Collection<int, User>
+     */
+    public function getTextChange(): Collection
+    {
+        return $this->textChange;
+    }
+
+    public function addTextChange(User $textChange): self
+    {
+        if (!$this->textChange->contains($textChange)) {
+            $this->textChange[] = $textChange;
+        }
+
+        return $this;
+    }
+
+    public function removeTextChange(User $textChange): self
+    {
+        $this->textChange->removeElement($textChange);
+
+        return $this;
+    }
+
+
+    public function getHospital(): ?Hospital
+    {
+        return $this->hospital;
+    }
+
+    public function setHospital(Hospital $hospital): self
+    {
+        $this->hospital = $hospital;
 
         return $this;
     }

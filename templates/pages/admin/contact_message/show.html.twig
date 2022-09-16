@@ -24,7 +24,7 @@
                             <ul class="user-profile-list">
                                 <li><span>Nom:</span> {{ contact_message.name }}</li>
                                 <li><span>Prénom:</span> {{ contact_message.firstname}}</li>
-                                <li><span>Email:</span> {{ contact_message.email}}</li>
+                                <li><span>Email:</span><a href="mailto:{{ contact_message.email }}">{{contact_message.email }}</a></li>
                                 <li><span>Objet: </span> {{ contact_message.subject}}</li>
                                 <li><span>Message:</span> {{ contact_message.message }}</li>
                                 <li><button class="btn btn-transparent"> <a href="{{ path('app_contact_message_index') }}">Retour</a></button></li>

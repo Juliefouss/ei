@@ -37,6 +37,7 @@ class Hourly
     #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'favoris')]
     private $favoris;
 
+
     public function __construct()
     {
         $this->favoris = new ArrayCollection();
@@ -149,5 +150,6 @@ class Hourly
 
         return $this;
     }
+
 
 }

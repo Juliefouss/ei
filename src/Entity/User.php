@@ -63,6 +63,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToMany(targetEntity: Hourly::class, mappedBy: 'favoris')]
     private $favoris;
 
+    #[ORM\ManyToMany(targetEntity: AdminMessage::class, mappedBy: 'textChange')]
+    private $textChange;
+
 
     #[Pure] public function __construct()
     {
@@ -70,6 +73,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->adminMessages = new ArrayCollection();
         $this->deleteMessages = new ArrayCollection();
         $this->favoris = new ArrayCollection();
+        $this->textChange = new ArrayCollection();
     }
 
 
@@ -339,6 +343,33 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if ($this->favoris->removeElement($favori)) {
             $favori->removeFavori($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, AdminMessage>
+     */
+    public function getTextChange(): Collection
+    {
+        return $this->textChange;
+    }
+
+    public function addTextChange(AdminMessage $textChange): self
+    {
+        if (!$this->textChange->contains($textChange)) {
+            $this->textChange[] = $textChange;
+            $textChange->addTextChange($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTextChange(AdminMessage $textChange): self
+    {
+        if ($this->textChange->removeElement($textChange)) {
+            $textChange->removeTextChange($this);
         }
 
         return $this;
