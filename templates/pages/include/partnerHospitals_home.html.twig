@@ -12,13 +12,11 @@
                     <h2 class="blue"> Bienvenue {{ app.user.name }} {{ app.user.firstname }}</h2>
                 </div>
                 <div class="text-justify padding">
-                    <p class="about">Nous vous rappelons que notre objectif est de vous mettre en relation avec des médecins à la recherche de travail ponctuel</p>
-                    <p class="about">Merci de vous maintenir une relation avec eux via votre service de Ressources Humaines</p>
-                    <p class="about">Dans un soucis de bonne pratique, merci de nous prévénir de tout changement de vos coordonnées</p>
+                    <p class="about">Nous vous rappelons que notre objectif est de promouvoir vos annonces auprès de notre réseau de médecins.</p>
+                    <p class="about">Dès qu'une de vos annonces rencontre les exigences d'un médecin, Médec'Im lui permettra de rentrer en contact avec vous via mail en vue de d'établir les modalités de collaboration.</p>
+                    <p class="about">Pour la moindre question, n'hésitez pas à nous <button class="btn btn-transparent"><a href="{{ path('contact') }}">contacter</a> </button> </p>
                 </div>
-                <div class="text-center">
-                    <button class="btn btn-danger"><a class="white" href="{{ path('partnerHospital-adminMessage') }}">Modification de mes données</a></button>
-                </div>
+
             </div>
         </div>
     </div>

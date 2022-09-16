@@ -24,8 +24,8 @@
                             <ul class="user-profile-list">
                                 <li><span>Nom:</span> {{ admin_message.user.name }}</li>
                                 <li><span>Prénom:</span> {{ admin_message.user.firstname}}</li>
-                                <li><span>Email:</span> {{ admin_message.user.email}}</li>
-                                <li><span>Objet: </span> {{ admin_message.subject}}</li>
+                                <li><span>Email:</span><a href="mailto:{{ admin_message.user.email }}">{{ admin_message.user.email}}</a></li>
+                                <li><span>Id annonce :</span> {{ admin_message.numberHourly }}</li>
                                 <li><span>Message:</span> {{ admin_message.message }}</li>
                                 <li><button class="btn btn-transparent"> <a href="{{ path('app_admin_message_index') }}">Retour</a></button></li>
                                 <li>{{ include('pages/admin/admin_message/_delete_form.html.twig') }}</li>

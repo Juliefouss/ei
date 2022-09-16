@@ -28,7 +28,6 @@
                                 <tr>
                                     <th>Nom</th>
                                     <th>Prénom</th>
-                                    <th>Objet</th>
                                     <th></th>
                                 </tr>
                                 </thead>
@@ -37,7 +36,6 @@
                                     <tr>
                                         <td>{{ admin_message.user.name }}</td>
                                         <td>{{ admin_message.user.firstname }}</td>
-                                        <td>{{ admin_message.subject }}</td>
                                         <td>
                                             <a href="{{ path('app_admin_message_show', {'id': admin_message.id}) }}">
                                                 <button class="btn btn-transparent">Voir</button>

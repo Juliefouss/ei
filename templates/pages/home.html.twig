@@ -13,34 +13,36 @@
                         <h1 class="blue">Bienvenue</h1>
                     </div>
                     {% if app.user %}
-                        <h3 class="text-center padding">Merci {{ app.user.firstname }} {{ app.user.name }} d'avoir rejoint notre équipe</h3>
+                        <h2 class="text-center padding">Merci</h2>
                         {% if is_granted("ROLE_ADMIN") %}
+                            <h3 class="text-center padding"> {{ app.user.firstname }}</h3>
                             <div class="text-center">
-                            <a href="{{ url('admin-home') }}">Revenir sur mon profil</a>
+                                <h3 class="text-center padding">de gérer ce site </h3>
+                            <a href="{{ url('admin-home') }}">Retour dans ma partie</a>
                             </div>
                         {% elseif is_granted ("ROLE_HOSPITAL") %}
+                            <h3 class="text-center padding"> {{ app.user.name }} {{ app.user.firstname }}</h3>
                             <div class="text-center">
-                            <a href="{{ url('partnersHospitalHome') }}">Revenir sur mon profil</a>
+                                <h5 class="text-center padding">de nous aider dans la gestion de nos ressources humaines</h5>
+                            <a href="{{ url('partnersHospitalHome') }}">Retour dans ma partie</a>
                             </div>
                         {% elseif is_granted("ROLE_USER") %}
+                            <h3 class="text-center padding"> {{ app.user.firstname }} {{ app.user.name }}</h3>
                             <div class="text-center">
-                            <a href="{{ url('user-home') }}">Revenir sur mon profil</a>
+                                <h3 class="text-center padding"> d'avoir rejoint notre équipe</h3>
+                            <a href="{{ url('user-home') }}">Retour dans ma partie</a>
                             </div>
                         {% endif %}
                     {% else %}
 
 
                         <div class="text-center">
-                            <blockquote>Nos membres sont à la recherche de continuité et de qualité des soins et
-                                nous
-                                mettons tout en œuvre pour leur permettre d’y arriver.
-                            </blockquote>
+                            <p class="about">Medec'Im permet aux <span>hôpitaux</span> de communiquer via des <span>annonces</span> les plages horaires pour lesquelles ils sont à la recherche d'un médecin.
+                            </p>
+                            <p class="about">Vous êtes un médecin et vous souhaitez travailler de manière ponctuelle.</p>
                         </div>
                         <div class="text-center">
-                            <p class="about">Medec’Im est pensé de façon à maximiser la communication et les
-                                interactions
-                                entre les <span> médecins</span>
-                                et les <span>hôpitaux </span>. </p>
+                            <h5 class="padding">Envie de rejoindre notre plateforme ? </h5>
                         </div>
                         <div>
                             <div class="text-center padding">
@@ -48,12 +50,6 @@
                                                                                                     href="{{ url('register') }}">Je
                                         suis un médecin</a></button>
                             </div>
-                        </div>
-                        <div class="text-center padding">
-
-                            <button class="btn btn-main btn-large btn-round-full padding-align "><a class="white"
-                                                                                                    href="{{ url('contact') }}">J'ai
-                                    besoin de médecins</a></button>
                         </div>
                     {% endif %}
                 </div>

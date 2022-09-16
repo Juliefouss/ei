@@ -60,12 +60,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'author', targetEntity: DeleteMessage::class)]
     private $deleteMessages;
 
+    #[ORM\ManyToMany(targetEntity: Hourly::class, mappedBy: 'favoris')]
+    private $favoris;
+
 
     #[Pure] public function __construct()
     {
         $this->hourlyRequests = new ArrayCollection();
         $this->adminMessages = new ArrayCollection();
         $this->deleteMessages = new ArrayCollection();
+        $this->favoris = new ArrayCollection();
     }
 
 
@@ -312,5 +316,33 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, Hourly>
+     */
+    public function getFavoris(): Collection
+    {
+        return $this->favoris;
+    }
+
+    public function addFavori(Hourly $favori): self
+    {
+        if (!$this->favoris->contains($favori)) {
+            $this->favoris[] = $favori;
+            $favori->addFavori($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFavori(Hourly $favori): self
+    {
+        if ($this->favoris->removeElement($favori)) {
+            $favori->removeFavori($this);
+        }
+
+        return $this;
+    }
+
 }
 

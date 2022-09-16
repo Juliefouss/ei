@@ -1,4 +1,4 @@
-{% extends 'layout/hospital.html.twig' %}
+{% extends 'layout/basic.html.twig' %}
 
 {% block content %}
 
@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="content">
-                        <h1 class="page-name"> Supprimer l'annonce</h1>
+                        <h1 class="page-name"> Postuler</h1>
                     </div>
                 </div>
             </div>
@@ -22,12 +22,10 @@
                     </div>
                     <!-- Contact Form -->
                     <div class="contact-form col-md-6 space" >
-                        <h4 class="padding text-center"> Merci de bien noter l'id repris sur l'annonce</h4>
-                        {{ form(deleteMessageForm) }}
+                        <h4 class="padding text-center"> Merci de l'intérêt que vous portez à notre annonce</h4>
+                        {{ form(adminMessageform) }}
                     </div>
-                    <div class="text-right">
-                    <button class="btn btn-main btn-small btn-round mini-padding align"><a class="white" href="{{url('app_hourly_hospital_index') }}">Retour</a></button>
-                    </div>
+
 
 
                     <!-- ./End Contact Form -->

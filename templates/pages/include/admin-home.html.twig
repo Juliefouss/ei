@@ -11,12 +11,13 @@
                     <div class="title text-center">
                         <h2> Bienvenue  {{ app.user.username }} {{ app.user.firstname }}</h2>
                     </div>
-                    <div class="text-justify">
-                        <h2>Merci de gérer les demandes prioritaires</h2>
-                        <p class="about">1. <button class="btn btn-transparent"><a href="{{ path('app_hourly_request_index') }}">Nouvelles annonces</a></button> </p>
-                        <p class="about">2. <button class="btn btn-transparent"><a href="{{ path('app_delete_message_index') }}">Annonces à supprimer</a></button> </p>
-                        <p class="about">3. <button class="btn btn-transparent"><a href="{{ path('app_admin_message_index') }}">Messages hôpital</a></button> </p>
-                        <p class="about">4. <button class="btn btn-transparent"><a href="{{ path('app_contact_message_index') }}">Messages généraux</a></button> </p>
+                    <div class="text-center">
+                        <h5 class="widget-title padding">Merci de gérer les demandes dans cette ordre de priorité : </h5>
+                    </div>
+                   <div class="text-justify padding">
+                       <p class="about">1. <button class="btn btn-transparent"><a href="{{ path('app_admin_message_index') }}">Messages médecins</a></button> </p>
+                        <p class="about">2. <button class="btn btn-transparent"><a href="{{ path('app_hourly_index') }}">Gérer les annonces</a></button> </p>
+                        <p class="about">3. <button class="btn btn-transparent"><a href="{{ path('app_contact_message_index') }}">Messages généraux</a></button> </p>
                     </div>
 
                     </div>

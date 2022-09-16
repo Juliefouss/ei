@@ -1,0 +1,35 @@
+{% block content %}
+    <div class="col-md-4">
+        <div class="product-item">
+            <h3 class="title text-center">{{ hourly.hospital.name }}</h3>
+            <div class="product-content">
+                <p> ID : {{ hourly.id }}</p>
+                <p>Date: {{ hourly.date|date("d/m/Y", "Europe/Paris") }}</p>
+                <p> Horaire: {{ hourly.hour }}</p>
+                <p>Service: {{ hourly.service.name }}</p>
+                <button class="btn btn-main btn-small btn-round mini-padding"><a class="white"
+                                                                                 href="{{ path('app_hourly_show', {'id': hourly.id}) }}">Voir</a>
+                </button>
+                <div>
+                    {% if is_granted("ROLE_USER") %}
+                        {% set isFavorite = false %}
+                        {% for favoris in hourly.favoris %}
+                            {% if favoris.id == app.user.id %}
+                                {% set isFavorite = true %}
+                            {% endif%}
+                        {% endfor%}
+                        {% if isFavorite %}
+                            <p class="favoris"> J'ai postulé</p>
+
+                        {% else %}
+                            <a href="{{ path('add_favoris', {id: hourly.id}) }}">Je postule</a>
+
+                        {% endif%}
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

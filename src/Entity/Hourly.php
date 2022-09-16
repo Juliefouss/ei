@@ -6,6 +6,7 @@ use App\Repository\HourlyRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation\Blameable;
 use JetBrains\PhpStorm\Pure;
 
 #[ORM\Entity(repositoryClass: HourlyRepository::class)]
@@ -32,6 +33,14 @@ class Hourly
 
     #[ORM\ManyToOne(targetEntity: HourlyRequest::class, inversedBy: 'hourlies')]
     private ?HourlyRequest $HourlyRequest;
+
+    #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'favoris')]
+    private $favoris;
+
+    public function __construct()
+    {
+        $this->favoris = new ArrayCollection();
+    }
 
     /**
      * @return mixed
@@ -113,6 +122,30 @@ class Hourly
     public function setHourlyRequest(?HourlyRequest $HourlyRequest): self
     {
         $this->HourlyRequest = $HourlyRequest;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, User>
+     */
+    public function getFavoris(): Collection
+    {
+        return $this->favoris;
+    }
+
+    public function addFavori(User $favori): self
+    {
+        if (!$this->favoris->contains($favori)) {
+            $this->favoris[] = $favori;
+        }
+
+        return $this;
+    }
+
+    public function removeFavori(User $favori): self
+    {
+        $this->favoris->removeElement($favori);
 
         return $this;
     }

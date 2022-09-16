@@ -1,0 +1,28 @@
+{% extends 'layout/hospital.html.twig' %}
+
+{% block content %}
+    <section class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="content">
+                        <h1 class="page-name"> Ajouter une annonce</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="signin-page account">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="block">
+                        <h2 class="text-center">Encoder une nouvelle plage horaire </h2>
+                        {{ include('pages/hourly/_form.html.twig') }}
+                        <a href="{{ path('app_hourly_index') }}">Retour</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

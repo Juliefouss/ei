@@ -35,9 +35,12 @@
                             </div>
                         </div>
                     </div>
+                    {% if app.user %}
+                    {% if is_granted("ROLE_ADMIN") %}
                     <div class="text-right">
                         <button class="btn btn-main btn-small btn-round"><a  class="white" href="{{ url('adminSearchUserIndex') }}">Retour</a></button>
                     </div>
+                    {% endif %}
                 </div>
             </div>
     </section>

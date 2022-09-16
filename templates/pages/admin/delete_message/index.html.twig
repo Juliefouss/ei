@@ -34,11 +34,11 @@
                                 </thead>
                                 <tbody>
                                 {% for delete_message in delete_messages %}
-                                                <tr>
-                                                    <td>{{ delete_message.author.name }} {{ delete_message.author.firstname }}</td>
-                                                    <td>{{ delete_message.HourlyId }}</td>
-                                                    <td><button class="btn btn-transparent"><a href="{{ path('app_hourly_showAdmin', {'id' : delete_message.HourlyId}) }}">Voir l'annonce</a></button></td>
-                                                    <td>
+                                    <tr>
+                                        <td>{{ delete_message.author.name }} {{ delete_message.author.firstname }}</td>
+                                        <td>{{ delete_message.HourlyId }}</td>
+                                        <td><button class="btn btn-transparent"><a href="{{ path('app_hourly_index') }}">Vers les annonces</a></button></td>
+                                        <td>
                                             <form method="post"
                                                   action="{{ path('app_delete_message_delete', {'id': delete_message.id}) }}"
                                                   onsubmit="return confirm('Supprimer ce message?');">
@@ -50,10 +50,9 @@
                                     </tr>
                                 {% else %}
                                     <tr>
-                                        <td colspan="6">Pas de message </td>
+                                        <td colspan="6">Pas de message</td>
                                     </tr>
                                 {% endfor %}
-
                                 </tbody>
                             </table>
                         </div>
@@ -64,19 +63,3 @@
         </div>
     </section>
 {% endblock %}
-
-
-{#        {% for delete_message in delete_messages %}#}
-{#            <tr>#}
-{#                <td>{{ delete_message.id }}</td>#}
-{#                <td>{{ delete_message.HourlyId }}</td>#}
-{#                <td>#}
-{#                    <a href="{{ path('app_delete_message_show', {'id': delete_message.id}) }}">show</a>#}
-{#                    <a href="{{ path('app_delete_message_edit', {'id': delete_message.id}) }}">edit</a>#}
-{#                </td>#}
-{#            </tr>#}
-{#        {% else %}#}
-{#            <tr>#}
-{#                <td colspan="3">no records found</td>#}
-{#            </tr>#}
-{#        {% endfor %}#}

@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\DeleteMessage;
+use App\Entity\Hourly;
 use App\Repository\DeleteMessageRepository;
+use App\Repository\HourlyRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,10 +15,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class DeleteMessageController extends AbstractController
 {
     #[Route('/', name: 'app_delete_message_index', methods: ['GET'])]
-    public function index(DeleteMessageRepository $deleteMessageRepository): Response
+    public function index(DeleteMessageRepository $deleteMessageRepository, HourlyRepository $hourlyRepository): Response
     {
         return $this->render('pages/admin/delete_message/index.html.twig', [
             'delete_messages' => $deleteMessageRepository->findAll(),
+
         ]);
     }
 

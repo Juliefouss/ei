@@ -19,14 +19,11 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="block">
-                            <h4 class="widget-title">Horaire</h4>
+                            <h4 class="widget-title">Id de l'annonce: {{ hourly.id }}</h4>
+                            <h5 class="widget-title">Horaire: {{ hourly.hour }}</h5>
                             <h5 class="widget-title">Date: {{ hourly.date|date("d/m/Y", "Europe/Paris") }}</h5>
                             <h5 class="widget-title">Service: {{ hourly.service }}</h5>
                             <h5 class="widget-title">Lieu : {{ hourly.hospital }} </h5>
-                            <h5 class="widget-title">
-                                <div class="text-center">
-                                    <button class="btn btn-main btn-small btn-round"><a class="white"href="mailto:{{ hourly.hospital.applyMail }}">Postuler</a></button>
-                                </div></h5>
                             <div class="text-right">
                                 <button class="btn btn-main btn-small btn-round"><a class="white"href="{{ path('app_hourly_user-index') }}">Retour</a>
                                 </button>

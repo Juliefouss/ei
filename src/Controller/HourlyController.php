@@ -10,6 +10,7 @@ use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/hourly')]
@@ -71,6 +72,25 @@ class HourlyController extends AbstractController
         ]);
     }
 
+    #[Route('/newHourlyHospital', name: 'app_hourly_new_hospital', methods: ['GET', 'POST'])]
+    public function newHourlyHospital(Request $request, HourlyRepository $hourlyRepository): Response
+    {
+        $hourly = new Hourly();
+        $form = $this->createForm(HourlyType::class, $hourly);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $hourlyRepository->add($hourly, true);
+
+            return $this->redirectToRoute('partnersHospitalHome', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('/pages/hourly/newHospital.html.twig', [
+            'hourly' => $hourly,
+            'form' => $form,
+        ]);
+    }
+
     #[Route('/{id}', name: 'app_hourly_show', methods: ['GET'])]
     public function show(Hourly $hourly): Response
     {
@@ -113,6 +133,33 @@ class HourlyController extends AbstractController
         }
 
         return $this->redirectToRoute('app_hourly_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route (path: '/favoris/add/{id}', name: 'add_favoris')]
+
+    public function addFavoris(Hourly $hourly, EntityManagerInterface $em)
+    {
+        if(!$hourly){
+            throw new NotFoundHttpException('Pas d\'annonce trouvée');
+        }
+        $hourly->addFavori($this->getUser());
+        $em->persist($hourly);
+        $em->flush();
+        return $this->redirectToRoute('userAdminMessage');
+    }
+
+    #[Route (path: '/favoris/remove/{id}' , name: 'remove_favoris') ]
+
+    public function removeFavoris(Hourly $hourly, EntityManagerInterface $em)
+    {
+        if(!$hourly){
+            throw new NotFoundHttpException('Pas d\'annonce trouvée');
+        }
+        $hourly->removeFavori($this->getUser());
+
+        $em->persist($hourly);
+        $em->flush();
+        return $this->redirectToRoute('app_hourly_user-index');
     }
 
 }

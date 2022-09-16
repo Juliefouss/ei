@@ -29,13 +29,14 @@ class AdminMessage
     #[ORM\Column(type: 'string', length: 255)]
     private ?string $message;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private ?string $subject;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'adminMessages')]
     #[ORM\JoinColumn(nullable: false)]
     #[Blameable (on: 'create')]
     private ?User $User;
+
+    #[ORM\Column(type: 'integer')]
+    private $numberHourly;
 
     public function getId(): ?int
     {
@@ -90,18 +91,6 @@ class AdminMessage
         return $this;
     }
 
-    public function getSubject(): ?string
-    {
-        return $this->subject;
-    }
-
-    public function setSubject(string $subject): self
-    {
-        $this->subject = $subject;
-
-        return $this;
-    }
-
     public function getUser(): ?User
     {
         return $this->User;
@@ -110,6 +99,18 @@ class AdminMessage
     public function setUser(?User $User): self
     {
         $this->User = $User;
+
+        return $this;
+    }
+
+    public function getNumberHourly(): ?int
+    {
+        return $this->numberHourly;
+    }
+
+    public function setNumberHourly(int $numberHourly): self
+    {
+        $this->numberHourly = $numberHourly;
 
         return $this;
     }
