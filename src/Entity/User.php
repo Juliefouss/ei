@@ -35,10 +35,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $firstname;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private ?string $username;
-
-
-    #[ORM\Column(type: 'string', length: 255)]
     private ?string $specialization;
 
 
@@ -70,13 +66,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'integer')]
     private $inamiNumberPart4;
 
+    #[ORM\ManyToMany(targetEntity: Hourly::class, mappedBy: 'favoris')]
+    private $favoris;
+
 
 
     #[Pure] public function __construct()
     {
         $this->hourlyRequests = new ArrayCollection();
-        $this->adminMessages = new ArrayCollection();
         $this->deleteMessages = new ArrayCollection();
+        $this->favoris = new ArrayCollection();
     }
 
 
@@ -174,18 +173,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getUsername(): ?string
-    {
-        return $this->username;
-    }
-
-    public function setUsername(string $username): self
-    {
-        $this->username = $username;
-
-        return $this;
-    }
-
     public function getSpecialization(): ?string
     {
         return $this->specialization;
@@ -198,17 +185,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getPhoto(): ?Photo
-    {
-        return $this->photo;
-    }
-
-    public function setPhoto(Photo $photo): self
-    {
-        $this->photo = $photo;
-
-        return $this;
-    }
 
     public function getJob(): ?string
     {
@@ -356,6 +332,50 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setInamiNumberPart4(int $inamiNumberPart4): self
     {
         $this->inamiNumberPart4 = $inamiNumberPart4;
+
+        return $this;
+    }
+
+
+    /**
+     * @return Photo|null
+     */
+    public function getPhoto(): ?Photo
+    {
+        return $this->photo;
+    }
+
+    /**
+     * @param Photo|null $photo
+     */
+    public function setPhoto(?Photo $photo): void
+    {
+        $this->photo = $photo;
+    }
+
+    /**
+     * @return Collection<int, Hourly>
+     */
+    public function getFavoris(): Collection
+    {
+        return $this->favoris;
+    }
+
+    public function addFavori(Hourly $favori): self
+    {
+        if (!$this->favoris->contains($favori)) {
+            $this->favoris[] = $favori;
+            $favori->addFavori($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFavori(Hourly $favori): self
+    {
+        if ($this->favoris->removeElement($favori)) {
+            $favori->removeFavori($this);
+        }
 
         return $this;
     }

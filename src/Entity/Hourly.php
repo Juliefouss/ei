@@ -34,6 +34,18 @@ class Hourly
     #[ORM\ManyToOne(targetEntity: HourlyRequest::class, inversedBy: 'hourlies')]
     private ?HourlyRequest $HourlyRequest;
 
+    #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'favoris')]
+    private $favoris;
+
+    #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'favoris')]
+    private $options;
+
+    public function __construct()
+    {
+        $this->favoris = new ArrayCollection();
+        $this->options = new ArrayCollection();
+    }
+
     /**
      * @return mixed
      */
@@ -114,6 +126,54 @@ class Hourly
     public function setHourlyRequest(?HourlyRequest $HourlyRequest): self
     {
         $this->HourlyRequest = $HourlyRequest;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, User>
+     */
+    public function getFavoris(): Collection
+    {
+        return $this->favoris;
+    }
+
+    public function addFavori(User $favori): self
+    {
+        if (!$this->favoris->contains($favori)) {
+            $this->favoris[] = $favori;
+        }
+
+        return $this;
+    }
+
+    public function removeFavori(User $favori): self
+    {
+        $this->favoris->removeElement($favori);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, User>
+     */
+    public function getOptions(): Collection
+    {
+        return $this->options;
+    }
+
+    public function addOption(User $option): self
+    {
+        if (!$this->options->contains($option)) {
+            $this->options[] = $option;
+        }
+
+        return $this;
+    }
+
+    public function removeOption(User $option): self
+    {
+        $this->favoris->removeElement($option);
 
         return $this;
     }

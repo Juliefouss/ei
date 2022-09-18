@@ -102,7 +102,6 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
             ->andwhere('a.name LIKE :keyword')
             ->orWhere('a.firstname LIKE :keyword')
             ->orWhere('a.specialization LIKE :keyword')
-            ->orWhere('a.username LIKE :keyword')
             ->setParameter('keyword', '%' . $searchUser->getKeyword() . '%');
         return $qb->getQuery()->getResult();
     }

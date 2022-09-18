@@ -19,7 +19,7 @@ class AdminMessageType extends AbstractType
             ->add('numberHourly',NumberType::class, ['label' => 'Numéro annonce'] )
             ->add('hospitalName', TextType::class, ['label'=> 'Nom de l\'hopital'])
             ->add('serviceName', TextType::class, ['label' => 'Nom du service'])
-            ->add('message', TextareaType::class, ['label' => 'Votre message'])
+            ->add('message', TextType::class, ['label' => 'Votre message'])
             ->add('submit', SubmitType::class, ['label'=> 'Envoyer'])
         ;
     }
