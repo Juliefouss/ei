@@ -41,8 +41,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 255)]
     private ?string $specialization;
 
-    #[ORM\Column(type: 'integer')]
-    private ?int $inami_number;
 
     #[ORM\OneToOne(inversedBy: 'user', targetEntity: Photo::class, cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
@@ -60,11 +58,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'author', targetEntity: DeleteMessage::class)]
     private $deleteMessages;
 
-    #[ORM\ManyToMany(targetEntity: Hourly::class, mappedBy: 'favoris')]
-    private $favoris;
+    #[ORM\Column(type: 'integer')]
+    private $inamiNumberPart1;
 
-    #[ORM\ManyToMany(targetEntity: AdminMessage::class, mappedBy: 'textChange')]
-    private $textChange;
+    #[ORM\Column(type: 'integer')]
+    private $inamiNumberPart2;
+
+    #[ORM\Column(type: 'integer')]
+    private $inamiNumberPart3;
+
+    #[ORM\Column(type: 'integer')]
+    private $inamiNumberPart4;
+
 
 
     #[Pure] public function __construct()
@@ -72,8 +77,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->hourlyRequests = new ArrayCollection();
         $this->adminMessages = new ArrayCollection();
         $this->deleteMessages = new ArrayCollection();
-        $this->favoris = new ArrayCollection();
-        $this->textChange = new ArrayCollection();
     }
 
 
@@ -195,18 +198,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getInamiNumber(): ?int
-    {
-        return $this->inami_number;
-    }
-
-    public function setInamiNumber(int $inami_number): self
-    {
-        $this->inami_number = $inami_number;
-
-        return $this;
-    }
-
     public function getPhoto(): ?Photo
     {
         return $this->photo;
@@ -321,59 +312,54 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @return Collection<int, Hourly>
-     */
-    public function getFavoris(): Collection
+    public function getInamiNumberPart1(): ?int
     {
-        return $this->favoris;
+        return $this->inamiNumberPart1;
     }
 
-    public function addFavori(Hourly $favori): self
+    public function setInamiNumberPart1(int $inamiNumberPart1): self
     {
-        if (!$this->favoris->contains($favori)) {
-            $this->favoris[] = $favori;
-            $favori->addFavori($this);
-        }
+        $this->inamiNumberPart1 = $inamiNumberPart1;
 
         return $this;
     }
 
-    public function removeFavori(Hourly $favori): self
+    public function getInamiNumberPart2(): ?int
     {
-        if ($this->favoris->removeElement($favori)) {
-            $favori->removeFavori($this);
-        }
+        return $this->inamiNumberPart2;
+    }
+
+    public function setInamiNumberPart2(int $inamiNumberPart2): self
+    {
+        $this->inamiNumberPart2 = $inamiNumberPart2;
 
         return $this;
     }
 
-    /**
-     * @return Collection<int, AdminMessage>
-     */
-    public function getTextChange(): Collection
+    public function getInamiNumberPart3(): ?int
     {
-        return $this->textChange;
+        return $this->inamiNumberPart3;
     }
 
-    public function addTextChange(AdminMessage $textChange): self
+    public function setInamiNumberPart3(int $inamiNumberPart3): self
     {
-        if (!$this->textChange->contains($textChange)) {
-            $this->textChange[] = $textChange;
-            $textChange->addTextChange($this);
-        }
+        $this->inamiNumberPart3 = $inamiNumberPart3;
 
         return $this;
     }
 
-    public function removeTextChange(AdminMessage $textChange): self
+    public function getInamiNumberPart4(): ?int
     {
-        if ($this->textChange->removeElement($textChange)) {
-            $textChange->removeTextChange($this);
-        }
+        return $this->inamiNumberPart4;
+    }
+
+    public function setInamiNumberPart4(int $inamiNumberPart4): self
+    {
+        $this->inamiNumberPart4 = $inamiNumberPart4;
 
         return $this;
     }
+
 
 }
 

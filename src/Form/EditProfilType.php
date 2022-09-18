@@ -13,6 +13,8 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class EditProfilType extends AbstractType
 {
@@ -22,12 +24,11 @@ class EditProfilType extends AbstractType
             ->add('name', TextType::class, ['label'=>'Nom'])
             ->add('firstname', TextType::class, ['label'=>'Prénom'])
             ->add('email', EmailType::class, ['label'=>'Email'])
-            ->add('username', TextType::class, ['label'=>'Nom utilisateur'])
             ->add('job', ChoiceType::class, ['label'=> 'Titre', 'choices'=>[
                 'Docteur'=> 'Docteur',
                 'Professeur'=> 'Professeur'
             ]])
-            ->add('specialization', ChoiceType::class, ['label'=>'Specialisation',
+            ->add('specialization', ChoiceType::class, ['label'=>'Qualification',
                 'choices'=>[
                     'Aucune'=> '',
                     'Cardiologie'=> 'cardiologie',
@@ -46,7 +47,6 @@ class EditProfilType extends AbstractType
                     'ORL'=> 'ORL',
                     'Physiologie'=>'Physiologie'
                 ]])
-            ->add('inamiNumber', NumberType::class, ['label'=>'Numéro Inami'])
             ->add('submit', SubmitType::class, ['label'=> 'Envoyer'])
         ;
 

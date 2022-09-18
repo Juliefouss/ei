@@ -40,17 +40,12 @@ class AdminMessage
     #[ORM\Column(type: 'integer')]
     private $numberHourly;
 
-    #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'textChange')]
-    private $textChange;
+    #[ORM\Column(type: 'string', length: 255)]
+    private $hospitalName;
 
-    #[ORM\OneToOne(targetEntity: Hospital::class, cascade: ['persist', 'remove'])]
-    #[ORM\JoinColumn(nullable: false)]
-    private $hospital;
+    #[ORM\Column(type: 'string', length: 255)]
+    private $serviceName;
 
-    public function __construct()
-    {
-        $this->textChange = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -129,40 +124,26 @@ class AdminMessage
         return $this;
     }
 
-
-    /**
-     * @return Collection<int, User>
-     */
-    public function getTextChange(): Collection
+    public function getHospitalName(): ?string
     {
-        return $this->textChange;
+        return $this->hospitalName;
     }
 
-    public function addTextChange(User $textChange): self
+    public function setHospitalName(string $hospitalName): self
     {
-        if (!$this->textChange->contains($textChange)) {
-            $this->textChange[] = $textChange;
-        }
+        $this->hospitalName = $hospitalName;
 
         return $this;
     }
 
-    public function removeTextChange(User $textChange): self
+    public function getServiceName(): ?string
     {
-        $this->textChange->removeElement($textChange);
-
-        return $this;
+        return $this->serviceName;
     }
 
-
-    public function getHospital(): ?Hospital
+    public function setServiceName(string $serviceName): self
     {
-        return $this->hospital;
-    }
-
-    public function setHospital(Hospital $hospital): self
-    {
-        $this->hospital = $hospital;
+        $this->serviceName = $serviceName;
 
         return $this;
     }

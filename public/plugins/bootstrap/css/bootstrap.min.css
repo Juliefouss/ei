@@ -2955,6 +2955,39 @@ output {
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s
 }
 
+#user_register_inamiNumberPart1.form-control{
+    width: 10% !important;
+    margin-bottom: 10px;
+}
+.inami1 p{
+    margin-top: -45px;
+    margin-left: 78px;
+}
+#user_register_inamiNumberPart2.form-control{
+    width: 20% !important;
+    margin-top: -41px;
+    margin-left: 92px;
+}
+.inami2 p{
+    margin-top: -45px;
+    margin-left: 245px;
+}
+#user_register_inamiNumberPart3.form-control{
+    width: 10% !important;
+    margin-top: -41px;
+    margin-left: 258px;
+}
+.inami3 p{
+    margin-top: -45px;
+    margin-left: 336px;
+}
+#user_register_inamiNumberPart4.form-control{
+    width: 10% !important;
+    margin-top: -41px;
+    margin-left: 350px;
+}
+
+
 .form-control:focus {
     border-color: #66afe9;
     outline: 0;
@@ -3259,7 +3292,7 @@ select[multiple].input-lg, textarea.input-lg {
 }
 
 .has-error .form-control:focus {
-    border-color: #843534;
+    border-color: red;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483
 }

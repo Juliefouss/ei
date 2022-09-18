@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/hospital')]
+#[Route('/admin/hospital')]
 class HospitalController extends AbstractController
 {
     #[Route('/', name: 'app_hospital_index', methods: ['GET'])]

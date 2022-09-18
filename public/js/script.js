@@ -124,11 +124,11 @@ window.onload = () =>{
 
   calendar.render()
 }
-
+//
 // const button = document.getElementById('js_button');
 //
 // button.addEventListener('click', event => {
-//   button.innerHTML = `Vous avez déjà supprimer cette annonce`;
+//   button.innerHTML = ``;
 // });
 
 // function changerTexte() {

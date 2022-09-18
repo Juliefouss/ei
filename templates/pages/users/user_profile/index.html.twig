@@ -28,7 +28,7 @@
                                     <li><span class="hight">Nom:</span> {{ app.user.name }}</li>
                                     <li><span>Prénom:</span> {{ app.user.firstname }}</li>
                                     <li><span>Specialisation:</span> {{ app.user.specialization }}</li>
-                                    <li><span>N° Inami:</span> {{ app.user.inamiNumber }}</li>
+                                    <li><span>N° Inami:</span> {{ app.user.inamiNumberPart1 }}-{{app.user.inamiNumberPart2 }}-{{ app.user.inamiNumberPart3}}-{{ app.user.inamiNumberPart4}} </li>
                                     <li><span>Email:</span>{{ app.user.email }}</li>
                                     <li> <span><a class="btn btn-transparent mt-20" href="{{ url('app_user_profile_edit', {id: app.user.id }) }}">Modifier</a></span></li>
                                 </ul>

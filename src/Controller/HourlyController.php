@@ -158,6 +158,33 @@ class HourlyController extends AbstractController
         return $this->redirectToRoute('app_hourly_user-index');
     }
 
+    #[Route (path: '/options/add/{id}', name: 'add_options')]
+
+    public function addOptions(Hourly $hourly, EntityManagerInterface $em)
+    {
+        if(!$hourly){
+            throw new NotFoundHttpException('Pas d\'annonce trouvée');
+        }
+        $hourly->addOption($this->getUser());
+        $em->persist($hourly);
+        $em->flush();
+        return $this->redirectToRoute('app_hourly_index');
+    }
+
+    #[Route (path: '/options/remove/{id}' , name: 'remove_options') ]
+
+    public function removeOptions(Hourly $hourly, EntityManagerInterface $em)
+    {
+        if(!$hourly){
+            throw new NotFoundHttpException('Pas d\'annonce trouvée');
+        }
+        $hourly->removeOption($this->getUser());
+
+        $em->persist($hourly);
+        $em->flush();
+        return $this->redirectToRoute('app_hourly_index');
+    }
+
 }
 
 

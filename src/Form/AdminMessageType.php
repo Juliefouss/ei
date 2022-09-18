@@ -3,8 +3,6 @@
 namespace App\Form;
 
 use App\Entity\AdminMessage;
-use App\Entity\Hospital;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -19,7 +17,8 @@ class AdminMessageType extends AbstractType
     {
         $builder
             ->add('numberHourly',NumberType::class, ['label' => 'Numéro annonce'] )
-            ->add('hospital', EntityType::class, ['class' => Hospital::class, 'label'=>'Hôpital'])
+            ->add('hospitalName', TextType::class, ['label'=> 'Nom de l\'hopital'])
+            ->add('serviceName', TextType::class, ['label' => 'Nom du service'])
             ->add('message', TextareaType::class, ['label' => 'Votre message'])
             ->add('submit', SubmitType::class, ['label'=> 'Envoyer'])
         ;

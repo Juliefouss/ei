@@ -10,6 +10,24 @@
                         <button class="btn btn-transparent"><a href="{{ path('app_hourly_edit', {'id': hourly.id}) }}">Modifier</a>
                         </button>
                         {{ include('pages/hourly/_delete_form.html.twig') }}
+                    <div>
+                        {% if is_granted("ROLE_ADMIN") %}
+                            {% set isOptions = false %}
+                            {% for options in hourly.options %}
+                                {% if options.id == app.user.id %}
+                                    {% set isOptions = true %}
+                                {% endif%}
+                            {% endfor%}
+                            {% if isOptions%}
+                                <a class="red" href="{{ path('remove_options', {id: hourly.id}) }}">En attente de contrat</a>
+
+                            {% else %}
+                                <a href="{{ path('add_options', {id: hourly.id}) }}">A vendre</a>
+
+                            {% endif%}
+                        {% endif %}
+
+                    </div>
                 </div>
             </div>
         </div>

@@ -17,13 +17,56 @@
             <div class="container">
                 <div class="row">
                     <!-- Contact Form -->
-                    <div class="contact-form col-md-12" >
-
-                        {{ form(registerForm) }}
-
-                        <p class="mt-20 text-center">Déja un compte ?<a href="{{ url('app_login') }}"> Se connecter </a>
-
+                    <div class="contact-form col-md-8" >
+                       {{ form(registerForm) }}
                     </div>
+{#                    <div class="col-md-8 col-md-offset-3">#}
+{#                        <div class=" text-center">#}
+{#                            <form class="text-left clearfix" method="post">#}
+{#                                {{ form_start (registerForm) }}#}
+
+{#                                <div class="form-group">#}
+{#                                    {{ form_row(registerForm.name) }}#}
+{#                                </div>#}
+{#                                <div class="form-group">#}
+{#                                    {{ form_row(registerForm.firstname) }}#}
+{#                                </div>#}
+{#                                <div class="form-group">#}
+{#                                    {{ form_row(registerForm.job) }}#}
+{#                                </div>#}
+{#                                <div class="form-group">#}
+{#                                    {{ form_row(registerForm.specialization) }}#}
+{#                                </div>#}
+{#                                <div class="form-group">#}
+{#                                    <label>Numéro Inami</label>#}
+{#                                    <div class="inami1">#}
+{#                                        {{ form_widget(registerForm.inamiNumberPart1, { 'attr': { 'maxlength' : 1 } }) }}#}
+{#                                        <p>-</p>#}
+{#                                    </div>#}
+{#                                    <div class="inami2">#}
+{#                                        {{ form_widget(registerForm.inamiNumberPart2, { 'attr': { 'maxlength' : 5} }) }}#}
+{#                                        <p>-</p>#}
+{#                                    </div>#}
+{#                                    <div class="inami3">#}
+{#                                        {{ form_widget(registerForm.inamiNumberPart3, { 'attr': { 'maxlength' : 2 } }) }}#}
+{#                                        <p>-</p>#}
+{#                                    </div>#}
+{#                                    <div class="inami4">#}
+{#                                        {{ form_widget(registerForm.inamiNumberPart4, { 'attr': { 'maxlength' : 3 } }) }}#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                                <div class="form-group">#}
+{#                                    {{ form_row(registerForm.email) }}#}
+{#                                </div>#}
+{#                                <div class="form-group">#}
+{#                                    {{ form_row(registerForm.Password) }}#}
+{#                                </div>#}
+{#                                {{ form_row(registerForm.photo) }}#}
+{#                                {{ form_row(registerForm.submit)}}#}
+{#                                {{ form_end(registerForm) }}#}
+{#                            </form>#}
+{#                        </div>#}
+{#                    </div>#}
 
                     <!-- ./End Contact Form -->
                 </div> <!-- end row -->

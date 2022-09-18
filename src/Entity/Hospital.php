@@ -36,9 +36,6 @@ class Hospital
     #[ORM\Column(type: 'string', length: 255)]
     private $Town;
 
-    #[ORM\OneToMany(mappedBy: 'hospital', targetEntity: HourlyRequest::class)]
-    private $hourlyRequests;
-
     #[ORM\Column(type: 'string', length: 255)]
     private $ApplyMail;
 
@@ -164,35 +161,7 @@ class Hospital
         return $this;
     }
 
-    /**
-     * @return Collection<int, HourlyRequest>
-     */
-    public function getHourlyRequests(): Collection
-    {
-        return $this->hourlyRequests;
-    }
 
-    public function addHourlyRequest(HourlyRequest $hourlyRequest): self
-    {
-        if (!$this->hourlyRequests->contains($hourlyRequest)) {
-            $this->hourlyRequests[] = $hourlyRequest;
-            $hourlyRequest->setHospital($this);
-        }
-
-        return $this;
-    }
-
-    public function removeHourlyRequest(HourlyRequest $hourlyRequest): self
-    {
-        if ($this->hourlyRequests->removeElement($hourlyRequest)) {
-            // set the owning side to null (unless already changed)
-            if ($hourlyRequest->getHospital() === $this) {
-                $hourlyRequest->setHospital(null);
-            }
-        }
-
-        return $this;
-    }
 
     public function getApplyMail(): ?string
     {

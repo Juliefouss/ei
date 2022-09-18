@@ -13,6 +13,9 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Blank;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class UserRegisterType extends AbstractType
 {
@@ -22,13 +25,12 @@ class UserRegisterType extends AbstractType
             ->add('name', TextType::class, ['label'=>'Nom'])
             ->add('firstname', TextType::class, ['label'=>'Prénom'])
             ->add('email', EmailType::class, ['label'=>'Email'])
-            ->add('username', TextType::class, ['label'=>'Nom utilisateur'])
             ->add('job', ChoiceType::class, ['label'=> 'Titre', 'choices'=>[
                 'Docteur'=> 'Docteur',
                 'Professeur'=> 'Professeur',
                  'Aucun'=> 'Non applicable'
             ]])
-            ->add('specialization', ChoiceType::class, ['label'=>'Spécialisation',
+            ->add('specialization', ChoiceType::class, ['label'=>'Qualification',
                 'choices'=>[
                     'Aucune'=> '',
                     'Cardiologie'=> 'cardiologie',
@@ -47,7 +49,33 @@ class UserRegisterType extends AbstractType
                     'ORL'=> 'ORL',
                     'Physiologie'=>'Physiologie'
                 ]])
-            ->add('inamiNumber', NumberType::class, ['label'=>'Numéro Inami'])
+            ->add('inamiNumberPart1', NumberType::class, [
+                'label' => ' ',
+                'constraints' => [
+                    new NotBlank(),
+                    new Regex('/([0-9]{1})/')
+                ],
+                ])
+            ->add('inamiNumberPart2', NumberType::class, [
+                'label' => ' ',
+                'constraints' => [
+                    new NotBlank(),
+                    new Regex('/[0-9]{5}/')
+                ]
+            ])
+            ->add('inamiNumberPart3', NumberType::class, [
+                'label' => ' ',
+                'constraints' => [
+                    new NotBlank(),
+                    new Regex('/[0-9]{2}/')
+                ]
+            ])->add('inamiNumberPart4', NumberType::class, [
+                'label' => ' ',
+                'constraints' => [
+                    new NotBlank(),
+                    new Regex('/[0-9]{3}/')
+                ]
+            ])
             ->add('Password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'first_options'  => ['label' => 'Mot de passe'],
