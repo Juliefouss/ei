@@ -11,10 +11,10 @@
                 <div class="col-md-6">
                     <div class="title text-center">
                         <h1 class="blue">Bienvenue VacansCuRa </h1>
-                        <h3>Le site des annonces des prestations médicales du réseau hospitalier CuRa.</h3>
+                        <h3 class="title widget-title">Le site des annonces des prestations médicales du réseau hospitalier CuRa.</h3>
                     </div>
                     {% if app.user %}
-                        <h2 class="text-center padding">Merci</h2>
+                        <h2 class="widget-title text-center">Merci</h2>
                         {% if is_granted("ROLE_ADMIN") %}
                             <h3 class="text-center padding"> {{ app.user.firstname }}</h3>
                             <div class="text-center">
@@ -38,7 +38,7 @@
 
 
                         <div class="text-center">
-                            <p class="about">Medec'Im permet aux <span>hôpitaux</span> de communiquer via des <span>annonces</span> les plages horaires pour lesquelles ils sont à la recherche d'un médecin.
+                            <p class="about">VancansCuRa permet aux <span>hôpitaux</span> du réseau CuRa de communiquer via des <span>annonces</span> les plages horaires pour lesquelles ils sont à la recherche d'un médecin.
                             </p>
                             <p class="about">Vous êtes un médecin et vous souhaitez travailler de manière ponctuelle.</p>
                         </div>

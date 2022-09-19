@@ -2955,39 +2955,6 @@ output {
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s
 }
 
-#user_register_inamiNumberPart1.form-control{
-    width: 10% !important;
-    margin-bottom: 10px;
-}
-.inami1 p{
-    margin-top: -45px;
-    margin-left: 78px;
-}
-#user_register_inamiNumberPart2.form-control{
-    width: 20% !important;
-    margin-top: -41px;
-    margin-left: 92px;
-}
-.inami2 p{
-    margin-top: -45px;
-    margin-left: 245px;
-}
-#user_register_inamiNumberPart3.form-control{
-    width: 10% !important;
-    margin-top: -41px;
-    margin-left: 258px;
-}
-.inami3 p{
-    margin-top: -45px;
-    margin-left: 336px;
-}
-#user_register_inamiNumberPart4.form-control{
-    width: 10% !important;
-    margin-top: -41px;
-    margin-left: 350px;
-}
-
-
 .form-control:focus {
     border-color: #66afe9;
     outline: 0;
@@ -3256,55 +3223,55 @@ select[multiple].input-lg, textarea.input-lg {
 }
 
 .has-warning .checkbox, .has-warning .checkbox-inline, .has-warning .control-label, .has-warning .help-block, .has-warning .radio, .has-warning .radio-inline, .has-warning.checkbox label, .has-warning.checkbox-inline label, .has-warning.radio label, .has-warning.radio-inline label {
-    color: #8a6d3b
+    color: red;
 }
 
 .has-warning .form-control {
-    border-color: #8a6d3b;
+    border-color: red !important;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075)
 }
 
 .has-warning .form-control:focus {
-    border-color: #66512c;
+    border-color: red !important;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #c0a16b;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #c0a16b
 }
 
 .has-warning .input-group-addon {
-    color: #8a6d3b;
+    color: red!important;
     background-color: #fcf8e3;
-    border-color: #8a6d3b
+    border-color: red;
 }
 
 .has-warning .form-control-feedback {
-    color: #8a6d3b
+    color: red!important;
 }
 
 .has-error .checkbox, .has-error .checkbox-inline, .has-error .control-label, .has-error .help-block, .has-error .radio, .has-error .radio-inline, .has-error.checkbox label, .has-error.checkbox-inline label, .has-error.radio label, .has-error.radio-inline label {
-    color: #a94442
+    color: red!important;
 }
 
 .has-error .form-control {
-    border-color: #a94442;
+    border-color: red !important;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075)
 }
 
 .has-error .form-control:focus {
-    border-color: red;
+    border-color: red !important;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483
 }
 
 .has-error .input-group-addon {
-    color: #a94442;
+    color: red;
     background-color: #f2dede;
-    border-color: #a94442
+    border-color: red!important;
 }
 
 .has-error .form-control-feedback {
-    color: #a94442
+    color: red!important;
 }
 
 .has-feedback label ~ .form-control-feedback {
@@ -3522,7 +3489,6 @@ a.btn.disabled, fieldset[disabled] a.btn {
     background: #0c1f54;
     color: #fff;
     border-radius: 0;
-    border-color: #000;
     font-family: "Poppins", sans-serif !important;
     font-size: 11px;
     letter-spacing: 1px;
@@ -3533,7 +3499,7 @@ a.btn.disabled, fieldset[disabled] a.btn {
 .btn-primary.focus, .btn-primary:focus {
     color: #fff;
     background-color: #286090;
-    border-color: #122b40
+    border-color: #f33333;
 }
 
 .btn-primary:hover {
@@ -5332,19 +5298,19 @@ a.label:focus, a.label:hover {
 }
 
 .label-warning {
-    background-color: #f0ad4e
+    background-color: red;
 }
 
 .label-warning[href]:focus, .label-warning[href]:hover {
-    background-color: #ec971f
+    background-color: red;
 }
 
 .label-danger {
-    background-color: #d9534f
+    background-color: red
 }
 
 .label-danger[href]:focus, .label-danger[href]:hover {
-    background-color: #c9302c
+    background-color: red;
 }
 
 .badge {
@@ -5540,7 +5506,7 @@ a.thumbnail.active, a.thumbnail:focus, a.thumbnail:hover {
 .alert-warning {
     color: #8a6d3b;
     background-color: #fcf8e3;
-    border-color: #faebcc
+    border-color: red;
 }
 
 .alert-warning hr {

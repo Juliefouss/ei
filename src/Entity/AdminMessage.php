@@ -46,7 +46,6 @@ class AdminMessage
     #[ORM\Column(type: 'string', length: 255)]
     private $serviceName;
 
-
     public function getId(): ?int
     {
         return $this->id;

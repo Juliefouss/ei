@@ -127,10 +127,12 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
   box-shadow: none;
   border-radius: 0;
 }
-.form-control:focus {
-  box-shadow: none;
-  border: 1px solid #000;
+
+.has.error{
+  border: 1px solid red;
+;
 }
+
 
 .btn-main, .btn-small, .btn-transparent, .btn-solid-border {
   background: #0c1f54;
@@ -2487,5 +2489,39 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
 .favoris{
   margin-top:-10px;
 }
+
+#user_register_inamiNumberPart1.form-control{
+  width: 10% !important;
+  margin-bottom: 10px;
+}
+.inami1 p{
+  margin-top: -45px;
+  margin-left: 78px;
+}
+#user_register_inamiNumberPart2.form-control{
+  width: 20% !important;
+  margin-top: -46px;
+  margin-left: 92px;
+}
+.inami2 p{
+  margin-top: -45px;
+  margin-left: 245px;
+}
+#user_register_inamiNumberPart3.form-control{
+  width: 10% !important;
+  margin-top: -46px;
+  margin-left: 258px;
+}
+.inami3 p{
+  margin-top: -45px;
+  margin-left: 336px;
+}
+#user_register_inamiNumberPart4.form-control{
+  width: 10% !important;
+  margin-top: -46px;
+  margin-left: 350px;
+}
+
+
 
 /*# sourceMappingURL=style.css.map */

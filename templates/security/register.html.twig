@@ -21,45 +21,50 @@
 {#                       {{ form(registerForm) }}#}
                     </div>
                     <div class="col-md-8 col-md-offset-3">
-                        <div class=" text-center">
+                        <div class="text-center">
                             <form class="text-left clearfix" method="post" enctype="multipart/form-data">
                                 {{ form_start (registerForm) }}
 
                                 <div class="form-group">
-                                    {{ form_row(registerForm.name) }}
+                                    {{ form_row(registerForm.name, {'attr' : {'class' : 'form-control'}}) }}
+                                </div>
+
+                                <div class="form-group">
+
+                                    {{ form_row(registerForm.firstname, {'attr' : {'class' : 'form-control'}}) }}
+
                                 </div>
                                 <div class="form-group">
-                                    {{ form_row(registerForm.firstname) }}
+                                    {{ form_row(registerForm.job, {'attr' : {'class' : 'form-control'}}) }}
                                 </div>
                                 <div class="form-group">
-                                    {{ form_row(registerForm.job) }}
-                                </div>
-                                <div class="form-group">
-                                    {{ form_row(registerForm.specialization) }}
+                                    {{ form_row(registerForm.specialization, {'attr' : {'class' : 'form-control'}}) }}
+
                                 </div>
                                 <div class="form-group">
                                     <label>Numéro Inami</label>
                                     <div class="inami1">
-                                        {{ form_widget(registerForm.inamiNumberPart1, { 'attr': { 'maxlength' : 1 } }) }}
+                                        {{ form_row(registerForm.inamiNumberPart1, { 'attr': { 'maxlength' : 1 , 'class':'form-control'} }) }}
                                         <p>-</p>
                                     </div>
                                     <div class="inami2">
-                                        {{ form_widget(registerForm.inamiNumberPart2, { 'attr': { 'maxlength' : 5} }) }}
+                                        {{ form_row(registerForm.inamiNumberPart2, { 'attr': { 'maxlength' : 5, 'class': 'form-control'} }) }}
                                         <p>-</p>
                                     </div>
                                     <div class="inami3">
-                                        {{ form_widget(registerForm.inamiNumberPart3, { 'attr': { 'maxlength' : 2 } }) }}
+                                        {{ form_row(registerForm.inamiNumberPart3, { 'attr': { 'maxlength' : 2, 'class': 'form-control' } }) }}
                                         <p>-</p>
                                     </div>
                                     <div class="inami4">
-                                        {{ form_widget(registerForm.inamiNumberPart4, { 'attr': { 'maxlength' : 3 } }) }}
+                                        {{ form_row(registerForm.inamiNumberPart4, { 'attr': { 'maxlength' : 3, 'class' : 'form-control' } }) }}
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    {{ form_row(registerForm.email) }}
+                                    {{ form_row(registerForm.email, {'attr' : {'class' : 'form-control'}}) }}
                                 </div>
                                 <div class="form-group">
-                                    {{ form_row(registerForm.Password) }}
+                                    {{ form_row(registerForm.Password, {'attr' : {'class' : 'form-control'}}) }}
+
                                 </div>
                                 {{ form_row(registerForm.photo) }}
                                 {{ form_row(registerForm.submit)}}
